@@ -21,12 +21,7 @@
       }
     }
 
-    FB.logout(function (response) {
-      // Person is now logged out
-      document.cookie.split(";").forEach(function(c) {
-    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";domain=.mikai.netlify.com;path=/");
-});
-    });
+    
 
 
     function checkLoginState() {               // Called when a person is finished with the Login Button.
@@ -48,6 +43,13 @@
       FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
         statusChangeCallback(response);        // Returns the login status.
       });
+
+      FB.logout(function (response) {
+      // Person is now logged out
+      document.cookie.split(";").forEach(function(c) {
+    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";domain=.mikai.netlify.com;path=/");
+});
+    });
     };
 
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
