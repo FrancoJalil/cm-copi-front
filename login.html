@@ -8,12 +8,7 @@
 
   <script>
 
-    FB.logout(function (response) {
-      // Person is now logged out
-      document.cookie.split(";").forEach(function(c) {
-    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";domain=.mikai.netlify.com;path=/");
-});
-    });
+    
 
     function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
       console.log('statusChangeCallback');
@@ -25,6 +20,13 @@
           'into this webpage.';
       }
     }
+
+    FB.logout(function (response) {
+      // Person is now logged out
+      document.cookie.split(";").forEach(function(c) {
+    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";domain=.mikai.netlify.com;path=/");
+});
+    });
 
 
     function checkLoginState() {               // Called when a person is finished with the Login Button.
