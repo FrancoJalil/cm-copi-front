@@ -33,7 +33,7 @@
 
     window.fbAsyncInit = function () {
       FB.init({
-        appId: '1106097870792531',                // Enable cookies to allow the server to access the session.
+        appId: '1106097870792531',                  
         xfbml: true,                     // Parse social plugins on this webpage.
         version: 'v16.0'           // Use this Graph API version for this call.
       });
@@ -55,7 +55,7 @@
 
   </script>
 
-  <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+  <fb:login-button scope="public_profile,email,instagram_basic" onlogin="checkLoginState();">
   </fb:login-button>
 
   <div id="status">
