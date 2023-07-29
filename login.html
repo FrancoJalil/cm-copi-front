@@ -44,12 +44,13 @@
         statusChangeCallback(response);        // Returns the login status.
       });
 
-      FB.logout(function (response) {
-      // Person is now logged out
-      document.cookie.split(";").forEach(function(c) {
-    document.cookie = c.replace(/^ +/, "").replace(/=.*/, "=;expires=" + new Date().toUTCString() + ";domain=.mikai.netlify.com;path=/");
+      FB.logout(function(response) {
+  deleteCookie("fblo_" + 1106097870792531); // fblo_yourFBAppId. example: fblo_444499089231295
 });
-    });
+
+function deleteCookie(name) {
+  document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+}
     };
 
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
