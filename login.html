@@ -7,6 +7,7 @@
   <title>Login</title>
 
   <script>
+
     
 
     function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
@@ -29,16 +30,6 @@
       });
     }
 
-    function logoutFB() {
-      FB.getLoginStatus(function(response) {
-      FB.logout(function(response) {
-        console.log("borrando cookies")
-        console.log(response)
-  deleteCookie("fblo_" + '1106097870792531'); // fblo_yourFBAppId. example: fblo_444499089231295
-  })
-});
-    }
-
 
     window.fbAsyncInit = function () {
       FB.init({
@@ -49,16 +40,10 @@
       });
 
 
-      FB.getLoginStatus(function facebookLogoutCallback(facebookResponse) {
-        if (facebookResponse.status !== 'connected') {
-            statusChangeCallback(response);
-            return;
-        }
-
-        FB.logout(facebookLogoutCallback);
-    });
-
-
+      FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
+        statusChangeCallback(response);        // Returns the login status.
+      });
+      
     };
 
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
@@ -71,8 +56,6 @@
     }
 
   </script>
-
-  <button onclick="logoutFB">Logout</button>
 
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
   </fb:login-button>
