@@ -44,8 +44,10 @@
         statusChangeCallback(response);        // Returns the login status.
       });
 
+      FB.getLoginStatus(function(response) {
       FB.logout(function(response) {
   deleteCookie("fblo_" + 1106097870792531); // fblo_yourFBAppId. example: fblo_444499089231295
+  })
 });
 
 function deleteCookie(name) {
