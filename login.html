@@ -8,54 +8,48 @@
 
   <script>
     function deleteCookie(name) {
-  document.cookie = name +'=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
-}
-    
+      document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
 
-    function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+    function statusChangeCallback(response) {
       console.log('statusChangeCallback');
-      console.log(response);                   // The current login status of the person.
-      if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+      console.log(response);
+      if (response.status === 'connected') {
         testAPI();
-      } else {                                 // Not logged into your webpage or we are unable to tell.
+      } else {
         document.getElementById('status').innerHTML = 'Please log ' +
           'into this webpage.';
       }
     }
 
-    
-
-
-    function checkLoginState() {               // Called when a person is finished with the Login Button.
-      FB.getLoginStatus(function (response) {   // See the onlogin handler
+    function checkLoginState() {
+      FB.getLoginStatus(function (response) {
         statusChangeCallback(response);
       });
     }
 
+    function logoutFromFacebook() {
+      FB.logout(function (response) {
+        console.log('El usuario ha cerrado sesión en Facebook.');
+        deleteCookie("fblo_" + '1106097870792531');
+        document.getElementById('status').innerHTML = 'Logged out from Facebook.';
+      });
+    }
 
     window.fbAsyncInit = function () {
       FB.init({
         appId: '1106097870792531',
-        cookie: true,                     // Enable cookies to allow the server to access the session.
-        xfbml: true,                     // Parse social plugins on this webpage.
-        version: 'v16.0'           // Use this Graph API version for this call.
+        cookie: true,
+        xfbml: true,
+        version: 'v16.0'
       });
 
-
-      FB.getLoginStatus(function (response) {   // Called after the JS SDK has been initialized.
-        statusChangeCallback(response);        // Returns the login status.
+      FB.getLoginStatus(function (response) {
+        statusChangeCallback(response);
       });
-
-      FB.getLoginStatus(function(response) {
-      FB.logout(function(response) {
-  deleteCookie("fblo_" + '1106097870792531'); // fblo_yourFBAppId. example: fblo_444499089231295
-  })
-});
-
-
     };
 
-    function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+    function testAPI() {
       console.log('Welcome!  Fetching your information.... ');
       FB.api('/me', function (response) {
         console.log('Successful login for: ' + response.name);
@@ -69,6 +63,8 @@
   <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
   </fb:login-button>
 
+  <button type="button" onclick="logoutFromFacebook()">Logout</button>
+
   <div id="status">
   </div>
 
@@ -81,16 +77,10 @@
     <button type="button" onclick="login()">Login</button>
   </form>
 
-
-
   <div id="fb-root"></div>
 
   <!-- Load the JS SDK asynchronously -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
-
-
-
-
 </body>
 
 </html>
