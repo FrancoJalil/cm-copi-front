@@ -7,25 +7,57 @@
     <title>Login</title>
 
     <script>
-        window.fbAsyncInit = function() {
-          FB.init({
-            appId: '1106097870792531',
-            cookie: true,
-            xfbml: true,
-            version: 'v16.0'
-          });
+
+      function statusChangeCallback(response) {  // Called with the results from FB.getLoginStatus().
+        console.log('statusChangeCallback');
+        console.log(response);                   // The current login status of the person.
+        if (response.status === 'connected') {   // Logged into your webpage and Facebook.
+          testAPI();  
+        } else {                                 // Not logged into your webpage or we are unable to tell.
+          document.getElementById('status').innerHTML = 'Please log ' +
+            'into this webpage.';
+        }
+      }
     
-          FB.AppEvents.logPageView();
-        };
     
-        (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-      </script>
+      function checkLoginState() {               // Called when a person is finished with the Login Button.
+        FB.getLoginStatus(function(response) {   // See the onlogin handler
+          statusChangeCallback(response);
+        });
+      }
+    
+    
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '1106097870792531',
+          cookie     : true,                     // Enable cookies to allow the server to access the session.
+          xfbml      : true,                     // Parse social plugins on this webpage.
+          version    : 'v.16.0'           // Use this Graph API version for this call.
+        });
+    
+    
+        FB.getLoginStatus(function(response) {   // Called after the JS SDK has been initialized.
+          statusChangeCallback(response);        // Returns the login status.
+        });
+      };
+     
+      function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
+        console.log('Welcome!  Fetching your information.... ');
+        FB.api('/me', function(response) {
+          console.log('Successful login for: ' + response.name);
+          document.getElementById('status').innerHTML =
+            'Thanks for logging in, ' + response.name + '!';
+        });
+      }
+    
+    </script>
+
+<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+</fb:login-button>
+
+<div id="status">
+</div>
+
 </head>
 
 <body>
@@ -35,83 +67,12 @@
         <button type="button" onclick="login()">Login</button>
     </form>
 
-    <!-- Display login status -->
-    <div id="status"></div>
-
-    <!-- Facebook login or logout button -->
-    <a href="javascript:void(0);" onclick="fbLogin();" id="fbLink">ok</a>
-
-    <!-- Display user's profile info -->
-    <div class="ac-data" id="userData"></div>
-
-    <script>
-        function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const url = 'http://localhost:8000/api/token/'; // Replace this with your actual API endpoint URL
-
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                })
-            })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data)
-                    const accessToken = data.access;
-                    const refreshToken = data.refresh;
-
-                    // Store the tokens in localStorage or sessionStorage for future API requests
-                    localStorage.setItem('access', accessToken);
-                    localStorage.setItem('refresh', refreshToken);
-
-                    window.location.href = "/home.html";
-
-                    // Optionally, you can redirect the user to another page upon successful login
-                    //window.location.href = 'file:///home/franco/saas/cm-copilot/home.html'; // Replace this with the URL you want to redirect to
-                })
-                .catch(error => {
-                    console.error('Login failed:', error);
-                    // Handle login error (e.g., display an error message to the user)
-                });
-        }
-
-    </script>
+    
 
 <div id="fb-root"></div>
 
-<button onclick="loginWithFacebook()">Iniciar sesión con Facebook</button>
-
-<script>
-  function checkLoginState() {
-    FB.getLoginStatus(function(response) {
-      if (response.status === 'connected') {
-        // El usuario ya ha iniciado sesión en tu aplicación
-        // Aquí puedes realizar acciones adicionales o redireccionarlo a otra página
-      } else {
-        // El usuario no ha iniciado sesión en tu aplicación
-        // Aquí puedes mostrar el botón de inicio de sesión de Facebook
-      }
-    });
-  }
-
-  function loginWithFacebook() {
-    FB.login(function(response) {
-      if (response.authResponse) {
-        // El usuario ha iniciado sesión correctamente en tu aplicación
-        // Puedes acceder a la información del usuario a través de response.authResponse
-        // Aquí puedes realizar acciones adicionales o redireccionarlo a otra página
-      } else {
-        // El usuario canceló el inicio de sesión o ocurrió un error
-      }
-    }, { scope: 'email' }); // Puedes agregar otros permisos separados por comas según tus necesidades
-  }
-</script>
+<!-- Load the JS SDK asynchronously -->
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
 
 
 
