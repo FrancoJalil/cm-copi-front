@@ -1,0 +1,40 @@
+
+
+.content-container {
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    margin: 1.5rem 10rem;
+
+}
+
+.container-calendar {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+    scrollbar-color: black;
+    padding: 2rem;
+    background-color: #121212;
+    margin: 1rem;
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 93.6%;
+
+}
+
+.container-content-calendar {
+    display: flex;
+    padding: 1rem;
+}
+
+.images-container {
+    display: flex;
+}
+
+.fecha-publicacion {
+    margin-right: 1rem;
+}
+
+.images-container img {
+    margin: 1rem;
+}

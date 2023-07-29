@@ -1,0 +1,545 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    font-family: Inter, sans-serif;
+}
+
+textarea {
+    padding: 1rem;
+    font-family: Inter, sans-serif;
+}
+
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+    font-family: Inter, sans-serif;
+    background-color: #13111C;
+    color: rgba(255, 255, 255, 0.5);
+    align-items: center;
+}
+
+.container {
+    align-items: center;
+    text-align: center;
+}
+
+#firstInputUser {
+    height: 72vh;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    justify-content: space-between;
+}
+
+
+.footer {
+    display: none;
+    padding-bottom: 8rem;
+}
+
+canvas {
+    min-width: 15.625rem !important;
+    min-height: 15.625rem !important;
+    max-width: 18rem;
+    max-height: 18rem;
+}
+
+.canvas-container {
+    padding-right: 2.4rem;
+}
+
+.canvas-container {
+    margin-left: 1rem;
+    min-width: 15.625rem !important;
+    min-height: 15.625rem !important;
+    max-width: 18rem;
+    max-height: 18rem;
+}
+
+.cont-carrusel .canvas-container {
+    padding-right: 0rem;
+}
+
+.big-container {
+    overflow-x: scroll;
+    scrollbar-color: black;
+    padding: 2rem;
+    background-color: #121212;
+    margin: 1rem;
+    display: inline-flex;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    width: 93.6%;
+}
+
+::-webkit-scrollbar-track {
+    background-color: black;
+  }
+
+
+.containerDesc {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.containerDatetime {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: center;
+    
+}
+
+.containerDatetime input {
+    align-items: left;
+}
+
+.containerDatetime p {
+    margin: 0.5rem;
+}
+
+.text-field-container {
+    display: flex;
+    flex-direction: column-reverse;
+    justify-content: space-between;
+    order: -1;
+}
+
+
+.text-field {
+    color:#FFF;
+    background-color: #121212;
+    height: 100px;
+    width: 250px;
+    max-height: 250px;
+    max-width: 250px;
+    min-height: 100px;
+    min-width: 250px;
+}
+
+.containerFirst {
+    
+    display: none;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-radius: 0.25rem;
+    padding: 0.3rem;
+}
+
+.select-this-carru {
+    width: 10%;
+    cursor: pointer;
+}
+
+.containerFirst label {
+    width: 90%;
+}
+
+
+.cont-carrusel {
+    
+    display: flex;
+}
+
+.fonts {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+}
+
+.fonts p {
+    margin: 10px;
+}
+
+.canvas-selected {
+    border: 2px solid white;
+}
+
+.Anton {
+    font-family: 'Anton';
+}
+
+.Rock-Salt {
+    font-family: 'Rock Salt';
+}
+
+.Montserrat {
+    font-family: 'Montserrat';
+}
+
+.Amatic-SC {
+    font-family: 'Amatic-SC';
+}
+
+#container-editable {
+    display: none;
+}
+
+#textInput {
+    padding: 0.3rem;
+    color: white;
+    border-radius: .25rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.30);
+    background-color: #121212;
+
+}
+#textInput:focus {
+    border-color: #955280;
+    outline: none;
+}
+
+#colorPicker {
+    height: auto;
+}
+
+.add-image-btn {
+    display: inline-block;
+    margin-left: 20px;
+}
+
+img {
+    width: 200px;
+}
+
+#imageList {
+    display: flex;
+}
+
+.menu {
+    
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 5rem;
+    list-style: none;
+}
+
+.menu-border {
+    justify-content: space-between;
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+
+.menu li {
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    font-weight: 900;
+    margin: 0 1rem;
+    margin-right: 4rem;
+}
+
+
+.menu li:hover {
+    color: #FFF; /* Cambia el color del texto a negro en el hover */
+}
+
+.container-title-input {
+    width: 70%;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+
+}
+
+.prompt-title-container {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    margin: 0rem;
+}
+
+.prompt-title {
+    margin-bottom: 0.8rem;
+    width: 44%;
+}
+
+.prompt-input-container {
+    
+    text-align: center;
+}
+
+.prompt-input {
+    width: 60%;
+    max-width: 80rem;
+    height: 2.5rem;
+    border-radius: .25rem;
+    border: 1.5px solid rgba(255, 255, 255, 0.30);
+    background: rgba(18, 18, 18, 0.80);
+    color: rgba(255, 255, 255, 0.30);
+    font-size: 1rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: normal;
+    margin-bottom: 1rem;
+    padding: 0.3rem 1.7rem;
+}
+
+.prompt-input:focus {
+    border-color: #955280;
+    outline: none;
+}
+
+.format-container {
+    width: 100%;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
+.formats-container {
+    background-color: rgba(18, 18, 18, 0);
+    border: 1px solid white;
+    border-radius: .25rem;
+    height: 15rem;
+    margin: 0 10rem;
+}
+
+.format-title {
+    text-align: left;
+    margin: 0.8rem 10rem;
+    font-family: Inter;
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.generate-button {
+    border: none;
+    border-radius: .25rem;
+    background: rgba(149, 92, 242, 0.50);
+    padding: 0.8rem 2rem;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.other-buttons {
+    border: none;
+    border-radius: .25rem;
+    background: rgba(149, 92, 242, 0.50);
+    padding: 0.8rem 2rem;
+    color: #FFF;
+    font-family: Inter;
+    font-size: 0.8rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+}
+
+.disabled-button {
+    opacity: 0.5;
+    cursor: default;
+    pointer-events: none;
+}
+
+#container-buttons-generated {
+    margin: 1rem;
+}
+
+#container-buttons-generated button {
+    margin: 1rem;
+}
+
+.logo-container {
+    margin-left: 3.81rem;
+    margin-top: 1.4rem;
+    position: relative; /* Establecer el contenedor como posición relativa */
+    width: 25px; /* Ancho del círculo SVG */
+    height: 25px; /* Alto del círculo SVG */
+  }
+  
+  .lampara {
+    width: 1.8rem;
+    height: 1.8rem;
+    position: absolute; /* Posición absoluta para la lámpara */
+    top: 6px; /* Ajustar la posición vertical de la lámpara */
+    left: 6px; /* Ajustar la posición horizontal de la lámpara */
+  }
+  
+  .circulo {
+    width: 2.5rem;
+    height: 2.5rem;
+    position: absolute; /* Posición absoluta para el círculo */
+    top: 0; /* Ajustar la posición vertical del círculo si es necesario */
+    left: 0; /* Ajustar la posición horizontal del círculo si es necesario */
+  }
+  
+#menu-canvas {
+    display: none;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5); /* Color para elementos "no active" */
+}
+
+li.active a {
+    color: white; /* Color para elementos "active" */
+}
+
+#container-editable {
+    background-color: black;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 10px;
+    margin: 1rem;
+    border: 1px solid #ccc;
+    text-align: center;
+    justify-content: center;
+}
+.container-editable {
+    display: none;
+    
+    align-items: center;
+    text-align: center;
+    background-color: #121212;
+    opacity: 80%;
+    height: 80%;
+    border: 1px solid white ;
+}
+
+#container-editable button, select, input {
+    margin: 0 0.5rem;
+}
+
+#select-all-canvas-cont {
+    margin-right: 1rem;
+    display: flex;
+    align-items: center;
+}
+
+
+#container-editable button {
+    color:#DFE9EB;
+    background-color: rgb(149 92 242 / 70%);
+    border: none;
+    border-radius: 0.25rem;
+    padding: 0.4rem;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: #955280 #DFE9EB;
+    
+    
+  }
+  
+  /* Chrome, Edge and Safari */
+  *::-webkit-scrollbar {
+    background-color: rgba(0, 0, 0, 0);
+    width: 11px;
+    width: 11px;
+  }
+
+  *::-webkit-scrollbar-track {
+    margin: 1rem;
+    background-color: rgba(0, 0, 0, 0);
+  }
+  
+  *::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background-color: #955280;
+  }
+  
+  *::-webkit-scrollbar-thumb:hover {
+    background-color: #774166;
+  }
+  
+  *::-webkit-scrollbar-thumb:active {
+    
+    background-color: #774166;
+  }
+  
+  /* Estilos para la barra de desplazamiento horizontal */
+
+  /* Estilos para la barra de desplazamiento horizontal */
+  *::-webkit-scrollbar:horizontal {
+    margin: 1rem 0 1rem 0; /* Margen superior e inferior de 1 rem, sin margen en los lados */
+    height: .8rem;
+  }
+  
+  
+  @media screen and (min-width: 1905px) {
+    .canvas-container {
+        padding-right: 0rem;
+    }
+  }
+
+
+label {
+    user-select: none;
+}
+
+
+
+/* MODAL */
+/* Estilos generales del modal */
+.modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+    background-color: #121212;
+    margin: 15% auto;
+    padding: 20px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+/* Estilos para el botón "Confirmar" */
+button {
+    margin-top: 10px;
+    padding: 8px 16px;
+    background-color: #955280;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7a3b60;
+}
+
+/* Estilos para el botón "Cancelar" */
+button.cancel {
+    margin-right: 10px;
+    background-color: #777;
+}
+
+button.cancel:hover {
+    background-color: #555;
+}
+
+/* Estilos para el botón de cerrar */
+.close {
+    float: right;
+    cursor: pointer;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: #777;
+}
