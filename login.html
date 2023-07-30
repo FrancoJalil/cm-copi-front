@@ -81,6 +81,23 @@
       permissionsList.appendChild(listItem);
     });
   }
+  function requestAdditionalPermissions() {
+  const additionalPermissions = ['pages_show_list', 'instagram_manage_insights']; // Agrega aquí los permisos adicionales que necesites
+
+  FB.login(
+    function (response) {
+      if (response.authResponse) {
+        // El usuario ha dado su consentimiento para los permisos solicitados
+        console.log('Permisos adicionales concedidos:', response.authResponse);
+        // Realiza cualquier acción adicional que desees después de obtener los permisos
+      } else {
+        // El usuario ha rechazado el inicio de sesión o ha cerrado el cuadro de diálogo
+        console.log('Inicio de sesión o permisos adicionales rechazados.');
+      }
+    },
+    { scope: additionalPermissions.join(',') }
+  );
+}
   //
 
   </script>
@@ -91,15 +108,7 @@
   <fb:login-button 
     scope="public_profile,
     email,
-    instagram_basic,
-    pages_show_list,
-    instagram_manage_insights,
-    instagram_manage_comments,
-    manage_pages,
-    ads_management,
-    business_management,
-    instagram_content_publish,
-    pages_read_engagement"
+    instagram_basic"
     onlogin="checkLoginState();">
   </fb:login-button>
 
@@ -118,6 +127,7 @@
 
 
   <div id="fb-root"></div>
+  <button type="button" onclick="requestAdditionalPermissions()">Solicitar permisos adicionales</button>
 
   <!-- Load the JS SDK asynchronously -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
