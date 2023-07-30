@@ -376,7 +376,7 @@ export function generateImage() {
 
         let access_token_g = localStorage.getItem('access');
 
-        fetch('https://mikai.onrender.com/image-generation/generate', {
+        fetch('https://fakecreator01-miniature-system-9g455r7q5vv2p466-8000.preview.app.github.dev/image-generation/generate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -1368,7 +1368,7 @@ export function saveImage() {
     let access_token_g = localStorage.getItem('access');
 
     // Realizar la solicitud POST al backend para guardar las imágenes modificadas
-    fetch('https://mikai.onrender.com/image-generation/save_images', {
+    fetch('https://fakecreator01-miniature-system-9g455r7q5vv2p466-8000.preview.app.github.dev/image-generation/save_images', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

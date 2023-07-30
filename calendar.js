@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Llamada a la API y procesamiento de datos como en tu código anterior...
   let access_token_g = localStorage.getItem('access');
 
-  fetch('https://mikai.onrender.com/image-generation/get_saved_images', {
+  fetch('https://fakecreator01-miniature-system-9g455r7q5vv2p466-8000.preview.app.github.dev/image-generation/get_saved_images', {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + String(access_token_g)
@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imagesCarrusel.forEach((image) => {
           
           const img = document.createElement('img');
-          img.src = 'https://mikai.onrender.com/static/img' + image.image_url;
+          img.src = 'https://fakecreator01-miniature-system-9g455r7q5vv2p466-8000.preview.app.github.dev/static/img' + image.image_url;
           console.log(img.src)
           div.appendChild(img)
           containerCalendar.appendChild(div);
