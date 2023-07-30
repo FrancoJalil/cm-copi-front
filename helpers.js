@@ -404,6 +404,7 @@ export function generateImage() {
                 }
             })
             .then(data => {
+                console.log(data)
 
                 // SABER CUANTOS CARRUS SON Y AGREGARLO A "PUBLICAR (4)"
                 numberOfCarrus = Object.keys(data.gpt_response).length;
