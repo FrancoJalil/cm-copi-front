@@ -376,7 +376,7 @@ export function generateImage() {
 
         let access_token_g = localStorage.getItem('access');
 
-        fetch('http://localhost:8000/image-generation/generate', {
+        fetch('https://mikai.onrender.com/image-generation/generate', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -414,7 +414,7 @@ export function generateImage() {
                 data.image_generated.forEach((image, index) => {
 
                     let imgElement = document.createElement('img');
-                    imgElement.src = 'http://localhost:8000/' + image.image;
+                    imgElement.src = 'https://mikai.onrender.com/' + image.image;
 
                     imgElement.onload = function () {
                         let canvasContainer = document.getElementById('canvasContainer');
@@ -1367,7 +1367,7 @@ export function saveImage() {
     let access_token_g = localStorage.getItem('access');
 
     // Realizar la solicitud POST al backend para guardar las imágenes modificadas
-    fetch('http://localhost:8000/image-generation/save_images', {
+    fetch('https://mikai.onrender.com/image-generation/save_images', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

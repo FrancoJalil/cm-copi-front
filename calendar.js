@@ -2,7 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // Llamada a la API y procesamiento de datos como en tu código anterior...
   let access_token_g = localStorage.getItem('access');
 
-  fetch('http://localhost:8000/image-generation/get_saved_images', {
+  fetch('https://mikai.onrender.com/image-generation/get_saved_images', {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + String(access_token_g)
