@@ -44,22 +44,23 @@ body {
 }
 
 canvas {
-    min-width: 15.625rem !important;
-    min-height: 15.625rem !important;
-    max-width: 18rem;
-    max-height: 18rem;
+    min-width: 270px !important;
+    min-height: 270px !important;
+    max-width: 270px !important;
+    max-height: 270px !important;
 }
 
 .canvas-container {
-    padding-right: 2.4rem;
+    /*padding-right: 2.4rem;*/
 }
 
 .canvas-container {
     margin-left: 1rem;
-    /*min-width: 15.625rem !important;*/
-    min-height: 15.625rem !important;
-    max-width: 18rem;
-    max-height: 18rem;
+    min-width: 270px !important;
+    min-height: 270px !important;
+    max-width: 270px !important;
+    max-height: 270px !important;
+    margin: 0rem 1rem;
 }
 
 .cont-carrusel .canvas-container {
@@ -472,13 +473,13 @@ li.active a {
     height: .8rem;
   }
   
-  /*
+/*
   @media screen and (min-width: 1905px) {
     .canvas-container {
         padding-right: 0rem;
     }
   }
-*/
+
 
 label {
     user-select: none;

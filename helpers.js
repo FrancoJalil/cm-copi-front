@@ -633,7 +633,7 @@ export function generateImage() {
                                     canvasElement.classList.add('img-carrusel');
 
                                     canv.appendChild(newCont);
-                                    newCont.appendChild(canvasElement);
+                                    canv.appendChild(canvasElement);
 
                                     // Configurar el nuevo canvas con fondo negro y texto "holis"
                                     let canvas = new fabric.Canvas(canvasElement, {
