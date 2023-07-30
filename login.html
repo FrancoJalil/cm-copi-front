@@ -75,6 +75,7 @@
         }
       );
     }
+    /*
 
     function displayPermissions(permissions) {
       const permissionsList = document.getElementById('permissions-list');
@@ -104,6 +105,7 @@
         { scope: additionalPermissions.join(',') }
       );
     }
+    */
 
   //
 
@@ -112,15 +114,12 @@
     <!-- Aquí se mostrarán los permisos actuales -->
   </div>
 
-  <fb:login-button scope="public_profile,
+  <fb:login-button scope="
+    public_profile,
     email,
     instagram_basic,
-    business_management,
-    pages_show_list, 
-    instagram_manage_insights, 
-    ads_management, 
-    instagram_content_publish, 
-    pages_read_engagement" 
+    instagram_manage_insights,
+    instagram_content_publish" 
     onlogin="checkLoginState();">
   </fb:login-button>
 
@@ -139,7 +138,7 @@
 
 
   <div id="fb-root"></div>
-  <button type="button" onclick="requestAdditionalPermissions()">Solicitar permisos adicionales</button>
+  <!-- <button type="button" onclick="requestAdditionalPermissions()">Solicitar permisos adicionales</button> -->
 
   <!-- Load the JS SDK asynchronously -->
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js"></script>
