@@ -417,7 +417,7 @@ export function generateImage() {
                 data.image_generated.forEach((image, index) => {
 
                     let imgElement = document.createElement('img');
-                    imgElement.src = 'https://mikai.onrender.com/static/img' + image.image;
+                    imgElement.src = 'https://mikai.onrender.com/' + image.image;
 
                     imgElement.onload = function () {
                         let canvasContainer = document.getElementById('canvasContainer');
