@@ -388,6 +388,8 @@ export function generateImage() {
         })
             .then(response => {
 
+                console.log(response)
+
                 if (response.status === 200) {
 
                     // Si el estado de la respuesta es 200, continúa con el programa
