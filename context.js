@@ -19,7 +19,7 @@ export let updateToken = async () => {
 
     try {
 
-        let response = await fetch('https://fakecreator01-miniature-system-9g455r7q5vv2p466-8000.preview.app.github.dev/api/token/refresh/', {
+        let response = await fetch('https://mikai.onrender.com/api/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
