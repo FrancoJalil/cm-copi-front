@@ -415,7 +415,7 @@ export function generateImage() {
                 data.image_generated.forEach((image, index) => {
 
                     let imgElement = document.createElement('img');
-                    imgElement.src = 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/' + image.image
+                    imgElement.src = image.image
 
                     imgElement.onload = function () {
                         let canvasContainer = document.getElementById('canvasContainer');
