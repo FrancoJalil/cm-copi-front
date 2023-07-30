@@ -388,8 +388,6 @@ export function generateImage() {
         })
             .then(response => {
 
-                console.log(response)
-
                 if (response.status === 200) {
 
                     // Si el estado de la respuesta es 200, continúa con el programa
@@ -417,7 +415,7 @@ export function generateImage() {
                 data.image_generated.forEach((image, index) => {
 
                     let imgElement = document.createElement('img');
-                    imgElement.src = 'https://mikai.onrender.com/' + image.image;
+                    imgElement.src = 'https://mikai.onrender.com/' + image.image.replace('media/', '');
 
                     imgElement.onload = function () {
                         let canvasContainer = document.getElementById('canvasContainer');
