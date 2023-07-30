@@ -86,24 +86,24 @@
       });
     }
     function requestAdditionalPermissions() {
-  const additionalPermissions = ['pages_show_list', 'instagram_manage_insights', 'instagram_manage_comments', 'manage_pages', 'publish_pages', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement'];
+      const additionalPermissions = ['pages_show_list', 'instagram_manage_insights', 'instagram_manage_comments',  'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement'];
 
-  FB.login(
-    function (response) {
-      if (response.authResponse) {
-        const accessToken = response.authResponse.accessToken;
-        testAPI(accessToken); // Llamar a testAPI solo si se concede el consentimiento
-        console.log(response);
-        console.log('Permisos adicionales concedidos:', response.authResponse);
-        // Realiza cualquier acción adicional que desees después de obtener los permisos
-      } else {
-        // El usuario ha rechazado el inicio de sesión o ha cerrado el cuadro de diálogo
-        console.log('Inicio de sesión o permisos adicionales rechazados.');
-      }
-    },
-    { scope: additionalPermissions.join(',') }
-  );
-}
+      FB.login(
+        function (response) {
+          if (response.authResponse) {
+            const accessToken = response.authResponse.accessToken;
+            testAPI(accessToken); // Llamar a testAPI solo si se concede el consentimiento
+            console.log(response);
+            console.log('Permisos adicionales concedidos:', response.authResponse);
+            // Realiza cualquier acción adicional que desees después de obtener los permisos
+          } else {
+            // El usuario ha rechazado el inicio de sesión o ha cerrado el cuadro de diálogo
+            console.log('Inicio de sesión o permisos adicionales rechazados.');
+          }
+        },
+        { scope: additionalPermissions.join(',') }
+      );
+    }
 
   //
 
