@@ -56,7 +56,7 @@ canvas {
 
 .canvas-container {
     margin-left: 1rem;
-    min-width: 15.625rem !important;
+    /*min-width: 15.625rem !important;*/
     min-height: 15.625rem !important;
     max-width: 18rem;
     max-height: 18rem;
