@@ -23,8 +23,6 @@ function statusChangeCallback(response) {
   }
 }
 
-    
-
 
     function checkLoginState() {               // Called when a person is finished with the Login Button.
       FB.getLoginStatus(function (response) {   // See the onlogin handler
@@ -92,6 +90,7 @@ function statusChangeCallback(response) {
 
   FB.login(
     function (response) {
+      console.log(response)
       if (response.authResponse) {
         // El usuario ha dado su consentimiento para los permisos solicitados
         console.log('Permisos adicionales concedidos:', response.authResponse);
