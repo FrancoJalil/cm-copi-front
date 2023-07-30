@@ -19,7 +19,7 @@ export let updateToken = async () => {
 
     try {
 
-        let response = await fetch('http://localhost:8000/api/token/refresh/', {
+        let response = await fetch('https://mikai.onrender.com/api/token/refresh/', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
