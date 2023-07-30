@@ -8,20 +8,20 @@
 
   <script>
 
-    
 
-function statusChangeCallback(response) {
-  console.log('statusChangeCallback');
-  console.log(response);
 
-  if (response.status === 'connected') {
-    const accessToken = response.authResponse.accessToken; // Get the access token from the response
-    testAPI(accessToken); // Pass the access token to testAPI()
-  } else {
-    document.getElementById('status').innerHTML = 'Please log ' +
-      'into this webpage.';
-  }
-}
+    function statusChangeCallback(response) {
+      console.log('statusChangeCallback');
+      console.log(response);
+
+      if (response.status === 'connected') {
+        const accessToken = response.authResponse.accessToken; // Get the access token from the response
+        testAPI(accessToken); // Pass the access token to testAPI()
+      } else {
+        document.getElementById('status').innerHTML = 'Please log ' +
+          'into this webpage.';
+      }
+    }
 
 
     function checkLoginState() {               // Called when a person is finished with the Login Button.
@@ -33,7 +33,7 @@ function statusChangeCallback(response) {
 
     window.fbAsyncInit = function () {
       FB.init({
-        appId: '1106097870792531',                  
+        appId: '1106097870792531',
         xfbml: true,                     // Parse social plugins on this webpage.
         version: 'v16.0'           // Use this Graph API version for this call.
       });
@@ -56,53 +56,55 @@ function statusChangeCallback(response) {
 
     //
     function testAPI(accessToken) {
-  console.log('Welcome! Fetching your information....');
-  FB.api(
-    '/me/permissions',
-    { access_token: accessToken },
-    function(response) {
-      if (response && !response.error) {
-        console.log(response);
-        const permissions = response.data;
-        console.log('Permissions:');
-        console.log(permissions);
-        // Here you can do whatever you want with the list of permissions,
-        // for example, display them in the HTML document
-        displayPermissions(permissions);
-      } else {
-        console.log('Error fetching permissions:', response.error);
-      }
+      console.log('Welcome! Fetching your information....');
+      FB.api(
+        '/me/permissions',
+        { access_token: accessToken },
+        function (response) {
+          if (response && !response.error) {
+            console.log(response);
+            const permissions = response.data;
+            console.log('Permissions:');
+            console.log(permissions);
+            // Here you can do whatever you want with the list of permissions,
+            // for example, display them in the HTML document
+            displayPermissions(permissions);
+          } else {
+            console.log('Error fetching permissions:', response.error);
+          }
+        }
+      );
     }
-  );
-}
 
-  function displayPermissions(permissions) {
-    const permissionsList = document.getElementById('permissions-list');
-    permissionsList.innerHTML = '<h3>Permisos actuales:</h3>';
-    permissions.forEach(permission => {
-      const listItem = document.createElement('li');
-      listItem.textContent = `${permission.permission} - ${permission.status}`;
-      permissionsList.appendChild(listItem);
-    });
-  }
-  function requestAdditionalPermissions() {
-  const additionalPermissions = ['pages_show_list', 'instagram_manage_insights', 'instagram_manage_comments', 'manage_pages','publish_pages', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement']; // Agrega aquí los permisos adicionales que necesites
+    function displayPermissions(permissions) {
+      const permissionsList = document.getElementById('permissions-list');
+      permissionsList.innerHTML = '<h3>Permisos actuales:</h3>';
+      permissions.forEach(permission => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${permission.permission} - ${permission.status}`;
+        permissionsList.appendChild(listItem);
+      });
+    }
+    function requestAdditionalPermissions() {
+      const additionalPermissions = ['pages_show_list', 'instagram_manage_insights', 'instagram_manage_comments', 'manage_pages', 'publish_pages', 'ads_management', 'business_management', 'instagram_content_publish', 'pages_read_engagement']; // Agrega aquí los permisos adicionales que necesites
 
-  FB.login(
-    function (response) {
-      console.log(response)
-      if (response.authResponse) {
-        // El usuario ha dado su consentimiento para los permisos solicitados
-        console.log('Permisos adicionales concedidos:', response.authResponse);
-        // Realiza cualquier acción adicional que desees después de obtener los permisos
-      } else {
-        // El usuario ha rechazado el inicio de sesión o ha cerrado el cuadro de diálogo
-        console.log('Inicio de sesión o permisos adicionales rechazados.');
-      }
-    },
-    { scope: additionalPermissions.join(',') }
-  );
-}
+      FB.login(
+        function (response) {
+          const accessToken = response.authResponse.accessToken;
+          testAPI(accessToken);
+          console.log(response)
+          if (response.authResponse) {
+            // El usuario ha dado su consentimiento para los permisos solicitados
+            console.log('Permisos adicionales concedidos:', response.authResponse);
+            // Realiza cualquier acción adicional que desees después de obtener los permisos
+          } else {
+            // El usuario ha rechazado el inicio de sesión o ha cerrado el cuadro de diálogo
+            console.log('Inicio de sesión o permisos adicionales rechazados.');
+          }
+        },
+        { scope: additionalPermissions.join(',') }
+      );
+    }
   //
 
   </script>
@@ -110,11 +112,9 @@ function statusChangeCallback(response) {
     <!-- Aquí se mostrarán los permisos actuales -->
   </div>
 
-  <fb:login-button 
-    scope="public_profile,
+  <fb:login-button scope="public_profile,
     email,
-    instagram_basic"
-    onlogin="checkLoginState();">
+    instagram_basic" onlogin="checkLoginState();">
   </fb:login-button>
 
   <div id="status">
