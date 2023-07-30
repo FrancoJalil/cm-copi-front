@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', () => {
         imagesCarrusel.forEach((image) => {
           
           const img = document.createElement('img');
-          img.src = 'http://localhost:8000' + image.image_url;
+          img.src = 'https://mikai.onrender.com' + image.image_url;
           console.log(img.src)
           div.appendChild(img)
           containerCalendar.appendChild(div);
