@@ -43,6 +43,7 @@
         statusChangeCallback(response);        // Returns the login status.
       });
     };
+    /*
 
     function testAPI() {                      // Testing Graph API after login.  See statusChangeCallback() for when this call is made.
       console.log('Welcome!  Fetching your information.... ');
@@ -51,9 +52,40 @@
         document.getElementById('status').innerHTML =
           'Thanks for logging in, ' + response.name + '!';
       });
-    }
+    }*/
+
+    //
+    function testAPI() {
+    console.log('Welcome! Fetching your information....');
+    FB.api('/me/permissions', function(response) {
+      if (response && !response.error) {
+        const permissions = response.data;
+        console.log('Permissions:');
+        console.log(permissions);
+        // Aquí puedes hacer lo que desees con la lista de permisos,
+        // por ejemplo, mostrarlos en el documento HTML
+        displayPermissions(permissions);
+      } else {
+        console.log('Error fetching permissions:', response.error);
+      }
+    });
+  }
+
+  function displayPermissions(permissions) {
+    const permissionsList = document.getElementById('permissions-list');
+    permissionsList.innerHTML = '<h3>Permisos actuales:</h3>';
+    permissions.forEach(permission => {
+      const listItem = document.createElement('li');
+      listItem.textContent = `${permission.permission} - ${permission.status}`;
+      permissionsList.appendChild(listItem);
+    });
+  }
+  //
 
   </script>
+  <div id="permissions-list">
+    <!-- Aquí se mostrarán los permisos actuales -->
+  </div>
 
   <fb:login-button scope="public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,instagram_manage_insights,manage_pages,instagram_content_publish" onlogin="checkLoginState();">
   </fb:login-button>
