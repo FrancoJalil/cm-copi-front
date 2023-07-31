@@ -1,5 +1,6 @@
 // router.js
 function loadPage(url) {
+    /*
     fetch(url)
       .then((response) => response.text())
       .then((html) => {
@@ -8,13 +9,14 @@ function loadPage(url) {
       .catch((error) => {
         console.error('Error loading page:', error);
       });
+      */
   }
   
   function handleNavigation() {
     const path = window.location.pathname;
     const url = path === '/' ? '/index.html' : `${path}.html`;
   
-    loadPage(url);
+    //loadPage(url);
   }
   
   document.addEventListener('DOMContentLoaded', handleNavigation);
