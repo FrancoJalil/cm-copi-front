@@ -72,6 +72,7 @@ canvas {
     scrollbar-color: black;
     padding: 2rem;
     background-color: #121212;
+    border-radius: 1rem;
     margin: 1rem;
     display: inline-flex;
     border: 1px solid rgba(255, 255, 255, 0.5);
@@ -298,7 +299,7 @@ img {
 .formats-container {
     background-color: rgba(18, 18, 18, 0);
     border: 1px solid white;
-    border-radius: .25rem;
+    border-radius: 1rem;
     height: 15rem;
     margin: 0 10rem;
 }
@@ -391,13 +392,14 @@ li.active a {
 }
 
 #container-editable {
-    background-color: black;
+    background-color: #191624;
     bottom: 0;
     left: 0;
     right: 0;
     padding: 10px;
     margin: 1rem;
     border: 1px solid #ccc;
+    border-radius: 1rem;
     text-align: center;
     justify-content: center;
 }
@@ -427,7 +429,7 @@ li.active a {
     color:#DFE9EB;
     background-color: rgb(149 92 242 / 70%);
     border: none;
-    border-radius: 0.25rem;
+    border-radius: .25rem;
     padding: 0.4rem;
 }
 
