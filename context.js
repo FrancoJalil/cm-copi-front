@@ -47,7 +47,7 @@ export let updateToken = async () => {
     }
 }
 function startUpdateTokenInterval() {
-    updateToken(); // Call the updateToken function immediately
+    //updateToken();
 
     const intervalId = setInterval(updateToken, 240000);
 
@@ -65,7 +65,6 @@ function startUpdateTokenInterval() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-
     
     startUpdateTokenInterval();
     
