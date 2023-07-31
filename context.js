@@ -2,7 +2,7 @@ export function logoutUser() {
     localStorage.removeItem('access')
     localStorage.removeItem('refresh')
     // Redireccionar a otra página
-    window.location.href = "/login.html";
+    window.location.href = "/login";
 
 }
 
@@ -14,7 +14,7 @@ export let updateToken = async () => {
 
     if (!ref) {
         logoutUser();
-        window.location.href = "/login.html";
+        window.location.href = "/login";
     }
 
     try {

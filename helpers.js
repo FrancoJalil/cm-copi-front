@@ -1383,7 +1383,7 @@ export function saveImage() {
         .then(response => response.json())
         .then(data => {
             // Aquí puedes realizar alguna acción en caso de que la respuesta sea exitosa
-            window.location.href = "/calendar.html";
+            window.location.href = "/calendar";
             /*
             console.log('Imágenes modificadas guardadas correctamente.');
             let containerGenerated = document.getElementById("generated-container");
