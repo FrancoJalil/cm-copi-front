@@ -9,6 +9,44 @@
 
   <script>
 
+    window.onload = function () {
+      // Ya esta logeado? redireccionarlo al home
+
+      const access_token = localStorage.getItem('access')
+
+      if (access_token) {
+        const url = 'https://mikai.onrender.com/api/token/verify'
+        fetch(url, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            auth_token: accessToken,
+          })
+        }).then(response => {
+          if (!response.ok) {
+            // Token verification failed, stay on the login page
+            console.log('Token verification failed');
+            return Promise.reject("Invalid token");
+          }
+          return response.json();
+        })
+          .then(data => {
+            console.log(data);
+            // Token verification successful, redirect to home page
+            console.log('Token verification successful');
+            window.location.href = "/home.html";
+          })
+          .catch(error => {
+            console.error('Token verification failed:', error);
+            // Handle token verification error (e.g., display an error message to the user)
+          });
+      }
+
+    }
+
+
     function statusChangeCallback(response) {
       console.log('statusChangeCallback');
       console.log(response);
@@ -19,36 +57,36 @@
 
         const url = 'https://mikai.onrender.com/auth/facebook/'
         fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    auth_token: accessToken,
-                })
-            })
-            .then(response => response.json())
-            .then(data => { 
-                console.log(data)
-                const accessToken = data.access;
-                const refreshToken = data.refresh;
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            auth_token: accessToken,
+          })
+        })
+          .then(response => response.json())
+          .then(data => {
+            console.log(data)
+            const accessToken = data.access;
+            const refreshToken = data.refresh;
 
-                // Store the tokens in localStorage or sessionStorage for future API requests
-                localStorage.setItem('access', accessToken);
-                localStorage.setItem('refresh', refreshToken);
+            // Store the tokens in localStorage or sessionStorage for future API requests
+            localStorage.setItem('access', accessToken);
+            localStorage.setItem('refresh', refreshToken);
 
-                window.location.href = "/home.html";
-                
-                // Optionally, you can redirect the user to another page upon successful login
-                //window.location.href = 'file:///home/franco/saas/cm-copilot/home.html'; // Replace this with the URL you want to redirect to
-            })
-            .catch(error => {
-                console.error('Login failed:', error);
-                // Handle login error (e.g., display an error message to the user)
-            });
+            window.location.href = "/home.html";
+
+            // Optionally, you can redirect the user to another page upon successful login
+            //window.location.href = 'file:///home/franco/saas/cm-copilot/home.html'; // Replace this with the URL you want to redirect to
+          })
+          .catch(error => {
+            console.error('Login failed:', error);
+            // Handle login error (e.g., display an error message to the user)
+          });
 
 
-        
+
       } else {
         document.getElementById('status').innerHTML = 'Login ' +
           'with facebook.';
@@ -107,7 +145,7 @@
         }
       );
     }
-    
+
 
     function displayPermissions(permissions) {
       const permissionsList = document.getElementById('permissions-list');
@@ -143,7 +181,7 @@
   //
 
   </script>
-  
+
   <div id="status">
   </div>
   <fb:login-button scope="
@@ -151,27 +189,27 @@
     email,
     instagram_basic,
     instagram_manage_insights,
-    instagram_content_publish" 
-    onlogin="checkLoginState();">
+    instagram_content_publish" onlogin="checkLoginState();">
   </fb:login-button>
 
-  
+
 
 </head>
 
 
 <br>
+
 <body>
   <div class="login-form">
     <h2>Login</h2>
-  <form method="POST">
-    <input type="text" id="username" placeholder="username">
-    <input type="password" id="password" placeholder="Password">
-    <button type="button" onclick="login()" class="generate-button">Login</button>
-  </form>
-</div>
+    <form method="POST">
+      <input type="text" id="username" placeholder="username">
+      <input type="password" id="password" placeholder="Password">
+      <button type="button" onclick="login()" class="generate-button">Login</button>
+    </form>
+  </div>
 
-  
+
 
   <div id="fb-root"></div>
   <!-- <button type="button" onclick="requestAdditionalPermissions()">Solicitar permisos adicionales</button> -->
@@ -182,44 +220,44 @@
   <div id="permissions-list">
     <!-- Aquí se mostrarán los permisos actuales -->
   </div>
-  
-<script>
-  function login() {
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-            const url = 'https://mikai.onrender.com/api/token/'; // Replace this with your actual API endpoint URL
 
-            fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    username: username,
-                    password: password
-                })
-            })
-            .then(response => response.json())
-            .then(data => { 
-                console.log(data)
-                const accessToken = data.access;
-                const refreshToken = data.refresh;
+  <script>
+    function login() {
+      const username = document.getElementById('username').value;
+      const password = document.getElementById('password').value;
+      const url = 'https://mikai.onrender.com/api/token/'; // Replace this with your actual API endpoint URL
 
-                // Store the tokens in localStorage or sessionStorage for future API requests
-                localStorage.setItem('access', accessToken);
-                localStorage.setItem('refresh', refreshToken);
+      fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          username: username,
+          password: password
+        })
+      })
+        .then(response => response.json())
+        .then(data => {
+          console.log(data)
+          const accessToken = data.access;
+          const refreshToken = data.refresh;
 
-                window.location.href = "/home.html";
-                
-                // Optionally, you can redirect the user to another page upon successful login
-                //window.location.href = 'file:///home/franco/saas/cm-copilot/home.html'; // Replace this with the URL you want to redirect to
-            })
-            .catch(error => {
-                console.error('Login failed:', error);
-                // Handle login error (e.g., display an error message to the user)
-            });
-        }
-</script>
+          // Store the tokens in localStorage or sessionStorage for future API requests
+          localStorage.setItem('access', accessToken);
+          localStorage.setItem('refresh', refreshToken);
+
+          window.location.href = "/home.html";
+
+          // Optionally, you can redirect the user to another page upon successful login
+          //window.location.href = 'file:///home/franco/saas/cm-copilot/home.html'; // Replace this with the URL you want to redirect to
+        })
+        .catch(error => {
+          console.error('Login failed:', error);
+          // Handle login error (e.g., display an error message to the user)
+        });
+    }
+  </script>
 
 </body>
 

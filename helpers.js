@@ -214,8 +214,6 @@ export function toggleClickedStyle(element, value, option) {
         const bigContainerId = bigContainer.getAttribute('id');
         const containerNum = parseInt(bigContainerId.split('_')[1]);
 
-
-
         const filteredCanvases = canvases.filter(item => item.num_carrusel === 'carrusel_' + containerNum);
 
         // bloquear todos los canvitas pero los filtered dejarlos en opacidad 1
