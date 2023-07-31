@@ -17,7 +17,7 @@
         const accessToken = response.authResponse.accessToken; // Get the access token from the response
         testAPI(accessToken); // Pass the access token to testAPI()
 
-        const url = 'https://mikai.onrender.com/auth/facebook'
+        const url = 'https://mikai.onrender.com/auth/facebook/'
         fetch(url, {
                 method: 'POST',
                 headers: {
