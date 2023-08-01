@@ -18,7 +18,6 @@
     border-radius: 1rem;
     margin: 1rem;
     display: inline-flex;
-    border: 1px solid rgba(255, 255, 255, 0.5);
     width: 93.6%;
 
 }
@@ -30,6 +29,10 @@
 
 .images-container {
     display: flex;
+}
+
+.images-container img {
+    border-radius: 1rem;
 }
 
 .fecha-publicacion {
