@@ -63,12 +63,13 @@
         let idFb;
 
         fetch(fbUrlId)
-          .then((response) => reponse.json())
+          .then((response) => response.json())
           .then((data) => {
             const fbUrl = `https://graph.facebook.com/v17.0/${data.id}?fields=name,profile_picture_url&access_token=${accessToken}`
+            
             fetch(fbUrl)
-              .then((response) => response.json())
-              .then((data) => console.log(data));
+              .then((responseDos) => responseDos.json())
+              .then((dataDos) => console.log(dataDos));
           });
 
 
