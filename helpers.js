@@ -374,22 +374,22 @@ export function generateImage() {
 
         let access_token_g = localStorage.getItem('access');
 
-        fetch('https://mikai.onrender.com/image-generation/generate', {
-            method: 'POST',
+        axios.post('https://mikai.onrender.com/image-generation/generate', {
+            subject: JSON.stringify({
+                subject: valuePromptInput
+            })
+        }, {
             headers: {
                 'Content-Type': 'application/json',
                 'Authorization': 'Bearer ' + String(access_token_g)
-            },
-            body: JSON.stringify({
-                subject: valuePromptInput
-            })
+            }
         })
             .then(response => {
 
                 if (response.status === 200) {
 
                     // Si el estado de la respuesta es 200, continúa con el programa
-                    return response.json();
+                    console.log("ok!")
                 } else if (response.statusText === 'Unauthorized') {
                     logoutUser();
                     console.log("Unauthorized")
@@ -398,8 +398,7 @@ export function generateImage() {
                     // Si el estado no es 200, muestra un mensaje de error o realiza alguna acción adecuada
                     console.log("err")
                 }
-            })
-            .then(data => {
+                const data = response.data;
                 console.log(data)
 
                 // SABER CUANTOS CARRUS SON Y AGREGARLO A "PUBLICAR (4)"
@@ -548,10 +547,6 @@ export function generateImage() {
                         selectedText.htmlFor = switchInput.id;
                         selectedText.textContent = 'Publicar';
                         selectedText.classList.add('switch-label-text');
-
-
-
-
 
                         switchCounter++;
 

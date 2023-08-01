@@ -1,15 +1,18 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
   // Llamada a la API y procesamiento de datos como en tu código anterior...
   let access_token_g = localStorage.getItem('access');
 
-  fetch('https://mikai.onrender.com/image-generation/get_saved_images', {
-    method: 'GET',
+  axios.get('https://mikai.onrender.com/image-generation/get_saved_images', {
     headers: {
       'Authorization': 'Bearer ' + String(access_token_g)
     }
+
   })
-    .then(response => response.json())
-    .then(data => {
+    .then(response => {
+
+      const data = response.data;
       console.log(data);
       const containerDad = document.getElementById('content-container');
 
