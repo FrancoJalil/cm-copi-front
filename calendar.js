@@ -45,10 +45,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
         let imagesCarrusel = carrusel.images;
         const div = document.createElement('div');
-          div.classList.add('images-container');
+        div.classList.add('images-container');
 
         imagesCarrusel.forEach((image) => {
-          
+
           const img = document.createElement('img');
           img.src = image.image_url;
           console.log(img.src)
