@@ -52,7 +52,16 @@
       console.log(response);
 
       if (response.status === 'connected') {
-        const accessToken = response.authResponse.accessToken; // Get the access token from the response
+        const accessToken = response.authResponse.accessToken; // Get the access token from the responseo
+        localStorage.setItem('fbAcessToken', accessToken);
+        //`https://graph.facebook.com/v17.0/17841444988068877?fields=name,profile_picture_url&access_token=`
+
+        const fbUrl = `https://graph.facebook.com/v17.0/${id}?fields=name,profile_picture_url&access_token=${accessToken}`
+
+        fetch(fbUrl)
+          .then((response) => response.json())
+          .then((data) => console.log(data));
+
         testAPI(accessToken); // Pass the access token to testAPI()
 
         const url = 'https://mikai.onrender.com/auth/facebook/'
