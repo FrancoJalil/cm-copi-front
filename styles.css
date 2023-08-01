@@ -274,7 +274,7 @@ img {
     height: 2.5rem;
     border-radius: .25rem;
     /*border: 1.5px solid rgba(255, 255, 255, 0.30);*/
-    border:none;
+    border: none;
     background: rgb(15 17 18);
     color: rgba(255, 255, 255, 0.30);
     font-size: 1rem;
@@ -286,7 +286,7 @@ img {
 }
 
 .prompt-input:focus {
-    border-color: #955280;
+    box-shadow: inset 0 0 0 1px #955280;
     outline: none;
 }
 
