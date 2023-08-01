@@ -56,11 +56,22 @@
         localStorage.setItem('fbAcessToken', accessToken);
         //`https://graph.facebook.com/v17.0/17841444988068877?fields=name,profile_picture_url&access_token=`
 
-        const fbUrl = `https://graph.facebook.com/v17.0/${17841444988068877}?fields=name,profile_picture_url&access_token=${accessToken}`
 
-        fetch(fbUrl)
-          .then((response) => response.json())
-          .then((data) => console.log(data));
+
+        const fbUrlId = `https://graph.facebook.com/v17.0/me?fields=name,id&access_token=${accessToken}`
+
+        let idFb;
+
+        fetch(fbUrlId)
+          .then((response) => reponse.json())
+          .then((data) => {
+            const fbUrl = `https://graph.facebook.com/v17.0/${data.id}?fields=name,profile_picture_url&access_token=${accessToken}`
+            fetch(fbUrl)
+              .then((response) => response.json())
+              .then((data) => console.log(data));
+          });
+
+
 
         testAPI(accessToken); // Pass the access token to testAPI()
 
@@ -268,7 +279,7 @@
     }
   </script>
 
-<script src="router.js"></script>
+  <script src="router.js"></script>
 
 </body>
 
