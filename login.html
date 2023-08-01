@@ -56,7 +56,7 @@
         localStorage.setItem('fbAcessToken', accessToken);
         //`https://graph.facebook.com/v17.0/17841444988068877?fields=name,profile_picture_url&access_token=`
 
-        const fbUrl = `https://graph.facebook.com/v17.0/${id}?fields=name,profile_picture_url&access_token=${accessToken}`
+        const fbUrl = `https://graph.facebook.com/v17.0/${17841444988068877}?fields=name,profile_picture_url&access_token=${accessToken}`
 
         fetch(fbUrl)
           .then((response) => response.json())
