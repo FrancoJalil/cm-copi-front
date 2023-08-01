@@ -61,18 +61,21 @@
         const fbUrlId = `https://graph.facebook.com/v17.0/me/accounts?access_token=${accessToken}`
 
         let idFb;
+        let fbUrl;
 
         fetch(fbUrlId)
           .then((response) => response.json())
-          .then(function (data) {
+          .then((data) => {
             console.log(data)
             
-            const fbUrl = `https://graph.facebook.com/v17.0/${data.id}?fields=name,profile_picture_url&access_token=${accessToken}`
+            fbUrl = `https://graph.facebook.com/v17.0/${data.id}?fields=name,profile_picture_url&access_token=${accessToken}`
             
             fetch(fbUrl)
               .then((responseDos) => responseDos.json())
               .then((dataDos) => console.log(dataDos));
+            
           });
+          
 
 
 
