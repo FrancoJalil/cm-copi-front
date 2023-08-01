@@ -8,7 +8,34 @@ export function logoutUser() {
 
 export let updateToken = async () => {
 
-    console.log("Update token called")
+    
+
+    // chequear si el access está vencido...
+
+    const accessToken = localStorage.getItem('access');
+
+    if (accessToken) {
+        url = 'https://mikai.onrender.com/api/token/verify/'
+
+        let response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ 'token': accessToken })
+        });
+
+        if (response.status === 200) {
+            // si tiene access token ok, no actualizarlo
+            console.log("access ok, no lo refrescamos")
+            return;
+        } else {
+            // si está vencido, actualizarlo
+
+        }
+        
+    } 
+
 
     const ref = localStorage.getItem('refresh');
 
@@ -30,6 +57,7 @@ export let updateToken = async () => {
 
 
         if (response.status === 200) {
+            console.log("Update token called");
             // guardar tokens nuevos en local storage
             const newAccessToken = data.access;
             const newRefreshToken = data.refresh;
@@ -47,7 +75,7 @@ export let updateToken = async () => {
     }
 }
 function startUpdateTokenInterval() {
-    //updateToken();
+    updateToken();
 
     const intervalId = setInterval(updateToken, 240000);
 
