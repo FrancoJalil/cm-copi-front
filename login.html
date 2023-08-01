@@ -66,7 +66,7 @@
         fetch(fbUrlId)
           .then((response) => response.json())
           .then((data) => {
-            console.log(data)
+            console.log("datos: ",data)
             
             fbUrl = `https://graph.facebook.com/v17.0/${data.id}?fields=name,profile_picture_url&access_token=${accessToken}`
             
