@@ -70,7 +70,7 @@
 
             console.log('x', data.data[0])
             
-            fbUrl = `https://graph.facebook.com/v17.0/${data[0].id}?fields=name,profile_picture_url&access_token=${accessToken}`
+            fbUrl = `https://graph.facebook.com/v17.0/${data.data[0].id}?fields=name,profile_picture_url&access_token=${accessToken}`
             
             fetch(fbUrl)
               .then((responseDos) => responseDos.json())
