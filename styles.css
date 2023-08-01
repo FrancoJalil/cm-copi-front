@@ -75,7 +75,6 @@ canvas {
     border-radius: 1rem;
     margin: 1rem;
     display: inline-flex;
-    border: 1px solid rgba(255, 255, 255, 0.5);
     width: 93.6%;
 }
 
@@ -404,7 +403,6 @@ li.active a {
     right: 0;
     padding: 10px;
     margin: 1rem;
-    border: 1px solid #ccc;
     border-radius: 1rem;
     text-align: center;
     justify-content: center;
