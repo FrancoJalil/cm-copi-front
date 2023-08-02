@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => {
 
       const data = response.data;
-      console.log(data);
+      console.log("DATA", data);
       const containerDad = document.getElementById('content-container');
 
       // Creamos un contador para generar IDs únicos

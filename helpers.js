@@ -1345,6 +1345,7 @@ export function saveImage() {
 
     // Crear un arreglo para almacenar las imágenes modificadas en base64
     let modifiedImages = [];
+
     // Recorrer todos los canvas modificados
     canvases.forEach(function (canvasDataDic, index) {
 
