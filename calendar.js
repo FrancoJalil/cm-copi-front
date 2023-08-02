@@ -3,6 +3,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Llamada a la API y procesamiento de datos como en tu código anterior...
   let access_token_g = localStorage.getItem('access');
+  console.log("vvv", access_token_g)
 
   axios.get('http://localhost:8000/image-generation/get_saved_images', {
     headers: {
@@ -54,7 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
           const img = document.createElement('img');
           img.src = image.image_url;
-          console.log(img.src)
           div.appendChild(img)
           containerCalendar.appendChild(div);
         });

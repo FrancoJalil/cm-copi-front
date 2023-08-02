@@ -3,21 +3,42 @@ const refreshTokenEndpoint = 'http://localhost:8000/api/token/refresh/';
 let accessToken = localStorage.getItem('access');
 let refreshToken = localStorage.getItem('refresh');
 
+console.log("a",accessToken)
+console.log("r", refreshToken)
 
 // Function to refresh the access token using the refresh token
 async function refreshAccessToken() {
-    const { data: { access: newAccessToken, refresh: newRefreshToken } } = await axios.post(refreshTokenEndpoint, {
-        refresh: refreshToken
-    });
-    console.log("access", newAccessToken);
-    console.log("refresh", newRefreshToken);
-    localStorage.setItem('access', newAccessToken);
-    localStorage.setItem('refresh', newRefreshToken);
+    try {
+      const response = await fetch(refreshTokenEndpoint, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          refresh: refreshToken
+        })
+      });
+  
+      if (!response.ok) {
+        throw new Error('No se pudo refrescar el token.');
+      }
+  
+      const data = await response.json();
+      console.log("dd", data)
 
-    accessToken = newAccessToken;
-    refreshToken = newRefreshToken;
-    return newAccessToken;
-}
+      console.log("access", data.access);
+      console.log("refresh", data.refresh);
+  
+      localStorage.setItem('access', data.access);
+      localStorage.setItem('refresh', data.refresh);
+  
+      accessToken = data.access;
+      refreshToken = data.refresh;
+      return data.access;
+    } catch (error) {
+      throw new Error('Error al refrescar el token.');
+    }
+  }
 
 // Axios interceptor to handle expired tokens
 axios.interceptors.response.use(
@@ -31,8 +52,7 @@ axios.interceptors.response.use(
             return refreshAccessToken().then((token) => {
                 console.log("refrescando");
                 
-
-                originalRequest.headers.Authorization = `Bearer ${String(token)}`; // + String(token)?
+                originalRequest.headers.Authorization = `Bearer ${token}`; // + String(token)?
                 return axios(originalRequest);
             });
         }

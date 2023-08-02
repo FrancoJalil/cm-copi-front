@@ -1366,24 +1366,24 @@ export function saveImage() {
     let access_token_g = localStorage.getItem('access');
 
     // Realizar la solicitud POST al backend para guardar las imágenes modificadas
-    fetch('http://localhost:8000/image-generation/save_images', {
-        method: 'POST',
+    axios.post('http://localhost:8000/image-generation/save_images', 
+    JSON.stringify({
+        images: modifiedImages,
+        images_data: imagesDataFront,
+        prompt: valuePromptInput,
+        // datetime
+        //dates: datetimeInputList,
+        carruselUnpublished: carruselUnpublished,
+        numberOfCarrus: numberOfCarrus
+    }),
+    {
         headers: {
             'Content-Type': 'application/json',
             'Authorization': 'Bearer ' + String(access_token_g)
-        },
-        body: JSON.stringify({
-            images: modifiedImages,
-            images_data: imagesDataFront,
-            prompt: valuePromptInput,
-            // datetime
-            //dates: datetimeInputList,
-            carruselUnpublished: carruselUnpublished,
-            numberOfCarrus: numberOfCarrus
-        })
+        }
     })
-        .then(response => response.json())
-        .then(data => {
+        .then(response => {
+            const data = response.data;
             // Aquí puedes realizar alguna acción en caso de que la respuesta sea exitosa
             window.location.href = "/my-generations";
             /*
