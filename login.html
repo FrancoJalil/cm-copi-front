@@ -15,7 +15,7 @@
       const access_token = localStorage.getItem('access')
 
       if (access_token) {
-        const url = 'https://mikai.onrender.com/api/token/verify'
+        const url = 'http://localhost:8000/api/token/verify'
         fetch(url, {
           method: 'POST',
           headers: {
@@ -83,7 +83,7 @@
 
         testAPI(accessToken); // Pass the access token to testAPI()
 
-        const url = 'https://mikai.onrender.com/auth/facebook/'
+        const url = 'http://localhost:8000/auth/facebook/'
         fetch(url, {
           method: 'POST',
           headers: {
@@ -257,7 +257,7 @@
     function login() {
       const username = document.getElementById('username').value;
       const password = document.getElementById('password').value;
-      const url = 'https://mikai.onrender.com/api/token/'; // Replace this with your actual API endpoint URL
+      const url = 'http://localhost:8000/api/token/'; // Replace this with your actual API endpoint URL
 
       fetch(url, {
         method: 'POST',

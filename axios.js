@@ -1,5 +1,5 @@
 
-const refreshTokenEndpoint = 'https://mikai.onrender.com/api/token/refresh/';
+const refreshTokenEndpoint = 'http://localhost:8000/api/token/refresh/';
 let accessToken = localStorage.getItem('access');
 let refreshToken = localStorage.getItem('refresh');
 

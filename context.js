@@ -17,7 +17,7 @@ export let updateToken = async (check) => {
         const accessToken = localStorage.getItem('access');
 
         if (accessToken) {
-            url = 'https://mikai.onrender.com/api/token/verify/'
+            url = 'http://localhost:8000/api/token/verify/'
 
             let response = await fetch(url, {
                 method: 'POST',
@@ -51,7 +51,7 @@ export let updateToken = async (check) => {
 
         try {
 
-            let response = await fetch('https://mikai.onrender.com/api/token/refresh/', {
+            let response = await fetch('http://localhost:8000/api/token/refresh/', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

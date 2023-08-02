@@ -374,7 +374,7 @@ export function generateImage() {
 
         let access_token_g = localStorage.getItem('access');
 
-        axios.post('https://mikai.onrender.com/image-generation/generate', {
+        axios.post('http://localhost:8000/image-generation/generate', {
             subject: JSON.stringify({
                 subject: valuePromptInput
             })
@@ -1365,7 +1365,7 @@ export function saveImage() {
     let access_token_g = localStorage.getItem('access');
 
     // Realizar la solicitud POST al backend para guardar las imágenes modificadas
-    fetch('https://mikai.onrender.com/image-generation/save_images', {
+    fetch('http://localhost:8000/image-generation/save_images', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
@@ -1377,7 +1377,8 @@ export function saveImage() {
             prompt: valuePromptInput,
             // datetime
             //dates: datetimeInputList,
-            carruselUnpublished: carruselUnpublished
+            carruselUnpublished: carruselUnpublished,
+            numberOfCarrus: numberOfCarrus
         })
     })
         .then(response => response.json())
