@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', () => {
         containerCalendar.appendChild(containerContentCalendar);
 
         const fechaText = document.createElement('h3');
-        fechaText.textContent = 'Fecha de creación:'
+        fechaText.textContent = 'Prompt: '
         fechaText.classList.add('fecha-publicacion');
         fechaText.id = 'fechatext' + carrusel.id;
         containerContentCalendar.appendChild(fechaText);
 
         const fecha = document.createElement('h3');
-        fecha.textContent = carrusel.created_at;
+        fecha.textContent = carrusel.prompt;
         fecha.id = 'fecha' + carrusel.id;
         containerContentCalendar.appendChild(fecha);
 

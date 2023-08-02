@@ -104,7 +104,7 @@ export function deleteCanvas() {
 
 
 function updateAdditionalText(numberOfCarrus) {
-    const additionalText = `Publicar (${numberOfCarrus})`;
+    const additionalText = `Guardar (${numberOfCarrus})`;
     // Aquí puedes usar additionalText como desees, por ejemplo, asignarlo a un elemento en el DOM
     // Por ejemplo:
     const publishButton = document.getElementById('save-image-button');
