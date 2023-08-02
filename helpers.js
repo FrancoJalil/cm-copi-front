@@ -518,6 +518,7 @@ export function generateImage() {
 
                         containerDesc.appendChild(descriptionTitle);
 
+                        // date time
                         let containerDatetime = document.createElement('div');
                         containerDatetime.classList.add('containerDatetime');
                         let datetimeTitle = document.createElement('P');
@@ -528,7 +529,7 @@ export function generateImage() {
                         datetimeInput.value = "2023-06-23" // que sea + un día por cada publicación (ver como hacerlo)
                         containerDatetime.appendChild(datetimeInput);
                         containerDatetime.appendChild(datetimeTitle);
-
+                        //
 
                         // Crear el label para el switch
                         // Crear el contenedor principal del switch
@@ -559,6 +560,7 @@ export function generateImage() {
 
                         switchInput.addEventListener('click', () => handlePublish(switchInput))
 
+                        // datetime
                         canvasDiv.appendChild(containerDatetime);
                         canvasDiv.appendChild(containerFirst);
                         canvasDiv.appendChild(containerDesc);
@@ -1338,7 +1340,9 @@ export function saveImage() {
     saveImageButton.classList.add("disabled-button");
     //saveImageButton.disabled = true;
 
-    let datetimeInputList = getDatetetimeInput();
+    // datetime
+    //let datetimeInputList = getDatetetimeInput();
+
     // Crear un arreglo para almacenar las imágenes modificadas en base64
     let modifiedImages = [];
     // Recorrer todos los canvas modificados
@@ -1371,14 +1375,15 @@ export function saveImage() {
             images: modifiedImages,
             images_data: imagesDataFront,
             prompt: valuePromptInput,
-            dates: datetimeInputList,
+            // datetime
+            //dates: datetimeInputList,
             carruselUnpublished: carruselUnpublished
         })
     })
         .then(response => response.json())
         .then(data => {
             // Aquí puedes realizar alguna acción en caso de que la respuesta sea exitosa
-            window.location.href = "/calendar";
+            window.location.href = "/my-generations";
             /*
             console.log('Imágenes modificadas guardadas correctamente.');
             let containerGenerated = document.getElementById("generated-container");

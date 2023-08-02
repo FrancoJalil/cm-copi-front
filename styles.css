@@ -115,7 +115,7 @@ canvas {
 .text-field {
     color:#FFF;
     background-color: #121212;
-    height: 100px;
+    height: 180px;
     width: 250px;
     max-height: 250px;
     max-width: 250px;
@@ -572,3 +572,10 @@ button.cancel:hover {
     transition: 0.2s;
     color: #777;
 }
+
+/* new version */
+
+.containerDatetime {
+    display: none;
+}
+
