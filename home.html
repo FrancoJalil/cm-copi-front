@@ -6,7 +6,7 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="styles.css">
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  
+
 </head>
 
 <body>
@@ -57,10 +57,42 @@
 
       <div class="format-container">
 
-        <h2 class="format-title">Format</h2>
+        <h2 class="format-title">Style</h2>
 
         <div class="formats-container">
-          <input type="number" name="format" id="formatSelect" value="1" min="1" max="2">
+          <div class="style-container">
+            <h4>Info</h4>
+            <div class="images-container">
+              <div class="all-images">
+                <img
+                  src="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png"
+                  alt="">
+                <img
+                  src="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png"
+                  alt="">
+                <img
+                  src="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975268/media/carousel-images/Ccarrusel_2-P3_afztie.png"
+                  alt="">
+                <img
+                  src="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975267/media/carousel-images/Ccarrusel_2-P2_b2syiw.png"
+                  alt="">
+                <img
+                  src="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975265/media/carousel-images/Ccarrusel_2-P1_zqy6va.png"
+                  alt="">
+              </div>
+            </div>
+          </div>
+          <div class="menu-style">
+            <div class="menu-edit">
+              <input type="number" name="format" id="formatSelect" value="1" min="1" max="2">
+              <button class="format-button">Carrusel</button>
+              <button class="format-button">4</button>
+              <button class="format-button">Author</button>
+            </div>
+            <button class="format-button">Choose style</button>
+          </div>
+
+
         </div>
 
       </div>
@@ -73,7 +105,7 @@
 
         <div class="prompt-input-container">
           <input type="text" autocomplete="off" autofocus name="prompt-input" class="prompt-input" id="prompt-input"
-            placeholder="Ej: Nutrición / Filosofía / Segunda guerra mundial / Albert Einstein">
+            placeholder="Type a prompt... Nutrición / Filosofía / Segunda guerra mundial / Albert Einstein">
         </div>
 
         <button type="submit" class="generate-button" id="generate-button">Generate</button>
@@ -142,7 +174,7 @@
   </div>
 
   </div>
-  
+
   <script src="axios.js"></script>
   <!--<script type="module" src="./context.js"></script>-->
 

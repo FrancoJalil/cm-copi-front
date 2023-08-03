@@ -2,7 +2,9 @@
 * {
     padding: 0;
     margin: 0;
+    user-select: none;
 }
+
 
 button {
     transition: 0.2s;
@@ -270,12 +272,13 @@ img {
 }
 
 .prompt-title {
+    display: none;
     margin-bottom: 0.8rem;
     width: 44%;
 }
 
 .prompt-input-container {
-    
+    margin-top: 0.8rem;
     text-align: center;
 }
 
@@ -292,7 +295,6 @@ img {
     font-style: italic;
     font-weight: 600;
     line-height: normal;
-    margin-bottom: 1rem;
     padding: 0.3rem 1.7rem;
 }
 
@@ -312,7 +314,6 @@ img {
     background-color: rgb(15 17 18);
     /*border: 1px solid rgba(255, 255, 255, 0.30);*/
     border-radius: 1rem;
-    height: 15rem;
     margin: 0 10rem;
 }
 .formats-container input {
@@ -322,6 +323,9 @@ img {
 }
 
 .format-title {
+
+    padding: 0rem 1rem;
+    width: fit-content;
     text-align: left;
     margin: 0.8rem 10rem;
     font-family: Inter;
@@ -577,5 +581,56 @@ button.cancel:hover {
 
 .containerDatetime {
     display: none;
+}
+
+/* format menu */
+.formats-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.images-container {
+    background-color: rgba(0, 0, 0, 0.48);
+    border-radius: 1rem;
+    overflow: scroll;
+    align-items: center;
+    width: 90%;
+    display: inline-flex;
+}
+
+.all-images {
+    display: inline-flex;
+}
+
+.all-images img {
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
+.style-container {
+    padding-top: 1rem;
+}
+
+.style-container h4{
+    margin-left: 0.6rem;
+    color:#010101;
+    position: absolute;
+    padding: 0.5rem 1.3rem;
+    background-color: #D9D9D9;
+    border-radius: 1rem;
+
+}
+
+.menu-style {
+    display: inline-flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: 1rem;
+    padding-top: 0.5rem;
+}
+
+.format-button {
+    border-radius: 1rem;
+    background-color: black;
 }
 
