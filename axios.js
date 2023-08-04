@@ -6,6 +6,14 @@ let refreshToken = localStorage.getItem('refresh');
 console.log("a",accessToken)
 console.log("r", refreshToken)
 
+async function logoutUser() {
+  localStorage.removeItem('access')
+  localStorage.removeItem('refresh')
+  // Redireccionar a otra página
+  window.location.href = "/login";
+
+}
+
 // Function to refresh the access token using the refresh token
 async function refreshAccessToken() {
     try {
@@ -20,7 +28,9 @@ async function refreshAccessToken() {
       });
   
       if (!response.ok) {
-        throw new Error('No se pudo refrescar el token.');
+        console.log("No se pudo refrescar el token")
+        logoutUser();
+        
       }
   
       const data = await response.json();
@@ -36,7 +46,8 @@ async function refreshAccessToken() {
       refreshToken = data.refresh;
       return data.access;
     } catch (error) {
-      throw new Error('Error al refrescar el token.');
+      console.log("Error refresh...", error);
+      logoutUser();
     }
   }
 
@@ -57,7 +68,8 @@ axios.interceptors.response.use(
             });
         }
 
-        return Promise.reject(error);
+        console.log("Error access...", error);
+        logoutUser();
     }
 );
 

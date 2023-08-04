@@ -5,6 +5,13 @@
     user-select: none;
 }
 
+#loadingSkeleton {
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+}
+
 
 button {
     transition: 0.2s;

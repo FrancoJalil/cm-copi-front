@@ -333,10 +333,10 @@ function showLoading(show) {
     if (show) {
 
         headingElement.style.display = 'block';
-        let generateContainer = document.body;
+        let generateContainer = document.getElementById('loadingSkeleton');
 
         // Set the text content of the h1 element
-        headingElement.textContent = 'Hello, I am a dynamically generated h1!';
+        headingElement.innerHTML = 'Hello, I am a dynamically generated h1!';
 
         // Add the h1 element as a child to the generatedContainer
         generateContainer.appendChild(headingElement);
@@ -913,8 +913,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 let rect = new fabric.Rect({
                     left: 0,   // Posición en X del rectángulo
                     top: 0,    // Posición en Y del rectángulo
-                    width: 250, // Ancho del rectángulo
-                    height: 250,// Altura del rectángulo
+                    width: 512, // Ancho del rectángulo
+                    height: 512,// Altura del rectángulo
                     //rx: 20,
                     //ry: 20,
                     fill: 'rgba(18, 18, 18, 0.4)',
@@ -923,15 +923,15 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 });
 
                 let marco = new fabric.Rect({
-                    left: 35,   // Posición en X del rectángulo
-                    top: 35,    // Posición en Y del rectángulo
-                    width: 180, // Ancho del rectángulo
-                    height: 180,// Altura del rectángulo
+                    left: (512 - 380) / 2,   // Posición en X del rectángulo
+                    top: (512 - 380) / 2,    // Posición en Y del rectángulo
+                    width: 380, // Ancho del rectángulo
+                    height: 380,// Altura del rectángulo
                     //rx: 20,
                     //ry: 20,
                     fill: 'transparent',
                     stroke: 'white',      // Color de borde blanco
-                    strokeWidth: 1,
+                    strokeWidth: 2,
                     selectable: false,
                     evented: false,
                 });
@@ -969,26 +969,50 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
             fabricTextD = new fabric.Textbox('Las leyendas son leyendas, porque representan eso.', {
-                left: canvas.width - 215,
-                top: canvas.height - 160,
-                width: 180,
+                left: 90,
+                top: 230,
+                width: 330,
                 fill: 'white',
-                fontSize: 18,
+                fontSize: 40,
                 textAlign: 'center',
                 textWrapping: 'auto',
+                selectable: false,
                 //plitByGrapheme: true
             });
+
+            allObjects.push(fabricTextD);
+
+            let numLines = fabricTextD.textLines.length;
+            if (numLines >= 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 190;
+            }
+
+            else if (numLines == 1) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 250;
+            }
+
+            else if (numLines == 2) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 210;
+            }
+
+
             fabricTextIG = new fabric.Textbox('@xShadowx', {
-                left: 30,
-                top: 230,
-                width: 180,
+                left: 150,
+                top: 420,
+                width: 200,
                 fill: 'white',
-                fontSize: 10,
+                fontSize: 20,
                 fontWeight: 'lighter',
                 textAlign: 'center',
                 textWrapping: 'auto',
                 //plitByGrapheme: true
             });
+
+            fabricTextIG.customProperty = 'IgUser'
+            allObjects.push(fabricTextIG)
 
             canvas.add(fabricTextD);
             canvas.add(fabricTextIG);
@@ -1013,9 +1037,9 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                 // Agregar el rectángulo negro
                 let rect = new fabric.Rect({
-                    top: canvas.height - 90,
-                    width: 250, // Ancho del rectángulo
-                    height: 90,// Altura del rectángulo
+                    top: 512 - 35,
+                    width: 512, // Ancho del rectángulo
+                    height: 135,// Altura del rectángulo
                     fill: gradient, // Color de relleno del rectángulo (negro)
                     selectable: false,
                     evented: false,
@@ -1026,14 +1050,42 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
             fabricTextD = new fabric.Textbox('Las leyendas son leyendas, porque representan eso.', {
-                left: canvas.width - 240,
-                top: canvas.height - 80,
-                width: 230,
+                left: 19,
+                top: 370,
+                width: 470,
                 fill: 'white',
-                fontSize: 20,
+                fontSize: 60,
                 textAlign: 'center',
-                textWrapping: 'auto'
+                textWrapping: 'auto',
+                selectable: false,
             });
+            
+            allObjects.push(fabricTextD);
+
+            let numLines = fabricTextD.textLines.length;
+            if (numLines == 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 40;
+                fabricTextD.top = 400;
+
+            }
+
+            else if (numLines == 2) {
+                fabricTextD.fontSize = 40;
+                fabricTextD.top = 400;
+            }
+
+            else if (numLines == 1) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 400;
+            }
+
+            else if (numLines > 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 40;
+                fabricTextD.top = 340;
+            };
+            
             canvas.add(fabricTextD);
 
         }
