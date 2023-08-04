@@ -605,6 +605,7 @@ button.cancel:hover {
 .all-images img {
     margin: 1rem;
     border-radius: 1rem;
+    width: 18%;
 }
 
 .style-container {

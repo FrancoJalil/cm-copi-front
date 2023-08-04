@@ -25,7 +25,6 @@ let allObjects = [];
 let deselectCanvas = false;
 let checkboxSelectCarouselList = [];
 let numberOfCarrus;
-let loadingGenerations = false;
 let carruselUnpublished = [];
 var confirmationModal = document.getElementById("confirmationModal");
 var confirmationModalTitle = document.getElementById("confirmationModalTitle");
@@ -282,7 +281,7 @@ export function activarCanvas() {
     });
 }
 
-export function reloadGenerate() {
+function reloadGenerate() {
 
     // desaperecer botones edicion y publicar y reaparecerlos luego del timeout
     switchCounter = 0;
@@ -327,17 +326,33 @@ export function reloadGenerate() {
 
 }
 
-var sleepES5 = function (ms) {
-    var esperarHasta = new Date().getTime() + ms;
-    while (new Date().getTime() < esperarHasta) continue;
+// global variable, asi no se acumulan
+const headingElement = document.createElement('h1');
+function showLoading(show) {
+
+    if (show) {
+
+        headingElement.style.display = 'block';
+        let generateContainer = document.body;
+
+        // Set the text content of the h1 element
+        headingElement.textContent = 'Hello, I am a dynamically generated h1!';
+
+        // Add the h1 element as a child to the generatedContainer
+        generateContainer.appendChild(headingElement);
+    } else {
+        headingElement.style.display = 'none';
+    }
 }
+
 
 
 export function generateImage() {
 
     console.log("loading...")
+    showLoading(true);
+
     // hacer cositas cuando esté cargando...
-    loadingGenerations = true;
 
     // desaparecer anterior container
     let containerInputMenu = document.getElementById("container-content");
@@ -348,6 +363,7 @@ export function generateImage() {
 
     setTimeout(() => {
         // SACAR LOADING SKELETON
+        showLoading(false);
         console.log("loaded")
 
 
@@ -1366,22 +1382,22 @@ export function saveImage() {
     let access_token_g = localStorage.getItem('access');
 
     // Realizar la solicitud POST al backend para guardar las imágenes modificadas
-    axios.post('http://localhost:8000/image-generation/save_images', 
-    JSON.stringify({
-        images: modifiedImages,
-        images_data: imagesDataFront,
-        prompt: valuePromptInput,
-        // datetime
-        //dates: datetimeInputList,
-        carruselUnpublished: carruselUnpublished,
-        numberOfCarrus: numberOfCarrus
-    }),
-    {
-        headers: {
-            'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + String(access_token_g)
-        }
-    })
+    axios.post('http://localhost:8000/image-generation/save_images',
+        JSON.stringify({
+            images: modifiedImages,
+            images_data: imagesDataFront,
+            prompt: valuePromptInput,
+            // datetime
+            //dates: datetimeInputList,
+            carruselUnpublished: carruselUnpublished,
+            numberOfCarrus: numberOfCarrus
+        }),
+        {
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + String(access_token_g)
+            }
+        })
         .then(response => {
             const data = response.data;
             // Aquí puedes realizar alguna acción en caso de que la respuesta sea exitosa
@@ -1402,7 +1418,7 @@ export function saveImage() {
 
 export function modoEdicion() {
 
-    
+
 
     console.log(getDatetetimeInput());
 
