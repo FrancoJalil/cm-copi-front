@@ -829,18 +829,18 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 // Crear un degradado lineal desde abajo hasta arriba
                 let gradient = new fabric.Gradient({
                     type: 'linear',
-                    coords: { x1: 0, y1: 0, x2: 0, y2: 50 }, // Definir las coordenadas del gradiente
+                    coords: { x1: 0, y1: 0, x2: 0, y2: 150 }, // Definir las coordenadas del gradiente
                     colorStops: [
                         { offset: 0, color: 'rgba(0, 0, 0, 0)' }, // Punto de inicio del gradiente (negro)
-                        { offset: 1, color: 'rgba(0, 0, 0, 0.3)' }  // Punto final del gradiente (blanco)
+                        { offset: 1, color: 'rgba(0, 0, 0, 0.7)' }  // Punto final del gradiente (blanco)
                     ]
                 });
 
                 // Agregar el rectángulo negro
                 let rect = new fabric.Rect({
-                    top: 512 - 135,
+                    top: 512 - 150,
                     width: 512, // Ancho del rectángulo
-                    height: 135,// Altura del rectángulo
+                    height: 150, // Altura del rectángulo
                     fill: gradient, // Color de relleno del rectángulo (negro)
                     selectable: false,
                     evented: false,
@@ -1028,18 +1028,18 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 // Crear un degradado lineal desde abajo hasta arriba
                 let gradient = new fabric.Gradient({
                     type: 'linear',
-                    coords: { x1: 0, y1: 0, x2: 0, y2: 50 }, // Definir las coordenadas del gradiente
+                    coords: { x1: 0, y1: 0, x2: 0, y2: 150 }, // Definir las coordenadas del gradiente
                     colorStops: [
                         { offset: 0, color: 'rgba(0, 0, 0, 0)' }, // Punto de inicio del gradiente (negro)
-                        { offset: 1, color: 'rgba(0, 0, 0, 0.8)' }  // Punto final del gradiente (blanco)
+                        { offset: 1, color: 'rgba(0, 0, 0, 0.7)' }  // Punto final del gradiente (blanco)
                     ]
                 });
 
                 // Agregar el rectángulo negro
                 let rect = new fabric.Rect({
-                    top: 512 - 35,
+                    top: 512 - 150,
                     width: 512, // Ancho del rectángulo
-                    height: 135,// Altura del rectángulo
+                    height: 150, // Altura del rectángulo
                     fill: gradient, // Color de relleno del rectángulo (negro)
                     selectable: false,
                     evented: false,
