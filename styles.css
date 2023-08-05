@@ -318,6 +318,7 @@ img {
 }
 
 .formats-container {
+
     background-color: rgb(15 17 18);
     /*border: 1px solid rgba(255, 255, 255, 0.30);*/
     border-radius: 1rem;
@@ -546,7 +547,8 @@ label {
     margin: 10%;
     padding: 20px;
     width: 80%;
-    height: auto;
+    height: 65vh;
+    overflow: scroll;
     text-align: center;
 }
 
@@ -613,7 +615,6 @@ button.cancel:hover {
 .images-container {
     background-color: rgba(0, 0, 0, 0.48);
     border-radius: 1rem;
-    overflow: scroll;
     align-items: center;
     width: 90%;
     display: inline-flex;
@@ -621,6 +622,7 @@ button.cancel:hover {
 
 .all-images {
     display: inline-flex;
+    overflow: scroll;
 }
 
 .all-images img {
@@ -635,8 +637,8 @@ button.cancel:hover {
 
 .style-container h4{
     margin-left: 0.6rem;
+    width: 2rem;
     color:#010101;
-    position: absolute;
     padding: 0.5rem 1.3rem;
     background-color: #D9D9D9;
     border-radius: 1rem;
