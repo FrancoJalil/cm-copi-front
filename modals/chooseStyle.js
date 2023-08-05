@@ -50,8 +50,10 @@ export function chooseStyle(confirmationModalContainer, style) {
             let formatContainer = document.createElement('div');
             formatContainer.setAttribute('id', 'formatsContainer' + stylesJSON.styles[i].title);
             formatContainer.classList.add('formats-container');
+            formatContainer.classList.add('formats-container-modal');
             container.appendChild(formatContainer);
 
+            
             let styleContainer = document.createElement('div');
             styleContainer.setAttribute('id', 'styleContainer' + stylesJSON.styles[i].title);
             styleContainer.classList.add('style-container');
@@ -67,10 +69,21 @@ export function chooseStyle(confirmationModalContainer, style) {
             imagesContainer.classList.add('images-container');
             styleContainer.appendChild(imagesContainer);
 
+            let images_button_container = document.createElement('div');
+            images_button_container.setAttribute('id', 'images_button_container' + stylesJSON.styles[i].title);
+            images_button_container.classList.add('images_button_container');
+            styleContainer.appendChild(images_button_container);
+
             let allImages = document.createElement('div');
             allImages.setAttribute('id', 'allImages' + stylesJSON.styles[i].title);
             allImages.classList.add('all-images');
-            imagesContainer.appendChild(allImages);
+            images_button_container.appendChild(allImages);
+
+            let selectButton = document.createElement('button');
+            formatContainer.setAttribute('id', 'selectButton' + stylesJSON.styles[i].title);
+            selectButton.classList.add('select-button');
+            selectButton.textContent = 'Select'
+            images_button_container.appendChild(selectButton);
 
             for (let i = 0; i < imagesList.length; i++) {
                 let img = document.createElement('img');

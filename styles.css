@@ -324,10 +324,20 @@ img {
     border-radius: 1rem;
     margin: 0 10rem;
 }
+
 .formats-container input {
     background-color: rgba(18, 18, 18, 0.80);
     border: none;
     color: rgba(255, 255, 255, 0.5);
+}
+
+.formats-container-modal {
+    border: 1px solid #484848;
+    background-color: rgba(0, 0, 0, 0.42);
+    /*border: 1px solid rgba(255, 255, 255, 0.30);*/
+    border-radius: 1rem;
+    margin: 0 5rem;
+    margin-bottom: 1.5rem;
 }
 
 .format-title {
@@ -620,9 +630,19 @@ button.cancel:hover {
     display: inline-flex;
 }
 
+.images_button_container {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+
+}
+
+
+
 .all-images {
     display: inline-flex;
     overflow: scroll;
+    padding-bottom: 1rem;
 }
 
 .all-images img {
@@ -630,6 +650,13 @@ button.cancel:hover {
     border-radius: 1rem;
     width: 18%;
 }
+
+.select-button {
+    margin: 1rem;
+    border-radius: 1rem;
+}
+
+
 
 .style-container {
     padding-top: 1rem;
