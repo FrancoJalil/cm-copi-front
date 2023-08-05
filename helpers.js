@@ -1,4 +1,4 @@
-import { chooseStyle } from "./modals/chooseStyle.js";
+import { chooseStyle, stylesJSON } from "./modals/chooseStyle.js";
 // helpers.js
 
 // Global variables
@@ -57,14 +57,15 @@ function deleteObjectFromAllObjects(canvasToDelete) {
 
 // Función para abrir el modal de confirmación y configurar su contenido
 export function showConfirmationModal(title, content, actionFunction, style) {
-    confirmationModalTitle.textContent = title;
-    confirmationModalContent.textContent = content;
-    confirmationAction = actionFunction; // Almacenar la función a ejecutar al confirmar
-    confirmationModal.style.display = "block";
+    
 
     if (style) {
-        chooseStyle(confirmationModalContainer, style);
+        chooseStyle(confirmationModalContainer, style, confirmationModalTitle, confirmationModalContent);
+    } else {
+        confirmationModalTitle.textContent = title;
+        confirmationAction = actionFunction; // Almacenar la función a ejecutar al confirmar
     }
+    confirmationModal.style.display = "block";
     
 }
 

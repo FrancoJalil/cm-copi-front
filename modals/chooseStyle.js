@@ -1,6 +1,6 @@
 let creado = false;
 
-let stylesJSON = {
+export let stylesJSON = {
     styles: [
         {
             title: 'info',
@@ -35,9 +35,52 @@ let stylesJSON = {
     ]
 }
 
-export function chooseStyle(confirmationModalContainer, style) {
+// style selected
+export function putSelectedStyle() {
+    let selectedStyle = localStorage.getItem('selectedStyle');
+    if (!selectedStyle) {
+
+        // set default style
+        selectedStyle = stylesJSON.styles[0]
+
+    } else {
+        selectedStyle = JSON.parse(selectedStyle);
+    }
+    
+    let styleImagesList = selectedStyle.images;
+    let selectedTitleContainer = document.getElementById('titleStyleGenerate');
+    let allImagesContainer = document.getElementById('allImagesGenerate');
+
+    selectedTitleContainer.textContent = selectedStyle.title;
+
+    // Limpiar el contenedor antes de agregar las nuevas imágenes
+    while (allImagesContainer.firstChild) {
+        allImagesContainer.removeChild(allImagesContainer.firstChild);
+    }
+
+
+    for (let i = 0; i < styleImagesList.length; i++) {
+        let img = document.createElement('img');
+        img.src = styleImagesList[i];
+        allImagesContainer.appendChild(img);
+    }
+
+}
+
+export function chooseStyleOnClick(styleJSON) {
+
+    localStorage.setItem('selectedStyle', JSON.stringify(styleJSON));
+    putSelectedStyle();
+}
+
+export function chooseStyle(confirmationModalContainer, style, confirmationModalTitle, confirmationModalContent) {
 
     if (!creado) {
+
+        document.getElementById('confirm-button-modal').style.display = 'none';
+        document.getElementById('cancel-button-modal').textContent = 'X';
+        document.getElementById('cancel-button-modal').style.position = 'absolute';
+
         confirmationModalContainer.classList.remove('modal-content');
         confirmationModalContainer.classList.add(style);
 
@@ -46,14 +89,14 @@ export function chooseStyle(confirmationModalContainer, style) {
             let imagesList = stylesJSON.styles[i].images;
 
             let container = document.getElementById('modalContent');
-            
+
             let formatContainer = document.createElement('div');
             formatContainer.setAttribute('id', 'formatsContainer' + stylesJSON.styles[i].title);
             formatContainer.classList.add('formats-container');
             formatContainer.classList.add('formats-container-modal');
             container.appendChild(formatContainer);
 
-            
+
             let styleContainer = document.createElement('div');
             styleContainer.setAttribute('id', 'styleContainer' + stylesJSON.styles[i].title);
             styleContainer.classList.add('style-container');
@@ -83,6 +126,9 @@ export function chooseStyle(confirmationModalContainer, style) {
             formatContainer.setAttribute('id', 'selectButton' + stylesJSON.styles[i].title);
             selectButton.classList.add('select-button');
             selectButton.textContent = 'Select'
+            selectButton.addEventListener('click', function () {
+                chooseStyleOnClick(stylesJSON.styles[i]);
+            });
             images_button_container.appendChild(selectButton);
 
             for (let i = 0; i < imagesList.length; i++) {
@@ -97,3 +143,4 @@ export function chooseStyle(confirmationModalContainer, style) {
 
     }
 }
+

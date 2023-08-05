@@ -1,6 +1,6 @@
 // app.js
 import { isSelectedCanvas, confirmAction, closeConfirmationModal, generateImage, deselectableAllCanvas, reactivarCanvas, toggleClickedStyle, saveImage, showConfirmationModal, deleteCanvas, modoEdicion, addPaddingIfNeeded, toggleBorder, toggleBold, addText, changeTextColor, changeTextFont, deleteText, selectAllCanvas } from './helpers.js';
-
+import { putSelectedStyle } from './modals/chooseStyle.js';
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
@@ -213,4 +213,9 @@ document.addEventListener('DOMContentLoaded', () => {
   confirmButton.addEventListener('click', confirmAction);
   cancelButton.addEventListener('click', closeConfirmationModal);
 
+  putSelectedStyle();
+
+  
+  
+  
 });
