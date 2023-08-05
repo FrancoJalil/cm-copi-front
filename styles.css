@@ -534,11 +534,25 @@ label {
 
 .modal-content {
     background-color: #121212;
-    margin: 15% auto;
+    margin: 10%;
     padding: 20px;
     width: 80%;
     max-width: 400px;
     text-align: center;
+}
+
+.modal-choose-style {
+    background-color: #121212;
+    margin: 10%;
+    padding: 20px;
+    width: 80%;
+    height: auto;
+    text-align: center;
+}
+
+.images-container {
+    display: flex;
+    flex-direction: column;
 }
 
 /* Estilos para el botón "Confirmar" */

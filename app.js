@@ -15,7 +15,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   firstForm.addEventListener("submit", (event) => {
     event.preventDefault();
-    const formatIput = firstForm.elements["format"];
+    const formatIput = firstForm.elements["formatSelect"];
     const promptInput = firstForm.elements["prompt-input"];
     if (formatIput.value.trim() === "" || promptInput.value.trim() === "") {
       // Evitar que el formulario se envíe
@@ -55,6 +55,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Event Listener para el input de color
   document.getElementById('colorPicker').addEventListener('input', changeTextColor);
+  
+  // Event listener para el choose style
+  document.getElementById('chooseStyle').addEventListener('click', () => {
+    showConfirmationModal('Elegir estilo', 'Ok?', function () {
+      console.log("ok")
+  }, 'modal-choose-style');
+});
 
   
 

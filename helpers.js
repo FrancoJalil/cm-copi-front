@@ -1,3 +1,4 @@
+import { chooseStyle } from "./modals/chooseStyle.js";
 // helpers.js
 
 // Global variables
@@ -26,6 +27,7 @@ let deselectCanvas = false;
 let checkboxSelectCarouselList = [];
 let numberOfCarrus;
 let carruselUnpublished = [];
+var confirmationModalContainer = document.getElementById("modalContent");
 var confirmationModal = document.getElementById("confirmationModal");
 var confirmationModalTitle = document.getElementById("confirmationModalTitle");
 var confirmationModalContent = document.getElementById("confirmationModalContent");
@@ -54,11 +56,16 @@ function deleteObjectFromAllObjects(canvasToDelete) {
 }
 
 // Función para abrir el modal de confirmación y configurar su contenido
-export function showConfirmationModal(title, content, actionFunction) {
+export function showConfirmationModal(title, content, actionFunction, style) {
     confirmationModalTitle.textContent = title;
     confirmationModalContent.textContent = content;
     confirmationAction = actionFunction; // Almacenar la función a ejecutar al confirmar
     confirmationModal.style.display = "block";
+
+    if (style) {
+        chooseStyle(confirmationModalContainer, style);
+    }
+    
 }
 
 export function deleteCanvas() {

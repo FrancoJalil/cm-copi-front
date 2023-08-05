@@ -89,7 +89,7 @@
               <button class="format-button">4</button>
               <button class="format-button">Author</button>
             </div>
-            <button class="format-button">Choose style</button>
+            <button type="button" class="format-button" id="chooseStyle">Choose style</button>
           </div>
 
 
@@ -167,13 +167,27 @@
 
   <!-- Contenedor del modal de confirmación -->
   <div id="confirmationModal" class="modal">
-    <div class="modal-content">
+    <div class="modal-content" id="modalContent">
+
+      <div class="formats-container" id="formatsContainer">
+        <div class="style-container" id="styleContainer">
+          <h4 id="titleStyle"></h4>
+          <div class="images-container" id="imagesContainer">
+            <!--<div class="all-images" id="allImages"></div>-->
+          </div>
+        </div>
+      </div>
+      
+      
+      
+
       <h2 id="confirmationModalTitle"></h2>
       <p id="confirmationModalContent"></p>
       <button class="generate-button" id="confirm-button-modal">Confirmar</button>
       <button class="generate-button" id="cancel-button-modal">Cancelar</button>
     </div>
   </div>
+
 
   </div>
 
