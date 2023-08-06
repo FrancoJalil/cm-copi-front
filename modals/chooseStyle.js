@@ -1,27 +1,29 @@
 import { closeConfirmationModal } from '../helpers.js'
+import { BLACK_MARK, TRANSPARENT_MARK } from "../utils/styles.js";
 
 let creado = false;
 
 export let stylesJSON = {
     styles: [
         {
-            title: 'blackMark',
+            title: BLACK_MARK,
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975268/media/carousel-images/Ccarrusel_2-P3_afztie.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975267/media/carousel-images/Ccarrusel_2-P2_b2syiw.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975265/media/carousel-images/Ccarrusel_2-P1_zqy6va.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975265/media/carousel-images/Ccarrusel_2-P1_zqy6va.png',
             ]
         },
         {
-            title: 'transparentMark',
+            title: TRANSPARENT_MARK,
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975268/media/carousel-images/Ccarrusel_2-P3_afztie.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975267/media/carousel-images/Ccarrusel_2-P2_b2syiw.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975265/media/carousel-images/Ccarrusel_2-P1_zqy6va.png'
+                
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337682/media/carousel-images/Ccarrusel_4-P0_eqzjaf.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337703/media/carousel-images/Ccarrusel_4-P4_zjyecn.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337702/media/carousel-images/Ccarrusel_4-P3_ea8pdd.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337700/media/carousel-images/Ccarrusel_4-P2_rocw0b.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337699/media/carousel-images/Ccarrusel_4-P1_wm8zwr.png'
             ]
         },
         {

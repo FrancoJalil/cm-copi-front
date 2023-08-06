@@ -975,7 +975,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
-            fabricTextD = new fabric.Textbox('Las leyendas son leyendas, porque representan eso.', {
+            fabricTextD = new fabric.Textbox(image_text_carru, {
                 left: 90,
                 top: 230,
                 width: 330,
@@ -1056,7 +1056,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 rect.sendToBack();
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
-            fabricTextD = new fabric.Textbox('Las leyendas son leyendas, porque representan eso.', {
+            fabricTextD = new fabric.Textbox(image_text_carru, {
                 left: 19,
                 top: 370,
                 width: 470,
