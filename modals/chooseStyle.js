@@ -1,9 +1,11 @@
+import { closeConfirmationModal } from '../helpers.js'
+
 let creado = false;
 
 export let stylesJSON = {
     styles: [
         {
-            title: 'info',
+            title: 'blackMark',
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png',
@@ -13,7 +15,7 @@ export let stylesJSON = {
             ]
         },
         {
-            title: 'info2',
+            title: 'transparentMark',
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png',
@@ -64,6 +66,9 @@ export function putSelectedStyle() {
         img.src = styleImagesList[i];
         allImagesContainer.appendChild(img);
     }
+
+    // close modal
+    closeConfirmationModal();
 
 }
 

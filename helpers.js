@@ -1,4 +1,5 @@
 import { chooseStyle, stylesJSON } from "./modals/chooseStyle.js";
+import { BLACK_MARK, TRANSPARENT_MARK } from "./utils/styles.js";
 // helpers.js
 
 // Global variables
@@ -391,11 +392,6 @@ export function generateImage() {
         let menuCanvas = document.getElementById('menu-canvas');
         menuCanvas.style.display = 'flex';
 
-
-        // Obtener el valor del input de formato
-        let formatSelect = document.getElementById('formatSelect');
-        let format = parseInt(formatSelect.value);
-
         let access_token_g = localStorage.getItem('access');
 
         axios.post('http://localhost:8000/image-generation/generate', {
@@ -613,7 +609,10 @@ export function generateImage() {
                             contador = contador + 1;
                         }
 
-
+                        let selectedStyle = JSON.parse(localStorage.getItem('selectedStyle'));
+                        console.log(selectedStyle)
+                        let format = selectedStyle.title;
+                        console.log(format)
                         configurarCanvas(canvasFirst, actualImg, true, format, front_image_text);
 
                         // CARRU
@@ -677,7 +676,7 @@ export function generateImage() {
                                     //}
                                     allCanvas.push(canvas)
                                     canvases.push(canvasData);
-
+                                    console.log(format)
                                     configurarCanvas(canvas, imagesList[j], false, format, image_text_carru);
                                 }
 
@@ -710,7 +709,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
     //canvas.setDimensions({ width: 250, height: 250 });
 
-    if (format === 1) {
+    if (format === BLACK_MARK) {
 
 
         if (!original) {
@@ -900,7 +899,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
     }
 
 
-    else if (format === 2) {
+    else if (format === TRANSPARENT_MARK) {
 
         if (!original) {
             let canvasRect;

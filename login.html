@@ -5,7 +5,9 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
+  
   <link rel="stylesheet" type="text/css" href="basic.css">
+  <link rel="stylesheet" type="text/css" href="styles-login.css">
 
   <script>
 
@@ -116,8 +118,8 @@
 
 
       } else {
-        document.getElementById('status').innerHTML = 'Login ' +
-          'with facebook.';
+        //document.getElementById('status').innerHTML = 'Login ' +
+          //'with facebook.';
       }
     }
 
@@ -232,9 +234,11 @@
 <br>
 
 <body>
-  <div class="login-form">
-    <h2>Login</h2>
-    <form method="POST">
+  <div class="container-login-form">
+    <h2 class="login-title">Login</h2>
+    <button class="generate-button">Ingresar con Google</button>
+  <br>
+    <form class="login-form" method="POST">
       <input type="text" id="username" placeholder="username">
       <input type="password" id="password" placeholder="Password">
       <button type="button" onclick="login()" class="generate-button">Login</button>
