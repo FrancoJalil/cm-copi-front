@@ -124,7 +124,7 @@ canvas {
 
 .text-field {
     color: #FFF;
-    background-color: #121212;
+    background-color: rgb(18, 18, 18);
     height: 180px;
     width: 250px;
     max-height: 250px;
