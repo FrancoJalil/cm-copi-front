@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -90,7 +91,7 @@ canvas {
 
 ::-webkit-scrollbar-track {
     background-color: black;
-  }
+}
 
 
 .containerDesc {
@@ -102,7 +103,7 @@ canvas {
     display: flex;
     flex-direction: column-reverse;
     justify-content: center;
-    
+
 }
 
 .containerDatetime input {
@@ -122,7 +123,7 @@ canvas {
 
 
 .text-field {
-    color:#FFF;
+    color: #FFF;
     background-color: #121212;
     height: 180px;
     width: 250px;
@@ -133,7 +134,7 @@ canvas {
 }
 
 .containerFirst {
-    
+
     display: none;
     text-align: center;
     align-items: center;
@@ -154,7 +155,7 @@ canvas {
 
 
 .cont-carrusel {
-    
+
     display: flex;
 }
 
@@ -200,6 +201,7 @@ canvas {
     background-color: #121212;
 
 }
+
 #textInput:focus {
     border-color: #955280;
     outline: none;
@@ -223,7 +225,7 @@ img {
 }
 
 .menu {
-    
+
     display: flex;
     align-items: center;
     justify-content: flex-end;
@@ -244,7 +246,7 @@ img {
 }
 
 
-.menu li a{
+.menu li a {
     height: 100%;
     display: flex;
     align-items: center;
@@ -258,7 +260,8 @@ img {
 
 
 .menu li a:hover {
-    color: rgba(255, 255, 255, 1); /* Cambia el color del texto a negro en el hover */
+    color: rgba(255, 255, 255, 1);
+    /* Cambia el color del texto a negro en el hover */
     transition: 0.2s;
 }
 
@@ -354,7 +357,7 @@ img {
     transition: 0.2s;
     border: none;
     border-radius: .25rem;
-    background: rgba(149, 92, 242, 0.50);
+    background: rgba(149, 92, 242, 0.80);
     padding: 0.8rem 2rem;
     color: #FFF;
     font-family: Inter;
@@ -386,7 +389,7 @@ img {
 }
 
 #container-buttons-generated {
-    
+
     margin: 1rem;
 }
 
@@ -397,27 +400,36 @@ img {
 .logo-container {
     margin-left: 3.81rem;
     margin-top: 1.4rem;
-    position: relative; /* Establecer el contenedor como posición relativa */
-    width: 25px; /* Ancho del círculo SVG */
-    height: 25px; /* Alto del círculo SVG */
-  }
-  
-  .lampara {
+    position: relative;
+    /* Establecer el contenedor como posición relativa */
+    width: 25px;
+    /* Ancho del círculo SVG */
+    height: 25px;
+    /* Alto del círculo SVG */
+}
+
+.lampara {
     width: 1.8rem;
     height: 1.8rem;
-    position: absolute; /* Posición absoluta para la lámpara */
-    top: 6px; /* Ajustar la posición vertical de la lámpara */
-    left: 6px; /* Ajustar la posición horizontal de la lámpara */
-  }
-  
-  .circulo {
+    position: absolute;
+    /* Posición absoluta para la lámpara */
+    top: 6px;
+    /* Ajustar la posición vertical de la lámpara */
+    left: 6px;
+    /* Ajustar la posición horizontal de la lámpara */
+}
+
+.circulo {
     width: 2.5rem;
     height: 2.5rem;
-    position: absolute; /* Posición absoluta para el círculo */
-    top: 0; /* Ajustar la posición vertical del círculo si es necesario */
-    left: 0; /* Ajustar la posición horizontal del círculo si es necesario */
-  }
-  
+    position: absolute;
+    /* Posición absoluta para el círculo */
+    top: 0;
+    /* Ajustar la posición vertical del círculo si es necesario */
+    left: 0;
+    /* Ajustar la posición horizontal del círculo si es necesario */
+}
+
 #menu-canvas {
     display: none;
     align-items: center;
@@ -427,11 +439,13 @@ img {
 
 .menu li a {
     text-decoration: none;
-    color: rgba(255, 255, 255, 0.5); /* Color para elementos "no active" */
+    color: rgba(255, 255, 255, 0.5);
+    /* Color para elementos "no active" */
 }
 
 li.active a {
-    color: white; /* Color para elementos "active" */
+    color: white;
+    /* Color para elementos "active" */
 }
 
 #container-editable {
@@ -445,18 +459,21 @@ li.active a {
     text-align: center;
     justify-content: center;
 }
+
 .container-editable {
     display: none;
-    
+
     align-items: center;
     text-align: center;
     background-color: #121212;
     opacity: 80%;
     height: 80%;
-    border: 1px solid white ;
+    border: 1px solid white;
 }
 
-#container-editable button, select, input {
+#container-editable button,
+select,
+input {
     margin: 0 0.5rem;
 }
 
@@ -468,7 +485,7 @@ li.active a {
 
 
 #container-editable button {
-    color:#DFE9EB;
+    color: #DFE9EB;
     background-color: rgb(149 92 242 / 70%);
     border: none;
     border-radius: .25rem;
@@ -479,44 +496,45 @@ li.active a {
 * {
     scrollbar-width: thin;
     scrollbar-color: #955280 #DFE9EB;
-    
-    
-  }
-  
-  /* Chrome, Edge and Safari */
-  *::-webkit-scrollbar {
+
+
+}
+
+/* Chrome, Edge and Safari */
+*::-webkit-scrollbar {
     background-color: rgba(0, 0, 0, 0);
     width: 11px;
     width: 11px;
-  }
+}
 
-  *::-webkit-scrollbar-track {
+*::-webkit-scrollbar-track {
     margin: 1rem;
     background-color: rgba(0, 0, 0, 0);
-  }
-  
-  *::-webkit-scrollbar-thumb {
+}
+
+*::-webkit-scrollbar-thumb {
     border-radius: 5px;
     background-color: #955280;
-  }
-  
-  *::-webkit-scrollbar-thumb:hover {
-    background-color: #774166;
-  }
-  
-  *::-webkit-scrollbar-thumb:active {
-    
-    background-color: #774166;
-  }
-  
-  /* Estilos para la barra de desplazamiento horizontal */
+}
 
-  /* Estilos para la barra de desplazamiento horizontal */
-  *::-webkit-scrollbar:horizontal {
-    margin: 1rem 0 1rem 0; /* Margen superior e inferior de 1 rem, sin margen en los lados */
+*::-webkit-scrollbar-thumb:hover {
+    background-color: #774166;
+}
+
+*::-webkit-scrollbar-thumb:active {
+
+    background-color: #774166;
+}
+
+/* Estilos para la barra de desplazamiento horizontal */
+
+/* Estilos para la barra de desplazamiento horizontal */
+*::-webkit-scrollbar:horizontal {
+    margin: 1rem 0 1rem 0;
+    /* Margen superior e inferior de 1 rem, sin margen en los lados */
     height: .8rem;
-  }
-  
+}
+
 /*
   @media screen and (min-width: 1905px) {
     .canvas-container {
@@ -541,7 +559,12 @@ label {
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
+    /* Efecto de desenfoque */
+    backdrop-filter: blur(7px);
+    -webkit-backdrop-filter: blur(7px); /* Para compatibilidad con Safari */
 }
+
+
 
 .modal-content {
     background-color: #121212;
@@ -552,6 +575,20 @@ label {
     text-align: center;
 }
 
+.edition {
+    margin: 15% auto;
+}
+
+#cancel-button-modal {
+    padding: 0.3rem 0.5rem;
+    background-color: rgba(0, 0, 0, 0.48);
+    border-radius: 5rem;
+}
+
+#cancel-button-modal:hover {
+    background-color: #774166;
+}
+
 .modal-choose-style {
     background-color: #121212;
     border: 2px solid #484848;
@@ -560,7 +597,7 @@ label {
     padding: 20px;
     width: 80%;
     height: 65vh;
-    overflow: scroll;
+    overflow: auto;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -651,7 +688,7 @@ button.cancel:hover {
 
 .all-images {
     display: inline-flex;
-    overflow: scroll;
+    overflow: auto;
     padding-bottom: 1rem;
 }
 
@@ -672,10 +709,10 @@ button.cancel:hover {
     padding-top: 1rem;
 }
 
-.style-container h4{
+.style-container h4 {
     margin-left: 0.6rem;
     width: fit-content;
-    color:#010101;
+    color: #010101;
     padding: 0.5rem 1.3rem;
     background-color: #D9D9D9;
     border-radius: 1rem;
@@ -695,3 +732,7 @@ button.cancel:hover {
     background-color: black;
 }
 
+
+#selectable-button-author.selected {
+    background-color: #955280;
+}

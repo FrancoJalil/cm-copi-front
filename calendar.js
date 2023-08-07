@@ -3,7 +3,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   // Llamada a la API y procesamiento de datos como en tu código anterior...
   let access_token_g = localStorage.getItem('access');
-  console.log("vvv", access_token_g)
 
   axios.get('http://localhost:8000/image-generation/get_saved_images', {
     headers: {
@@ -14,7 +13,6 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(response => {
 
       const data = response.data;
-      console.log("DATA", data);
       const containerDad = document.getElementById('content-container');
 
       // Creamos un contador para generar IDs únicos

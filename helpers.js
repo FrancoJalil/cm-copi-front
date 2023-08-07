@@ -40,6 +40,7 @@ export function isSelectedCanvas() {
 
 // Función para cerrar el modal de confirmación
 export function closeConfirmationModal() {
+    
     confirmationModal.style.display = "none";
 }
 
@@ -58,7 +59,8 @@ function deleteObjectFromAllObjects(canvasToDelete) {
 
 // Función para abrir el modal de confirmación y configurar su contenido
 export function showConfirmationModal(title, content, actionFunction, style) {
-    
+    let modalContentEdition = document.getElementById('modalContentEdition');
+    modalContentEdition.style.display = 'none';
 
     if (style) {
         chooseStyle(confirmationModalContainer, style, confirmationModalTitle, confirmationModalContent);
@@ -67,8 +69,26 @@ export function showConfirmationModal(title, content, actionFunction, style) {
         confirmationAction = actionFunction; // Almacenar la función a ejecutar al confirmar
     }
     confirmationModal.style.display = "block";
-    
+
 }
+
+export function showConfirmationModalEdition(title, content, actionFunction) {
+    let modalStyles = document.getElementById('modalContent');
+    modalStyles.style.display = 'none';
+
+    let confirmationModalTitleEdition = document.getElementById('confirmationModalTitleEdition');
+    let confirmationModalContentEdition = document.getElementById('confirmationModalContentEdition');
+    let modalContentEdition = document.getElementById('modalContentEdition');
+    let parentModal = document.getElementById('confirmationModal');
+
+    confirmationModalTitleEdition.textContent = title;
+    confirmationModalContentEdition.textContent = content;
+    confirmationAction = actionFunction; // Almacenar la función a ejecutar al confirmar
+    parentModal.style.display = "block";
+    modalContentEdition.style.display = "block";
+}
+
+
 
 export function deleteCanvas() {
 
@@ -394,6 +414,8 @@ export function generateImage() {
 
         let access_token_g = localStorage.getItem('access');
 
+        let author = document.getElementById('selectable-button-author').classList.contains('selected');
+
         axios.post('http://localhost:8000/image-generation/generate', {
             subject: JSON.stringify({
                 subject: valuePromptInput
@@ -613,7 +635,7 @@ export function generateImage() {
                         console.log(selectedStyle)
                         let format = selectedStyle.title;
                         console.log(format)
-                        configurarCanvas(canvasFirst, actualImg, true, format, front_image_text);
+                        configurarCanvas(canvasFirst, actualImg, true, format, front_image_text, author);
 
                         // CARRU
                         let canvasContainerDiv = canvasContainer.querySelector('.canvas-container');
@@ -677,7 +699,7 @@ export function generateImage() {
                                     allCanvas.push(canvas)
                                     canvases.push(canvasData);
                                     console.log(format)
-                                    configurarCanvas(canvas, imagesList[j], false, format, image_text_carru);
+                                    configurarCanvas(canvas, imagesList[j], false, format, image_text_carru, author);
                                 }
 
                             }
@@ -700,7 +722,7 @@ export function generateImage() {
 
 }
 
-export function configurarCanvas(canvas, backgroundImageSrc, original, format, image_text_carru) {
+export function configurarCanvas(canvas, backgroundImageSrc, original, format, image_text_carru, author) {
     // Limpiar el canvas antes de configurarlo
     canvas.clear();
     let fabricTextD;
@@ -741,33 +763,35 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     evented: false,
                 });
 
-                // Crear un círculo
-                let photo = new fabric.Circle({
-                    left: 236,       // Posición en X del círculo
-                    top: 60,        // Posición en Y del círculo
-                    radius: 20,     // Radio del círculo (20 en este caso)
-                    selectable: false,
-                    evented: false,
-                    fill: new fabric.Pattern({
-                        source: img.getElement(),
-                        repeat: 'no-repeat'
-                    })
-                });
+                if (author) {
+                    // Crear un círculo
+                    let photo = new fabric.Circle({
+                        left: 236,       // Posición en X del círculo
+                        top: 60,        // Posición en Y del círculo
+                        radius: 20,     // Radio del círculo (20 en este caso)
+                        selectable: false,
+                        evented: false,
+                        fill: new fabric.Pattern({
+                            source: img.getElement(),
+                            repeat: 'no-repeat'
+                        })
+                    });
 
-                // Crear un círculo
+                    // Crear un círculo
 
-                let circle = new fabric.Circle({
-                    left: 226,       // Posición en X del círculo
-                    top: 50,        // Posición en Y del círculo
-                    radius: 30,     // Radio del círculo (20 en este caso)
-                    selectable: false,
-                    evented: false,
-                    fill: '#121212',
-                });
-
+                    let circle = new fabric.Circle({
+                        left: 226,       // Posición en X del círculo
+                        top: 50,        // Posición en Y del círculo
+                        radius: 30,     // Radio del círculo (20 en este caso)
+                        selectable: false,
+                        evented: false,
+                        fill: '#121212',
+                    });
+                    canvas.add(circle);
+                    canvas.add(photo);
+                }
                 canvas.add(rect);
-                canvas.add(circle);
-                canvas.add(photo);
+
                 rect.sendToBack();
 
             }, { crossOrigin: 'Anonymous' });
@@ -803,26 +827,28 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             }
 
 
+            if (author) {
+                fabricTextIG = new fabric.Textbox('@xShadowx', {
+                    left: 150,
+                    top: 120,
+                    width: 200,
+                    fill: 'white',
+                    fontSize: 20,
+                    fontWeight: 'lighter',
+                    textAlign: 'center',
+                    textWrapping: 'auto',
+                    selectable: false,
+                    //plitByGrapheme: true
+                });
 
-            fabricTextIG = new fabric.Textbox('@xShadowx', {
-                left: 150,
-                top: 120,
-                width: 200,
-                fill: 'white',
-                fontSize: 20,
-                fontWeight: 'lighter',
-                textAlign: 'center',
-                textWrapping: 'auto',
-                selectable: false,
-                //plitByGrapheme: true
-            });
+                fabricTextIG.customProperty = 'IgUser'
 
-            fabricTextIG.customProperty = 'IgUser'
-
-            allObjects.push(fabricTextIG)
+                allObjects.push(fabricTextIG);
+                canvas.add(fabricTextIG);
+            }
 
             canvas.add(fabricTextD);
-            canvas.add(fabricTextIG);
+
         } else {
             // Agregar la imagen de fondo sin filtro de desenfoque
             fabric.Image.fromURL(backgroundImageSrc, function (img) {
@@ -836,18 +862,18 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 // Crear un degradado lineal desde abajo hasta arriba
                 let gradient = new fabric.Gradient({
                     type: 'linear',
-                    coords: { x1: 0, y1: 0, x2: 0, y2: 150 }, // Definir las coordenadas del gradiente
+                    coords: { x1: 0, y1: 0, x2: 0, y2: 200 }, // Definir las coordenadas del gradiente
                     colorStops: [
                         { offset: 0, color: 'rgba(0, 0, 0, 0)' }, // Punto de inicio del gradiente (negro)
-                        { offset: 1, color: 'rgba(0, 0, 0, 0.7)' }  // Punto final del gradiente (blanco)
+                        { offset: 1, color: 'rgba(0, 0, 0, 0.9)' },  // Punto final del gradiente (blanco)
                     ]
                 });
 
                 // Agregar el rectángulo negro
                 let rect = new fabric.Rect({
-                    top: 512 - 150,
+                    top: 512 - 180,
                     width: 512, // Ancho del rectángulo
-                    height: 150, // Altura del rectángulo
+                    height: 180, // Altura del rectángulo
                     fill: gradient, // Color de relleno del rectángulo (negro)
                     selectable: false,
                     evented: false,
@@ -1005,24 +1031,26 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 fabricTextD.top = 210;
             }
 
+            if (author) {
+                fabricTextIG = new fabric.Textbox('@xShadowx', {
+                    left: 150,
+                    top: 420,
+                    width: 200,
+                    fill: 'white',
+                    fontSize: 20,
+                    fontWeight: 'lighter',
+                    textAlign: 'center',
+                    textWrapping: 'auto',
+                    //plitByGrapheme: true
+                });
 
-            fabricTextIG = new fabric.Textbox('@xShadowx', {
-                left: 150,
-                top: 420,
-                width: 200,
-                fill: 'white',
-                fontSize: 20,
-                fontWeight: 'lighter',
-                textAlign: 'center',
-                textWrapping: 'auto',
-                //plitByGrapheme: true
-            });
-
-            fabricTextIG.customProperty = 'IgUser'
-            allObjects.push(fabricTextIG)
+                fabricTextIG.customProperty = 'IgUser'
+                allObjects.push(fabricTextIG);
+                canvas.add(fabricTextIG);
+            }
 
             canvas.add(fabricTextD);
-            canvas.add(fabricTextIG);
+
         } else {
             // Agregar la imagen de fondo sin filtro de desenfoque
             fabric.Image.fromURL(backgroundImageSrc, function (img) {
@@ -1066,7 +1094,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 textWrapping: 'auto',
                 selectable: false,
             });
-            
+
             allObjects.push(fabricTextD);
 
             let numLines = fabricTextD.textLines.length;
@@ -1092,7 +1120,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 fabricTextD.fontSize = 40;
                 fabricTextD.top = 340;
             };
-            
+
             canvas.add(fabricTextD);
 
         }

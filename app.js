@@ -1,5 +1,5 @@
 // app.js
-import { isSelectedCanvas, confirmAction, closeConfirmationModal, generateImage, deselectableAllCanvas, reactivarCanvas, toggleClickedStyle, saveImage, showConfirmationModal, deleteCanvas, modoEdicion, addPaddingIfNeeded, toggleBorder, toggleBold, addText, changeTextColor, changeTextFont, deleteText, selectAllCanvas } from './helpers.js';
+import { isSelectedCanvas, confirmAction, closeConfirmationModal, showConfirmationModalEdition,  generateImage, deselectableAllCanvas, reactivarCanvas, toggleClickedStyle, saveImage, showConfirmationModal, deleteCanvas, modoEdicion, addPaddingIfNeeded, toggleBorder, toggleBold, addText, changeTextColor, changeTextFont, deleteText, selectAllCanvas } from './helpers.js';
 import { putSelectedStyle } from './modals/chooseStyle.js';
 
 // Initialize the app
@@ -17,10 +17,10 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const formatIput = firstForm.elements["formatSelect"];
     const promptInput = firstForm.elements["prompt-input"];
-    if (formatIput.value.trim() === "" || promptInput.value.trim() === "") {
+    if (promptInput.value.trim() === "") {
       // Evitar que el formulario se envíe
       event.preventDefault();
-      alert("El campo no puede estar vacío.");
+      promptInput.focus();
     } else {
       // si el campo está lleno
 
@@ -56,10 +56,21 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event Listener para el input de color
   document.getElementById('colorPicker').addEventListener('input', changeTextColor);
   
+  document.getElementById('selectable-button-author').addEventListener('click', function() {
+    const button = document.getElementById('selectable-button-author');
+    console.log("oks")
+
+    if (button.classList.contains('selected')) {
+      button.classList.remove('selected');
+    } else {
+      button.classList.add('selected');
+    }
+  });
+  
   // Event listener para el choose style
   document.getElementById('chooseStyle').addEventListener('click', () => {
     showConfirmationModal('Elegir estilo', 'Ok?', function () {
-      console.log("ok")
+      
   }, 'modal-choose-style');
 });
 
@@ -72,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return false;
     } 
 
-    showConfirmationModal('Borrar Canvas', '¿Estás seguro?', function () {
+    showConfirmationModalEdition('Borrar Canvas', '¿Estás seguro?', function () {
       deleteCanvas();
     })
   });
@@ -209,9 +220,14 @@ document.addEventListener('DOMContentLoaded', () => {
   // modal buttons
   const confirmButton = document.getElementById('confirm-button-modal');
   const cancelButton = document.getElementById('cancel-button-modal');
+  const confirmButtonEdition = document.getElementById('confirm-button-modal-edition');
+  const cancelButtonEdition = document.getElementById('cancel-button-modal-edition');
 
-  confirmButton.addEventListener('click', confirmAction);
+  confirmButtonEdition.addEventListener('click', confirmAction);
+  cancelButtonEdition.addEventListener('click', closeConfirmationModal);
   cancelButton.addEventListener('click', closeConfirmationModal);
+
+
 
   putSelectedStyle();
 

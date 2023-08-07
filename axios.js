@@ -3,8 +3,6 @@ const refreshTokenEndpoint = 'http://localhost:8000/api/token/refresh/';
 let accessToken = localStorage.getItem('access');
 let refreshToken = localStorage.getItem('refresh');
 
-console.log("a",accessToken)
-console.log("r", refreshToken)
 
 async function logoutUser() {
   localStorage.removeItem('access')
@@ -34,7 +32,6 @@ async function refreshAccessToken() {
       }
   
       const data = await response.json();
-      console.log("dd", data)
 
       console.log("access", data.access);
       console.log("refresh", data.refresh);

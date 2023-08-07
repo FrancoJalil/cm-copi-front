@@ -26,16 +26,6 @@ export let stylesJSON = {
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337699/media/carousel-images/Ccarrusel_4-P1_wm8zwr.png'
             ]
         },
-        {
-            title: 'info3',
-            images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975268/media/carousel-images/Ccarrusel_2-P3_afztie.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975267/media/carousel-images/Ccarrusel_2-P2_b2syiw.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975265/media/carousel-images/Ccarrusel_2-P1_zqy6va.png'
-            ]
-        }
     ]
 }
 
@@ -70,7 +60,10 @@ export function putSelectedStyle() {
     }
 
     // close modal
+
     closeConfirmationModal();
+    
+    
 
 }
 
@@ -83,6 +76,7 @@ export function chooseStyleOnClick(styleJSON) {
 export function chooseStyle(confirmationModalContainer, style, confirmationModalTitle, confirmationModalContent) {
 
     if (!creado) {
+        
 
         document.getElementById('confirm-button-modal').style.display = 'none';
         document.getElementById('cancel-button-modal').textContent = 'X';
@@ -143,11 +137,14 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
                 img.src = imagesList[i];
                 allImages.appendChild(img);
             }
+            
 
 
         }
         creado = true;
-
+        
     }
+    
+    
 }
 

@@ -64,16 +64,16 @@
             <h4 id="titleStyleGenerate"></h4>
             <div class="images-container">
               <div id="allImagesGenerate" class="all-images">
-                
+
               </div>
             </div>
           </div>
 
           <div class="menu-style">
             <div class="menu-edit">
-              <button class="format-button">Carrusel</button>
+              <button disabled class="format-button">Carrusel</button>
               <button class="format-button">4</button>
-              <button class="format-button">Author</button>
+              <button type="button" class="format-button selected" id="selectable-button-author">Author</button>
             </div>
             <button type="button" class="format-button" id="chooseStyle">Choose style</button>
           </div>
@@ -91,7 +91,7 @@
 
         <div class="prompt-input-container">
           <input type="text" autocomplete="off" autofocus name="prompt-input" class="prompt-input" id="prompt-input"
-            placeholder="Type a prompt... Nutrición / Filosofía / Segunda guerra mundial / Albert Einstein">
+            placeholder="Type a prompt... // Ej: Segunda guerra mundial">
         </div>
 
         <button type="submit" class="generate-button" id="generate-button">Generate</button>
@@ -153,15 +153,23 @@
 
   <!-- Contenedor del modal de confirmación -->
   <div id="confirmationModal" class="modal">
+    
     <div class="modal-content" id="modalContent">
-
-
       <h2 id="confirmationModalTitle"></h2>
       <p id="confirmationModalContent"></p>
       <button class="generate-button" id="confirm-button-modal">Confirmar</button>
       <button class="generate-button" id="cancel-button-modal">Cancelar</button>
     </div>
+
+    <div class="modal-content edition" id="modalContentEdition">
+      <h2 id="confirmationModalTitleEdition"></h2>
+      <p id="confirmationModalContentEdition"></p>
+      <button class="generate-button" id="confirm-button-modal-edition">Confirmar</button>
+      <button class="generate-button" id="cancel-button-modal-edition">Cancelar</button>
+    </div>
   </div>
+
+
 
 
   </div>
