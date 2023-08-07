@@ -367,8 +367,19 @@ img {
     line-height: normal;
 }
 
+  
+#generate-button {
+    font-weight: 600px;
+    border-radius: 50px;
+    background: var(--gradient, linear-gradient(9deg, #2400FF 0%, rgb(234, 0, 255) 100%));
+}
+
+#generate-button:hover {
+    transition: 0s;
+    background: #121212;
+}
+
 .other-buttons {
-    transition: 0.2s;
     border: none;
     border-radius: .25rem;
     background: rgba(149, 92, 242, 0.50);
@@ -584,6 +595,7 @@ label {
     background-color: rgba(0, 0, 0, 0.48);
     border-radius: 5rem;
 }
+
 
 #cancel-button-modal:hover {
     background-color: #774166;

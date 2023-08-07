@@ -50,10 +50,16 @@ document.addEventListener('DOMContentLoaded', () => {
         div.classList.add('images-container');
 
         imagesCarrusel.forEach((image) => {
-
+          const imgContainer = document.createElement('div');
+          imgContainer.classList.add('imgContainer');
+          const downloadButton = document.createElement('button');
+          downloadButton.textContent = 'DOWNL'
+          
           const img = document.createElement('img');
           img.src = image.image_url;
-          div.appendChild(img)
+          imgContainer.appendChild(img);
+          imgContainer.appendChild(downloadButton);
+          div.appendChild(imgContainer);
           containerCalendar.appendChild(div);
         });
 

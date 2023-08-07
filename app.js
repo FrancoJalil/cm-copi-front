@@ -231,6 +231,27 @@ document.addEventListener('DOMContentLoaded', () => {
 
   putSelectedStyle();
 
+  // validations
+  document.getElementById('prompt-input').addEventListener('input', function (event) {
+    const maxLength = 100;
+    const currentLength = event.target.value.length;
+
+    if (currentLength > maxLength) {
+        // Si la longitud actual supera la máxima, recorta el contenido del textarea
+        event.target.value = event.target.value.slice(0, maxLength);
+      }
+});
+
+document.getElementById('textInput').addEventListener('input', function (event) {
+  const maxLength = 500;
+  const currentLength = event.target.value.length;
+
+  if (currentLength > maxLength) {
+      // Si la longitud actual supera la máxima, recorta el contenido del textarea
+      event.target.value = event.target.value.slice(0, maxLength);
+    }
+});
+
   
   
   

@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     align-items: left;
-    margin: 1.5rem 10rem;
+    margin: 1.5rem 5rem;
 
 }
 
@@ -47,4 +47,37 @@ h1 {
 
 .images-container img {
     margin: 1rem;
+}
+
+.imgContainer {
+    position: relative;
+    display: inline-block;
+}
+
+img {
+    display: block;
+    width: 250px;
+}
+
+.imgContainer button {
+    display: none;
+    position: absolute;
+    bottom: 10px; /* Ajusta la posición vertical del botón dentro de la imagen */
+    right: 10px; /* Ajusta la posición horizontal del botón dentro de la imagen */
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 1rem;
+}
+
+.imgContainer:hover button {
+    display: block;
+}
+
+.imgContainer:hover img {
+    transition: 0.2s;
+    filter: brightness(70%);
 }

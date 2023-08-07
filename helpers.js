@@ -541,6 +541,16 @@ export function generateImage() {
                         textField.cols = 30; // Establecer el número de columnas
                         textField.value = image_description; // Establecer el contenido del campo de texto
 
+                        textField.addEventListener('input', function (event) {
+                            const maxLength = 500;
+                            const currentLength = event.target.value.length;
+                        
+                            if (currentLength > maxLength) {
+                                // Si la longitud actual supera la máxima, recorta el contenido del textarea
+                                event.target.value = event.target.value.slice(0, maxLength);
+                              }
+                        });
+
                         let canvasDiv = document.createElement('div');
                         canvasDiv.classList.add('text-field-container');
                         containerCE.appendChild(canvasDiv);
