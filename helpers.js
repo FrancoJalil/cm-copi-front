@@ -872,10 +872,10 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 // Crear un degradado lineal desde abajo hasta arriba
                 let gradient = new fabric.Gradient({
                     type: 'linear',
-                    coords: { x1: 0, y1: 0, x2: 0, y2: 200 }, // Definir las coordenadas del gradiente
+                    coords: { x1: 0, y1: 0, x2: 0, y2: 100 }, // Definir las coordenadas del gradiente
                     colorStops: [
-                        { offset: 0, color: 'rgba(0, 0, 0, 0)' }, // Punto de inicio del gradiente (negro)
-                        { offset: 1, color: 'rgba(0, 0, 0, 0.9)' },  // Punto final del gradiente (blanco)
+                        { offset: 0, color: 'rgba(18, 18, 18, 0)' }, // Punto de inicio del gradiente (negro)
+                        { offset: 1, color: 'rgba(18, 18, 18, 0.9)' },  // Punto final del gradiente (blanco)
                     ]
                 });
 
@@ -1075,8 +1075,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     type: 'linear',
                     coords: { x1: 0, y1: 0, x2: 0, y2: 150 }, // Definir las coordenadas del gradiente
                     colorStops: [
-                        { offset: 0, color: 'rgba(0, 0, 0, 0)' }, // Punto de inicio del gradiente (negro)
-                        { offset: 1, color: 'rgba(0, 0, 0, 0.7)' }  // Punto final del gradiente (blanco)
+                        { offset: 0, color: 'rgba(18, 18, 18, 0)' }, // Punto de inicio del gradiente (negro)
+                        { offset: 1, color: 'rgba(18, 18, 18, 0.9)' }  // Punto final del gradiente (blanco)
                     ]
                 });
 
