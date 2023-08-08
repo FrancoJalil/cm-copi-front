@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Login</title>
-
+  
   <link rel="stylesheet" type="text/css" href="basic.css">
   <link rel="stylesheet" type="text/css" href="styles-login.css">
 
@@ -68,18 +68,18 @@
         fetch(fbUrlId)
           .then((response) => response.json())
           .then((data) => {
-            console.log("datos: ", data)
+            console.log("datos: ",data)
 
             console.log('x', data.data[0])
-
+            
             fbUrl = `https://graph.facebook.com/v17.0/${data.data[0].id}?fields=name&access_token=${accessToken}`
-
+            
             fetch(fbUrl)
               .then((responseDos) => responseDos.json())
               .then((dataDos) => console.log(dataDos));
-
+            
           });
-
+          
 
 
 
@@ -119,7 +119,7 @@
 
       } else {
         //document.getElementById('status').innerHTML = 'Login ' +
-        //'with facebook.';
+          //'with facebook.';
       }
     }
 
@@ -234,20 +234,28 @@
 <br>
 
 <body>
-  <div id="g_id_onload" data-client_id="948515701211-ikqtd9g2eknf1v8m4m00rk4mvasbfii7.apps.googleusercontent.com"
-    data-context="signin" data-ux_mode="popup" data-login_uri="https://mikai.netlify.app/login"
-    data-auto_prompt="false">
-  </div>
+<div id="g_id_onload"
+     data-client_id="948515701211-ikqtd9g2eknf1v8m4m00rk4mvasbfii7.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-login_uri="https://mikai.netlify.app/login"
+     data-auto_prompt="false">
+</div>
 
-  <div class="g_id_signin" data-type="standard" data-shape="pill" data-theme="filled_black" data-text="signin_with"
-    data-size="large" data-logo_alignment="left">
-  </div>
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="filled_black"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
   <br>
-  <form class="login-form" method="POST">
-    <input type="text" id="username" placeholder="username">
-    <input type="password" id="password" placeholder="Password">
-    <button type="button" onclick="login()" class="generate-button">Login</button>
-  </form>
+    <form class="login-form" method="POST">
+      <input type="text" id="username" placeholder="username">
+      <input type="password" id="password" placeholder="Password">
+      <button type="button" onclick="login()" class="generate-button">Login</button>
+    </form>
   </div>
 
   <script src="https://accounts.google.com/gsi/client" async></script>
