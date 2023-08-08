@@ -7,6 +7,7 @@ export let stylesJSON = {
     styles: [
         {
             title: BLACK_MARK,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png',
@@ -17,8 +18,9 @@ export let stylesJSON = {
         },
         {
             title: TRANSPARENT_MARK,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
-                
+
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337682/media/carousel-images/Ccarrusel_4-P0_eqzjaf.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337703/media/carousel-images/Ccarrusel_4-P4_zjyecn.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337702/media/carousel-images/Ccarrusel_4-P3_ea8pdd.png',
@@ -40,10 +42,12 @@ export function putSelectedStyle() {
     } else {
         selectedStyle = JSON.parse(selectedStyle);
     }
-    
+
     let styleImagesList = selectedStyle.images;
     let selectedTitleContainer = document.getElementById('titleStyleGenerate');
     let allImagesContainer = document.getElementById('allImagesGenerate');
+    let descPostTA = document.getElementById('descPostTA');
+    descPostTA.textContent = selectedStyle.post_description;
 
     selectedTitleContainer.textContent = selectedStyle.title;
 
@@ -52,6 +56,7 @@ export function putSelectedStyle() {
         allImagesContainer.removeChild(allImagesContainer.firstChild);
     }
 
+    allImagesContainer.appendChild(descPostTA)
 
     for (let i = 0; i < styleImagesList.length; i++) {
         let img = document.createElement('img');
@@ -62,8 +67,8 @@ export function putSelectedStyle() {
     // close modal
 
     closeConfirmationModal();
-    
-    
+
+
 
 }
 
@@ -76,7 +81,7 @@ export function chooseStyleOnClick(styleJSON) {
 export function chooseStyle(confirmationModalContainer, style, confirmationModalTitle, confirmationModalContent) {
 
     if (!creado) {
-        
+
 
         document.getElementById('confirm-button-modal').style.display = 'none';
         document.getElementById('cancel-button-modal').textContent = 'X';
@@ -118,10 +123,17 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
             images_button_container.classList.add('images_button_container');
             styleContainer.appendChild(images_button_container);
 
+
             let allImages = document.createElement('div');
             allImages.setAttribute('id', 'allImages' + stylesJSON.styles[i].title);
             allImages.classList.add('all-images');
             images_button_container.appendChild(allImages);
+            
+            const descCaru = document.createElement('textarea');
+            descCaru.classList.add('text-field-mg');
+            descCaru.textContent = stylesJSON.styles[i].post_description;
+            descCaru.readOnly = true;
+            allImages.appendChild(descCaru);
 
             let selectButton = document.createElement('button');
             formatContainer.setAttribute('id', 'selectButton' + stylesJSON.styles[i].title);
@@ -137,14 +149,14 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
                 img.src = imagesList[i];
                 allImages.appendChild(img);
             }
-            
+
 
 
         }
         creado = true;
-        
+
     }
-    
-    
+
+
 }
 
