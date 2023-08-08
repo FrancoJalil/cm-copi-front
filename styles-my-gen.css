@@ -84,3 +84,20 @@ img {
     transition: 0.2s;
     filter: brightness(70%);
 }
+
+textarea {
+    padding: 1rem;
+    font-family: Inter, sans-serif;
+}
+
+.text-field-mg {
+    color: #FFF;
+    background-color: rgb(18, 18, 18);
+    height: 180px;
+    width: 180px;
+    max-height: 250px;
+    max-width: 250px;
+    min-height: 100px;
+    min-width: 200px;
+    margin-left: 1rem;
+}

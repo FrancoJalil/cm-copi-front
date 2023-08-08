@@ -52,6 +52,12 @@ document.addEventListener('DOMContentLoaded', () => {
         const div = document.createElement('div');
         div.classList.add('images-container');
 
+        const descCaru = document.createElement('textarea');
+        descCaru.classList.add('text-field-mg');
+        descCaru.textContent = carrusel.post_description;
+        descCaru.readOnly = true;
+        div.appendChild(descCaru)
+
         imagesCarrusel.forEach((image, index) => {
           const imgContainer = document.createElement('div');
           imgContainer.classList.add('imgContainer');
@@ -75,6 +81,9 @@ document.addEventListener('DOMContentLoaded', () => {
         downloadAllButton.textContent = 'Download All';
         downloadAllButton.addEventListener('click', () => {
           const zip = new JSZip();
+          const textFile = new Blob([descCaru.value], { type: 'text/plain' });
+          zip.file('description.txt', textFile);
+
           imagesCarrusel.forEach((image, index) => {
             const imgFileName = `image${index}.jpg`; // Change the file name as needed
             fetch(image.image_url)
