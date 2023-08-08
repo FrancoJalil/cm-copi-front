@@ -52,8 +52,10 @@ document.addEventListener('DOMContentLoaded', () => {
         imagesCarrusel.forEach((image) => {
           const imgContainer = document.createElement('div');
           imgContainer.classList.add('imgContainer');
-          const downloadButton = document.createElement('button');
+          const downloadButton = document.createElement('a');
           downloadButton.textContent = 'DOWNL'
+          downloadButton.href = image.image_url;
+          downloadButton.download = `imagen-${index}.jpg`;
           
           const img = document.createElement('img');
           img.src = image.image_url;
