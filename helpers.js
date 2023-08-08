@@ -528,9 +528,9 @@ export function generateImage() {
                         let idea_actual = "idea" + (index + 1);
                         let front_image_text = data.gpt_response[idea_actual].image_text;
 
-                        let image_description = data.gpt_response[idea_actual].image_description
+                        let image_description = data.gpt_response[idea_actual].image_description;
 
-                        imagesDataFront.push({ image_description: image_description })
+                        imagesDataFront.push({ image_description: image_description });
 
 
                         // Crear un campo de texto de 250x250
@@ -549,6 +549,9 @@ export function generateImage() {
                                 // Si la longitud actual supera la máxima, recorta el contenido del textarea
                                 event.target.value = event.target.value.slice(0, maxLength);
                               }
+                              image_description = event.target.value;
+                              imagesDataFront[index].image_description = image_description;
+                              console.log(imagesDataFront);
                         });
 
                         let canvasDiv = document.createElement('div');
