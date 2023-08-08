@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
       //let carrusel.id = 1;
 
       data.forEach(carrusel => {
+        console.log("x")
         const continerOfGenerateds = document.createElement('div');
         continerOfGenerateds.id = 'container-of-generateds' + carrusel.id;
         continerOfGenerateds.classList.add('container-of-generateds');
@@ -35,15 +36,17 @@ document.addEventListener('DOMContentLoaded', () => {
         containerCalendar.appendChild(containerContentCalendar);
 
         const fechaText = document.createElement('h3');
-        fechaText.textContent = 'Prompt: '
+        fechaText.textContent = 'Prompt: ' + carrusel.prompt;
         fechaText.classList.add('fecha-publicacion');
         fechaText.id = 'fechatext' + carrusel.id;
         containerContentCalendar.appendChild(fechaText);
 
+        /*
         const fecha = document.createElement('h3');
         fecha.textContent = carrusel.prompt;
         fecha.id = 'fecha' + carrusel.id;
         containerContentCalendar.appendChild(fecha);
+        */
 
         let imagesCarrusel = carrusel.images;
         const div = document.createElement('div');
@@ -67,11 +70,37 @@ document.addEventListener('DOMContentLoaded', () => {
           containerCalendar.appendChild(div);
         });
 
+        // Add a download all button for the carrusel
+        const downloadAllButton = document.createElement('button');
+        downloadAllButton.textContent = 'Download All';
+        downloadAllButton.addEventListener('click', () => {
+          const zip = new JSZip();
+          imagesCarrusel.forEach((image, index) => {
+            const imgFileName = `image${index}.jpg`; // Change the file name as needed
+            fetch(image.image_url)
+              .then(response => response.blob())
+              .then(blob => {
+                zip.file(imgFileName, blob);
+                if (index === imagesCarrusel.length - 1) {
+                  zip.generateAsync({ type: 'blob' }).then(content => {
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(content);
+                    link.download = 'carrusel_images.zip'; // Change the zip file name as needed
+                    link.click();
+                  });
+                }
+              });
+          });
+        });
+
+        containerContentCalendar.appendChild(downloadAllButton); // Add the download all button to the carrusel container
+      });
+    })
+
 
         // Incrementamos el contador para el siguiente carrusel
         //carrusel.id++;
-      });
-    })
+      
     .catch(error => {
       console.error('Error fetching saved images:', error);
     });
