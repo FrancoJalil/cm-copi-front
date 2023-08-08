@@ -59,7 +59,8 @@ img {
     width: 250px;
 }
 
-.imgContainer button {
+.imgContainer a {
+    text-decoration: none;
     display: none;
     position: absolute;
     bottom: 10px; /* Ajusta la posición vertical del botón dentro de la imagen */
@@ -73,7 +74,7 @@ img {
     margin: 1rem;
 }
 
-.imgContainer:hover button {
+.imgContainer:hover a {
     display: block;
 }
 

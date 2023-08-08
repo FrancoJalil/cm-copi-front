@@ -49,13 +49,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const div = document.createElement('div');
         div.classList.add('images-container');
 
-        imagesCarrusel.forEach((image) => {
+        imagesCarrusel.forEach((image, index) => {
           const imgContainer = document.createElement('div');
           imgContainer.classList.add('imgContainer');
           const downloadButton = document.createElement('a');
           downloadButton.textContent = 'DOWNL'
-          downloadButton.href = image.image_url;
-          downloadButton.download = `imagen-${index}.jpg`;
+
+          var downloadUrl = image.image_url.replace("/upload/", "/upload/fl_attachment/");
+          downloadButton.href = downloadUrl;
+          downloadButton.download = 'image'+index;
           
           const img = document.createElement('img');
           img.src = image.image_url;
