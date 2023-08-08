@@ -236,7 +236,22 @@
 <body>
   <div class="container-login-form">
     <h2 class="login-title">Login</h2>
-    <button class="generate-button">Ingresar con Google</button>
+    <div id="g_id_onload"
+     data-client_id="948515701211-ikqtd9g2eknf1v8m4m00rk4mvasbfii7.apps.googleusercontent.com"
+     data-context="signin"
+     data-ux_mode="popup"
+     data-login_uri="http://127.0.0.1/login"
+     data-auto_prompt="false">
+</div>
+
+<div class="g_id_signin"
+     data-type="standard"
+     data-shape="pill"
+     data-theme="filled_black"
+     data-text="signin_with"
+     data-size="large"
+     data-logo_alignment="left">
+</div>
   <br>
     <form class="login-form" method="POST">
       <input type="text" id="username" placeholder="username">
@@ -245,7 +260,7 @@
     </form>
   </div>
 
-
+  <script src="https://accounts.google.com/gsi/client" async></script>
 
   <div id="fb-root"></div>
   <!-- <button type="button" onclick="requestAdditionalPermissions()">Solicitar permisos adicionales</button> -->
