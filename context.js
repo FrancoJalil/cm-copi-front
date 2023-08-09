@@ -20,7 +20,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Decodificar el token utilizando jwt-decode
     const decodedToken = decodeJWTAndGetUsername(accessToken);
 
-    const info = decodedToken(accessToken);
-    console.log(info)
+    console.log(decodedToken)
 
 });
