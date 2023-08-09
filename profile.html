@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-  <title>Generar Posts</title>
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <link rel="stylesheet" type="text/css" href="../styles.css">
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../styles.css">
+    <title>Profile</title>
 </head>
-
 <body>
+    <script src="axios.js"></script>
+    <script type="module" src="./context.js"></script>
+    <script src="router.js"></script>
 
+    
   <div class="menu-border">
     <div class="logo-container">
       <div class="logo">
@@ -54,175 +55,11 @@
 
   </div>
 
-
-
-  <div class="container" id="container-content">
-
-    <form id="firstInputUser">
-
-      <div class="format-container">
-
-        <h2 class="format-title">Style</h2>
-
-        <div class="formats-container">
-          <div class="style-container">
-            <h4 id="titleStyleGenerate"></h4>
-            <div class="images-container">
-              <div id="allImagesGenerate" class="all-images">
-                <textarea id="descPostTA" class="text-field-mg" readonly="true" name="" id="" cols="30" rows="10"></textarea>
-              </div>
-            </div>
-          </div>
-
-          <div class="menu-style">
-            <div class="menu-edit">
-              <button disabled class="format-button">Carrusel</button>
-              <button class="format-button">4</button>
-              <button type="button" class="format-button selected" id="selectable-button-author">Author</button>
-            </div>
-            <button type="button" class="format-button" id="chooseStyle">Choose style</button>
-          </div>
-
-
-        </div>
-
-      </div>
-
-      <div class="container-title-input">
-
-        <div class="prompt-title-container">
-          <h2 class="prompt-title">Prompt</h2>
-        </div>
-
-        <div class="prompt-input-container">
-          <input type="text" autocomplete="off" autofocus name="prompt-input" class="prompt-input" id="prompt-input"
-            placeholder="Type a prompt... // Ej: Segunda guerra mundial">
-        </div>
-
-        <button type="submit" class="generate-button" id="generate-button">Generate</button>
-    </form>
-
-  </div>
-
-
-  </div>
-
-  <div id="loadingSkeleton"></div>
-
-  <div id="generated-container">
-
-    <div id="imageContainer"></div>
-
-    <div id="canvasContainer"></div>
-
-    <div id="menu-canvas">
-
-      <div id="container-buttons-generated">
-        <button id="modo-edicion-button" class="other-buttons">Modo Edición</button>
-        <button id='save-image-button' class="other-buttons">Guardar</button>
-      </div>
-    </div>
-
-    <div id="container-editable">
-      <div id="select-all-canvas-cont"><label id="select-all-canvas"><input id="checkbox-input" type="checkbox">Select
-          all canvas</label></div>
-
-      <input type="text" id="textInput" placeholder="Ingrese el texto"></input>
-      <button id='add-text-button' class="generate-button">Agregar Texto</button>
-      <button id='delete-text-button' class="generate-button">Borrar Texto</button>
-      <button id='toggle-bold-button' class="generate-button">Negrita</button>
-      <button id='toggle-border-button' class="generate-button">Borde</button>
-      <button id='delete-canvas' class="generate-button">Borrar Canvas</button>
-      <input id='colorPicker' type="color" id="colorPicker" value="#ffffff">
-
-      <select id='fontSelect' id="fontSelect">
-        <option value="Arial">Arial</option>
-        <option value="Verdana">Verdana</option>
-        <option value="Helvetica">Helvetica</option>
-        <option value="Courier New">Courier New</option>
-      </select>
-    </div>
-
-
-
-
-    <ul id="imageList"></ul>
-  </div>
-
-
-  <div class="footer" id="footer"></div>
-
-  <!-- Botón para abrir el modal de confirmación 
-  <button onclick="showConfirmationModal()">Abrir Modal de Confirmación</button>
-  -->
-
-  <!-- Contenedor del modal de confirmación -->
-  <div id="confirmationModal" class="modal">
-    
-    <div class="modal-content" id="modalContent">
-      <h2 id="confirmationModalTitle"></h2>
-      <p id="confirmationModalContent"></p>
-      <button class="generate-button" id="confirm-button-modal">Confirmar</button>
-      <button class="generate-button" id="cancel-button-modal">Cancelar</button>
-    </div>
-
-    <div class="modal-content edition" id="modalContentEdition">
-      <h2 id="confirmationModalTitleEdition"></h2>
-      <p id="confirmationModalContentEdition"></p>
-      <button class="generate-button" id="confirm-button-modal-edition">Confirmar</button>
-      <button class="generate-button" id="cancel-button-modal-edition">Cancelar</button>
-    </div>
-  </div>
-
-
-
-
-  </div>
-
-  <script src="axios.js"></script>
-<script type="module" src="./context.js"></script>
-
-  <script type="module" src="./app.js"></script>
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.5.0/fabric.min.js"></script>
-
-  <script>
-    // Obtenemos la URL actual
-    var url = window.location.href;
-
-    // Obtenemos todos los enlaces del menú
-    var menuLinks = document.querySelectorAll(".menu a");
-
-
-    // Recorremos los enlaces para verificar si alguno coincide con la URL actual
-    menuLinks.forEach(function (link) {
-      if (link.href === url) {
-        // Agregamos la clase "active" al elemento "li" padre del enlace
-        link.parentElement.classList.add("active");
-      }
-    });
-  </script>
-
+  <h1>Your settings</h1>
+  <img src="" alt="" id="photo">
+  <p>Status: starter</p>
+  <br>
+  <p>Your email</p>
+  <p>example@gmail.com</p>
 </body>
-
-</html>
-
-
-
-
-
-
-
-<script>
-
-
-
-
-
-
-</script>
-
-<script src="router.js"></script>
-</body>
-
 </html>
