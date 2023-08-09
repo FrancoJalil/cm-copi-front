@@ -246,7 +246,13 @@
         userInfo: userInfo
       })
     })
-      .then(response => response.json())
+      .then(response => => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Error en la respuesta del servidor auth');
+        }
+      })
       .then(data => {
         console.log("Exito");
         localStorage.setItem('access', data.access_token);
