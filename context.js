@@ -28,6 +28,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Establecer el atributo "src" de la imagen con la URL del campo "picture"
     photoElementP.src = decodedToken.picture;
-    photoElement.src = decodedToken.picture;
+    photoElement.src = 'https://www.gstatic.com/identity/boq/accountsettingsmobile/dataandpersonalization_icon_96x96_cdb6dff2e31ed6745ece4662231bfd48.png';
 
 });
