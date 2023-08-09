@@ -251,8 +251,6 @@ document.getElementById('textInput').addEventListener('input', function (event) 
       event.target.value = event.target.value.slice(0, maxLength);
     }
 });
-
-  
   
   
 });

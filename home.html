@@ -179,7 +179,7 @@
   </div>
 
   <script src="axios.js"></script>
-  <!--<script type="module" src="./context.js"></script>-->
+<script type="module" src="./context.js"></script>
 
   <script type="module" src="./app.js"></script>
 
@@ -214,24 +214,13 @@
 
 <script>
 
-  function decodeJWTAndGetUsername(jwtToken) {
-    // In a real application, use the jsonwebtoken library to decode the JWT
-    // Replace this with the actual JWT decoding logic for your application
-    var decoded = jwtToken.split(".");
-
-    var jwt_decoded = JSON.parse(atob(decoded[1]))
-
-    return jwt_decoded.username;
-  }
-
-
-
 
 
 
 
 
 </script>
+
 <script src="router.js"></script>
 </body>
 
