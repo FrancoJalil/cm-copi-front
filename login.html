@@ -236,7 +236,7 @@
 <script>
   function onSuccess(userInfo) {
     console.log("Success", userInfo);
-    const url = 'http://localhost:8000/auth/google'
+    const url = 'http://localhost:8000/auth/google';
     fetch(url, {
       method: 'POST',
       headers: {
@@ -248,7 +248,12 @@
     })
       .then(response => response.json())
       .then(data => {
-        console.log(data)
+        console.log("Exito");
+        localStorage.setItem('access', data.access_token);
+        localStorage.setItem('refresh', data.refresh_token);
+
+        window.location.href = "/home";
+
       });
   }
 </script>
