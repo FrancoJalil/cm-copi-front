@@ -4,7 +4,7 @@ function decodeJWTAndGetUsername(jwtToken) {
     var decoded = jwtToken.split(".");
 
     var jwt_decoded = JSON.parse(atob(decoded[1]))
-
+    console.log(jwt_decoded)
     return jwt_decoded.email;
   }
 
