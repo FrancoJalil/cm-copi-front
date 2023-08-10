@@ -12,7 +12,7 @@
 <body>
     <script src="axios.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-    <script type="module" src="./context.js"></script>
+    <script type="module" src="./profile.js"></script>
     <script src="router.js"></script>
 
 
@@ -91,6 +91,23 @@
         </div>
 
     </div>
+
+    <script>
+        // Obtenemos la URL actual
+        var url = window.location.href;
+    
+        // Obtenemos todos los enlaces del menú
+        var menuLinks = document.querySelectorAll(".menu a");
+    
+    
+        // Recorremos los enlaces para verificar si alguno coincide con la URL actual
+        menuLinks.forEach(function (link) {
+          if (link.href === url) {
+            // Agregamos la clase "active" al elemento "li" padre del enlace
+            link.parentElement.classList.add("active");
+          }
+        });
+      </script>
 </body>
 
 </html>

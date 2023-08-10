@@ -1,12 +1,12 @@
 function decodeJWTAndGetUsername(jwtToken) {
-    // In a real application, use the jsonwebtoken library to decode the JWT
-    // Replace this with the actual JWT decoding logic for your application
-    var decoded = jwtToken.split(".");
+  // In a real application, use the jsonwebtoken library to decode the JWT
+  // Replace this with the actual JWT decoding logic for your application
+  var decoded = jwtToken.split(".");
 
-    var jwt_decoded = JSON.parse(atob(decoded[1]))
-    console.log(jwt_decoded)
-    return jwt_decoded;
-  }
+  var jwt_decoded = JSON.parse(atob(decoded[1]))
+  console.log(jwt_decoded)
+  return jwt_decoded;
+}
 
 
 
@@ -14,18 +14,20 @@ function decodeJWTAndGetUsername(jwtToken) {
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // extraer data jwt aquí
-    const accessToken = localStorage.getItem('access');
-    console.log(accessToken)
-    // Decodificar el token utilizando jwt-decode
-    const decodedToken = decodeJWTAndGetUsername(accessToken);
+  // extraer data jwt aquí
+  const accessToken = localStorage.getItem('access');
+  console.log(accessToken)
+  // Decodificar el token utilizando jwt-decode
+  const decodedToken = decodeJWTAndGetUsername(accessToken);
 
-    //document.getElementById('photo') decodedToken.picture
+  //document.getElementById('photo') decodedToken.picture
 
-    // Obtener el elemento de imagen por su id
-    const photoElement = document.getElementById('photo');
+  // Obtener el elemento de imagen por su id
+  const photoElement = document.getElementById('photo');
+  const photoElementP = document.getElementById('profilePhoto');
 
-    // Establecer el atributo "src" de la imagen con la URL del campo "picture"
-    photoElement.src = decodedToken.picture;
+  // Establecer el atributo "src" de la imagen con la URL del campo "picture"
+  photoElementP.src = decodedToken.picture;
+  photoElement.src = decodedToken.picture;
 
 });
