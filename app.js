@@ -11,8 +11,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const firstForm = document.getElementById("firstInputUser");
 
-  
-
   firstForm.addEventListener("submit", (event) => {
     event.preventDefault();
     const formatIput = firstForm.elements["formatSelect"];
