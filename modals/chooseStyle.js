@@ -38,6 +38,8 @@ export function putSelectedStyle() {
 
         // set default style
         selectedStyle = stylesJSON.styles[0]
+        localStorage.setItem('selectedStyle', selectedStyle);
+        return
 
     } else {
         selectedStyle = JSON.parse(selectedStyle);

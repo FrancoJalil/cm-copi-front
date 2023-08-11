@@ -1,5 +1,5 @@
 // app.js
-import { isSelectedCanvas, confirmAction, closeConfirmationModal, showConfirmationModalEdition,  generateImage, deselectableAllCanvas, reactivarCanvas, toggleClickedStyle, saveImage, showConfirmationModal, deleteCanvas, modoEdicion, addPaddingIfNeeded, toggleBorder, toggleBold, addText, changeTextColor, changeTextFont, deleteText, selectAllCanvas } from './helpers.js';
+import { isSelectedCanvas, confirmAction, closeConfirmationModal, showConfirmationModalEdition, generateImage, deselectableAllCanvas, reactivarCanvas, toggleClickedStyle, saveImage, showConfirmationModal, deleteCanvas, modoEdicion, addPaddingIfNeeded, toggleBorder, toggleBold, addText, changeTextColor, changeTextFont, deleteText, selectAllCanvas } from './helpers.js';
 import { putSelectedStyle } from './modals/chooseStyle.js';
 
 // Initialize the app
@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let listCheckboxChecked = [];
   let deselectCanvas = false;
 
-  
+  putSelectedStyle();
 
   const firstForm = document.getElementById("firstInputUser");
 
@@ -53,8 +53,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Event Listener para el input de color
   document.getElementById('colorPicker').addEventListener('input', changeTextColor);
-  
-  document.getElementById('selectable-button-author').addEventListener('click', function() {
+
+  document.getElementById('selectable-button-author').addEventListener('click', function () {
     const button = document.getElementById('selectable-button-author');
     console.log("oks")
 
@@ -64,22 +64,22 @@ document.addEventListener('DOMContentLoaded', () => {
       button.classList.add('selected');
     }
   });
-  
+
   // Event listener para el choose style
   document.getElementById('chooseStyle').addEventListener('click', () => {
     showConfirmationModal('Elegir estilo', 'Ok?', function () {
-      
-  }, 'modal-choose-style');
-});
 
-  
+    }, 'modal-choose-style');
+  });
+
+
 
   document.getElementById('delete-canvas').addEventListener('click', () => {
 
     if (!isSelectedCanvas()) {
-      
+
       return false;
-    } 
+    }
 
     showConfirmationModalEdition('Borrar Canvas', '¿Estás seguro?', function () {
       deleteCanvas();
@@ -179,7 +179,7 @@ document.addEventListener('DOMContentLoaded', () => {
       });
 
       document.getElementById('delete-text-button').addEventListener('click', () => {
-        
+
         toggleClickedStyle(targetElement, "null", "deleteText");
 
       });
@@ -225,30 +225,26 @@ document.addEventListener('DOMContentLoaded', () => {
   cancelButtonEdition.addEventListener('click', closeConfirmationModal);
   cancelButton.addEventListener('click', closeConfirmationModal);
 
-
-
-  putSelectedStyle();
-
   // validations
   document.getElementById('prompt-input').addEventListener('input', function (event) {
     const maxLength = 100;
     const currentLength = event.target.value.length;
 
     if (currentLength > maxLength) {
-        // Si la longitud actual supera la máxima, recorta el contenido del textarea
-        event.target.value = event.target.value.slice(0, maxLength);
-      }
-});
-
-document.getElementById('textInput').addEventListener('input', function (event) {
-  const maxLength = 500;
-  const currentLength = event.target.value.length;
-
-  if (currentLength > maxLength) {
       // Si la longitud actual supera la máxima, recorta el contenido del textarea
       event.target.value = event.target.value.slice(0, maxLength);
     }
-});
-  
-  
+  });
+
+  document.getElementById('textInput').addEventListener('input', function (event) {
+    const maxLength = 500;
+    const currentLength = event.target.value.length;
+
+    if (currentLength > maxLength) {
+      // Si la longitud actual supera la máxima, recorta el contenido del textarea
+      event.target.value = event.target.value.slice(0, maxLength);
+    }
+  });
+
+
 });
