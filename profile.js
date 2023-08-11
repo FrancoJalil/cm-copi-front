@@ -15,7 +15,7 @@ function decodeJWTAndGetUsername(jwtToken) {
 document.addEventListener('DOMContentLoaded', () => {
 
   // extraer data jwt aquí
-  const accessToken = localStorage.getItem('access');
+  const accessToken = localStorage.getItem('refresh');
   console.log(accessToken)
   // Decodificar el token utilizando jwt-decode
   const decodedToken = decodeJWTAndGetUsername(accessToken);
