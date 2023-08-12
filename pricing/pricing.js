@@ -1,47 +1,30 @@
-function goLoginPricing() {
 
-    localStorage.clear();
-    window.location.href = "/login?next=pricing";
 
+function purchase() {
+  
+  // api paypal
+  axios.get('http://localhost:8000/payments/paypal/subscription')
+    .then(response => {
+      // Capturar la respuesta exitosa
+      const responseData = response.data;
+      console.log('Respuesta exitosa:', responseData);
+
+      // Aquí puedes hacer lo que necesites con los datos de la respuesta
+    })
+    .catch(error => {
+      // Capturar los errores
+      console.error('Error en la solicitud:', error);
+      // Aquí puedes manejar el error de alguna manera, por ejemplo, mostrar un mensaje al usuario
+    });
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
 
-    // proteger ruta
-    let accessToken = localStorage.getItem('access');
+  // manejar el event listener directamente en el .html?
+  let purchaseButton = document.getElementById('paypal-button-container-P-5MC57938GY016445NMTLGJ2Y');
 
-    if (!accessToken) {
-        // user no logeado... llevarlo al login con el ?next=pricing
-        goLoginPricing();
-    }
+  purchaseButton.addEventListener('click', purchase);
 
-    // verificar access valido
-    let url = 'http://localhost:8000/api/token/verify/';
-    fetch(url, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({
-          token: accessToken,
-        })
-      })
-        .then(response => {
-            if (response.ok) {
-                // TODO OK
-            } else {
-                // LOGEARLO
-                goLoginPricing();
-            }
-        })
-        .catch(error => {
-            console.error('Error en la verificación del token:', error);
-            // LOGEARLO
-            goLoginPricing();
-            
-          });
-
-    let getStartedButton = document.getElementById('purchaseButton');
-
-    getStartedButton.addEventListener('click', getStartedFlux);
 });
+
