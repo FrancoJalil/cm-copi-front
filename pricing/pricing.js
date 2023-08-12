@@ -4,7 +4,7 @@ function ifNotPremium() {
   let access_token = localStorage.getItem('access');
 
   if (access_token) {
-    const url = 'http://localhost:8000/api/token/verify'
+    const url = 'http://localhost:8000/api/token/verify/'
     fetch(url, {
       method: 'POST',
       headers: {
