@@ -5,15 +5,12 @@ function ifNotPremium() {
   let refresh_token = localStorage.getItem('refresh');
 
   if (access_token) {
-    const url = 'http://localhost:8000/api/token/verify/'
+    const url = `http://localhost:8000/api/token/verify/?auth_token=${access_token}`;
     fetch(url, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        auth_token: access_token,
-      })
+      }
     }).then(response => {
       if (!response.ok) {
         // Token verification failed, stay on the login page
