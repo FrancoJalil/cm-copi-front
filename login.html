@@ -14,7 +14,7 @@
     window.onload = function () {
       // Ya esta logeado? redireccionarlo al home
 
-      const access_token = localStorage.getItem('access')
+      const access_token = localStorage.getItem('access');
 
       if (access_token) {
         const url = 'http://localhost:8000/api/token/verify'
@@ -24,7 +24,7 @@
             'Content-Type': 'application/json'
           },
           body: JSON.stringify({
-            auth_token: accessToken,
+            auth_token: access_token,
           })
         }).then(response => {
           if (!response.ok) {
