@@ -7,7 +7,7 @@ function ifNotPremium() {
   if (access_token) {
     const url = 'http://localhost:8000/api/token/verify/'
     fetch(url, {
-      method: 'POST',
+      method: 'GET',
       headers: {
         'Content-Type': 'application/json'
       },
