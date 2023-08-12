@@ -5,12 +5,15 @@ function ifNotPremium() {
   let refresh_token = localStorage.getItem('refresh');
 
   if (access_token) {
-    const url = `http://localhost:8000/api/token/verify/?auth_token=${access_token}`;
+    const url = 'http://localhost:8000/api/token/verify/'
     fetch(url, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify({
+        auth_token: access_token,
+      })
     }).then(response => {
       if (!response.ok) {
         // Token verification failed, stay on the login page
@@ -20,7 +23,7 @@ function ifNotPremium() {
       return response.json();
     })
       .then(data => {
-        let jwt_token = decodeJWTAndGetUsername(refresh_token);
+        let jwt_token = decodeJWTAndGetUsername(refresh_token)
 
         if (jwt_token.status === 'member') {
           window.location.href = "/home";
