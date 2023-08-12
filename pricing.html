@@ -42,7 +42,9 @@
         });
       },
       onApprove: function(data, actions) {
-        alert(data.subscriptionID); // You can add optional success message for the subscriber here
+        // You can add optional success message for the subscriber here
+        alert(data.subscriptionID);
+        // enviar data.subscriptionID al backend
         
       }
   }).render('#paypal-button-container-P-5MC57938GY016445NMTLGJ2Y'); // Renders the PayPal button
