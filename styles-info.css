@@ -1,0 +1,132 @@
+body {
+    align-items: center;
+    justify-content: space-between;
+}
+
+.content-container {
+    height: 90vh;
+    color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.extra-container {
+    height: 100vh;
+    color: #f2f2f2;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.extra-container .content {
+    height: 70%;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.extra-container img {
+    width: 50%;
+}
+
+.copy {
+    font-weight: 600;
+    text-align: left;
+    width: 40%;
+}
+
+.video {
+    width: 50%;
+}
+
+img {
+    border-radius: 3.25rem;
+    width: 100%;
+}
+
+.menu {
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    height: 5rem;
+    list-style: none;
+}
+
+.menu-border {
+    justify-content: space-between;
+    display: flex;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.menu li {
+    height: 100%;
+    display: flex;
+    align-items: center;
+}
+
+
+.menu li a {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    transition: 0.2s;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 1rem;
+    font-weight: 900;
+    margin: 0 1rem;
+    margin-right: 4rem;
+}
+
+
+.menu li a:hover {
+    color: rgba(255, 255, 255, 1);
+    /* Cambia el color del texto a negro en el hover */
+    transition: 0.2s;
+}
+
+.menu-style {
+    display: inline-flex;
+    justify-content: space-between;
+    text-align: left;
+    padding: 1rem;
+    padding-top: 0.5rem;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.5);
+    /* Color para elementos "no active" */
+}
+
+h3 {
+    font-size: 42px;
+}
+
+.content-container p {
+    margin: 0.5rem 0rem;
+    color: white;
+    opacity: 95%;
+    font-weight: 400;
+}
+
+.gradient {
+    background: linear-gradient(193deg, #00D1FF 0%, #EB00FF 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: 600;
+}
+
+.generate-button {
+    margin: 2rem 0rem;
+    border-radius: 50px;
+    background: linear-gradient(81.02deg, rgb(250, 85, 96) -23.47%, rgb(177, 75, 244) 45.52%, rgb(77, 145, 255) 114.8%);
+}
