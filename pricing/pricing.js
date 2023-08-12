@@ -12,7 +12,7 @@ function ifNotPremium() {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        auth_token: access_token,
+        token: access_token,
       })
     }).then(response => {
       if (!response.ok) {
