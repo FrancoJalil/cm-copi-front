@@ -56,7 +56,7 @@
         }, {
           headers: {
             'Content-Type': 'application/json',
-            'Authorization': 'Bearer ' + String(access_token_g)
+            'Authorization': 'Bearer ' + String(localStorage.getItem('access'))
           }
         })
           .then(response => {
