@@ -246,7 +246,13 @@
         userInfo: userInfo
       })
     })
-      .then(response => response.json())
+      .then(response => {
+        if (response.ok) {
+          return response.json();
+        } else {
+          throw new Error('Error en la solicitud de autenticación con Google');
+        }
+      })
       .then(data => {
         localStorage.setItem('access', data.access_token);
         localStorage.setItem('refresh', data.refresh_token);
@@ -259,10 +265,13 @@
           // Hacer algo si se encuentra "?next=pricing" en la URL
           console.log('La URL contiene "?next=pricing"');
           window.location.href = "/pricing";
+        } else {
+          window.location.href = "/home";
         }
-
-        window.location.href = "/home";
-
+      })
+      .catch(error => {
+        console.error('Error durante la autenticación con Google:', error);
+        // Manejar el error, por ejemplo, mostrar mensaje de error al usuario
       });
   }
 </script>
