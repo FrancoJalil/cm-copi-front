@@ -2,6 +2,7 @@ import { decodeJWTAndGetUsername } from '../profile.js'
 
 function ifNotPremium() {
   let access_token = localStorage.getItem('access');
+  let refresh_token = localStorage.getItem('refresh');
 
   if (access_token) {
     const url = 'http://localhost:8000/api/token/verify/'
@@ -22,7 +23,7 @@ function ifNotPremium() {
       return response.json();
     })
       .then(data => {
-        let jwt_token = decodeJWTAndGetUsername(access_token)
+        let jwt_token = decodeJWTAndGetUsername(refresh_token);
 
         if (jwt_token.status === 'member') {
           window.location.href = "/home";
