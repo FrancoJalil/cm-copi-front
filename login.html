@@ -251,6 +251,15 @@
         localStorage.setItem('access', data.access_token);
         localStorage.setItem('refresh', data.refresh_token);
 
+        // Obtener la cadena de consulta de la URL actual
+        const queryString = window.location.search;
+
+        // Verificar si la cadena de consulta contiene "?next=pricing"
+        if (queryString.includes('?next=pricing')) {
+          // Hacer algo si se encuentra "?next=pricing" en la URL
+          console.log('La URL contiene "?next=pricing"');
+        }
+
         window.location.href = "/home";
 
       });
