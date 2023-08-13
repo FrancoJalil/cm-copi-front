@@ -25,7 +25,11 @@ document.addEventListener('DOMContentLoaded', () => {
   // Obtener el elemento de imagen por su id
   const photoElement = document.getElementById('photo');
   const photoElementP = document.getElementById('profilePhoto');
+  const emailElement = document.getElementById('email');
+  const statusElement = document.getElementById('status');
 
+  statusElement.textContent = decodedToken.status;
+  emailElement.textContent = decodedToken.email;
   // Establecer el atributo "src" de la imagen con la URL del campo "picture"
   photoElementP.src = decodedToken.picture;
   photoElement.src = decodedToken.picture;
