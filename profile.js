@@ -31,7 +31,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   statusElement.textContent = decodedToken.status;
   emailElement.textContent = decodedToken.email;
-  tokensElement.textContent = decodedToken.email;
+  tokensElement.textContent = decodedToken.tokens;
   // Establecer el atributo "src" de la imagen con la URL del campo "picture"
   photoElementP.src = decodedToken.picture;
   photoElement.src = decodedToken.picture;
