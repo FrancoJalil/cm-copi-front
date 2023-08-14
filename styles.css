@@ -714,6 +714,7 @@ button.cancel:hover {
     display: inline-flex;
     padding-bottom: 1rem;
     align-items: center;
+    overflow-x: auto;
 }
 
 .all-images img {
