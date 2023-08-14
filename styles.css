@@ -696,9 +696,9 @@ button.cancel:hover {
 .images-container {
     background-color: rgba(0, 0, 0, 0.48);
     border-radius: 1rem;
-    align-items: center;
     width: 90%;
     display: inline-flex;
+    overflow: auto;
 }
 
 .images_button_container {
@@ -712,13 +712,12 @@ button.cancel:hover {
 
 .all-images {
     display: inline-flex;
-    overflow: auto;
     padding-bottom: 1rem;
     align-items: center;
 }
 
 .all-images img {
-    margin: 1rem;
+    padding: 1rem;
     border-radius: 1rem;
     width: 20%;
     height: 20%;
