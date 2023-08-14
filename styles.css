@@ -332,6 +332,9 @@ img {
     align-items: center;
     justify-content: center;
 }
+.modal-choose-style .formats-container {
+    width: 90%;
+}
 
 .formats-container {
 
@@ -339,7 +342,6 @@ img {
     /*border: 1px solid rgba(255, 255, 255, 0.30);*/
     border-radius: 1rem;
     margin: 0 10rem;
-    width: 90%;
 }
 
 .formats-container input {
@@ -702,14 +704,21 @@ button.cancel:hover {
     overflow: auto;
 }
 
+.modal-choose-style .images_button_container {
+    width: 100%;
+}
+
 .images_button_container {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
-    width: 100%;
 
 }
 
+
+.modal-choose-style .all-images {
+    width: fit-content;
+}
 
 
 .all-images {
@@ -717,7 +726,6 @@ button.cancel:hover {
     padding-bottom: 1rem;
     align-items: center;
     overflow-x: auto;
-    width: fit-content;
 }
 
 .all-images img {
