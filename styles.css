@@ -339,6 +339,7 @@ img {
     /*border: 1px solid rgba(255, 255, 255, 0.30);*/
     border-radius: 1rem;
     margin: 0 10rem;
+    width: 90%;
 }
 
 .formats-container input {
@@ -625,7 +626,7 @@ label {
     text-align: center;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
 }
 
 .modal-choose-style #cancelButtonModal {
@@ -705,6 +706,7 @@ button.cancel:hover {
     display: inline-flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
 
 }
 
@@ -715,6 +717,7 @@ button.cancel:hover {
     padding-bottom: 1rem;
     align-items: center;
     overflow-x: auto;
+    width: fit-content;
 }
 
 .all-images img {
