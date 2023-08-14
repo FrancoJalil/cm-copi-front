@@ -27,11 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const photoElementP = document.getElementById('profilePhoto');
   const emailElement = document.getElementById('email');
   const statusElement = document.getElementById('status');
+  const tokensElement = document.getElementById('tokens');
 
   statusElement.textContent = decodedToken.status;
   emailElement.textContent = decodedToken.email;
+  tokensElement.textContent = decodedToken.email;
   // Establecer el atributo "src" de la imagen con la URL del campo "picture"
   photoElementP.src = decodedToken.picture;
   photoElement.src = decodedToken.picture;
+  tokensElement.textContent = decodedToken.tokens;
 
 });
