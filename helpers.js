@@ -40,7 +40,7 @@ export function isSelectedCanvas() {
 
 // Función para cerrar el modal de confirmación
 export function closeConfirmationModal() {
-    
+
     confirmationModal.style.display = "none";
 }
 
@@ -544,14 +544,14 @@ export function generateImage() {
                         textField.addEventListener('input', function (event) {
                             const maxLength = 500;
                             const currentLength = event.target.value.length;
-                        
+
                             if (currentLength > maxLength) {
                                 // Si la longitud actual supera la máxima, recorta el contenido del textarea
                                 event.target.value = event.target.value.slice(0, maxLength);
-                              }
-                              image_description = event.target.value;
-                              imagesDataFront[index].image_description = image_description;
-                              console.log(imagesDataFront);
+                            }
+                            image_description = event.target.value;
+                            imagesDataFront[index].image_description = image_description;
+                            console.log(imagesDataFront);
                         });
 
                         let canvasDiv = document.createElement('div');
@@ -1134,6 +1134,179 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 fabricTextD.top = 340;
             };
 
+            canvas.add(fabricTextD);
+
+        }
+    }
+
+    else if (format === 'test') {
+
+
+        if (!original) {
+            let canvasRect;
+
+            // Agregar la imagen de fondo con el filtro de desenfoque
+
+            fabric.Image.fromURL(backgroundImageSrc, function (img) {
+
+                img.scaleToWidth(canvas.width);
+
+
+                img.filters.push(new fabric.Image.filters.Blur({
+                    //blur: 0.2 // Valor del desenfoque (0 para sin desenfoque, aumenta para mayor desenfoque)
+                }, { crossOrigin: 'Anonymous' }));
+                img.applyFilters();
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+
+                let circle = new fabric.Circle({
+                    left: 280,       // Posición en X del círculo
+                    top: 0-256,        // Posición en Y del círculo
+                    radius: 512,     // Radio del círculo (20 en este caso)
+                    selectable: false,
+                    evented: false,
+                    fill: '#f5efd7',
+                });
+                
+                
+
+               
+
+                if (author) {
+                    // Crear un círculo
+                    let photo = new fabric.Circle({
+                        left: 450,       // Posición en X del círculo
+                        top: 450,        // Posición en Y del círculo
+                        radius: 18,     // Radio del círculo (20 en este caso)
+                        selectable: false,
+                        evented: false,
+                        fill: new fabric.Pattern({
+                            source: img.getElement(),
+                            repeat: 'no-repeat'
+                        })
+                    });
+
+                    canvas.add(photo);
+                }
+                canvas.add(circle);
+
+                circle.sendToBack();
+
+            }, { crossOrigin: 'Anonymous' });
+            // Agregar el texto "holis"
+            fabricTextD = new fabric.Textbox(image_text_carru, {
+                left: 300,
+                top: 100,
+                width: 190,
+                fill: '#121212',
+                fontSize: 25,
+                textAlign: 'right',
+                textWrapping: 'auto',
+                selectable: false,
+                //plitByGrapheme: true
+            });
+
+            allObjects.push(fabricTextD)
+            /*
+            let numLines = fabricTextD.textLines.length;
+            if (numLines >= 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 190;
+            }
+
+            else if (numLines == 1) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 250;
+            }
+
+            else if (numLines == 2) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 210;
+            }
+            */
+
+
+            if (author) {
+                fabricTextIG = new fabric.Textbox('@xShadowx', {
+                    left: 340,
+                    top: 460,
+                    width: 105,
+                    fill: '#121212',
+                    fontSize: 16,
+                    fontWeight: 'lighter',
+                    textAlign: 'right',
+                    textWrapping: 'auto',
+                    selectable: false,
+                    //plitByGrapheme: true
+                });
+
+                fabricTextIG.customProperty = 'IgUser'
+
+                allObjects.push(fabricTextIG);
+                canvas.add(fabricTextIG);
+            }
+
+            canvas.add(fabricTextD);
+
+        } else {
+            // Agregar la imagen de fondo sin filtro de desenfoque
+            fabric.Image.fromURL(backgroundImageSrc, function (img) {
+
+
+                img.scaleToWidth(canvas.width);
+
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+                let circle = new fabric.Circle({
+                    left: 0-700,       // Posición en X del círculo
+                    top: 0-256,        // Posición en Y del círculo
+                    radius: 512,     // Radio del círculo (20 en este caso)
+                    selectable: false,
+                    evented: false,
+                    fill: '#f5efd7',
+                });
+                canvas.add(circle);
+                circle.sendToBack();
+
+            }, { crossOrigin: 'Anonymous' });
+            // Agregar el texto "holis"
+            fabricTextD = new fabric.Textbox(image_text_carru, {
+                left: 10,
+                top: 100,
+                width: 290,
+                fill: '#121212',
+                fontSize: 25,
+                textAlign: 'left',
+                textWrapping: 'auto',
+                selectable: false,
+            });
+            allObjects.push(fabricTextD)
+
+            /*
+            let numLines = fabricTextD.textLines.length;
+            if (numLines == 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 25;
+                fabricTextD.top = 400;
+
+            }
+
+            else if (numLines == 2) {
+                fabricTextD.fontSize = 25;
+                fabricTextD.top = 400;
+            }
+
+            else if (numLines == 1) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 400;
+            }
+
+            else if (numLines > 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 25;
+                fabricTextD.top = 340;
+            }
+            */
             canvas.add(fabricTextD);
 
         }
