@@ -467,6 +467,8 @@ img {
     text-decoration: none;
     color: rgba(255, 255, 255, 0.5);
     /* Color para elementos "no active" */
+    width: 90%;
+    justify-content: space-between;
 }
 
 li.active a {
