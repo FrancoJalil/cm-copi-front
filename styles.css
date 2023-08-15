@@ -278,6 +278,13 @@ img {
     transition: 0.2s;
 }
 
+.tokens {
+    background: linear-gradient(81.02deg, rgb(250, 85, 96) -23.47%, rgb(177, 75, 244) 45.52%, rgb(77, 145, 255) 114.8%);
+    padding: 0.45rem 1rem;
+    border-radius: 3.25rem;
+    width: 70%;
+}
+
 .container-title-input {
     width: 70%;
     flex-direction: column;
