@@ -29,12 +29,10 @@ document.addEventListener('DOMContentLoaded', () => {
     console.log(author && !!authorPhoto.src);
     if (promptInput.value.trim() === "" || (author && !authorPhotoStorage)) {
       // Evitar que el formulario se envíe
-      console.log("NOELSE")
       event.preventDefault();
       promptInput.focus();
     } else {
       // si el campo está lleno
-      console.log("ELSE!")
       // deshabilita el boton 'Generate' para ahorrar bugs
       const generateButton = document.getElementById("generate-button");
       generateButton.classList.add("disabled-button");
@@ -50,7 +48,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (button.classList.contains('selected')) {
       button.classList.remove('selected');
       author = false;
+      document.getElementById('author-modal').style.display = 'none';
     } else {
+      document.getElementById('author-modal').style.display = 'inline';
       button.classList.add('selected');
     }
   });
