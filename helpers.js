@@ -32,6 +32,8 @@ var confirmationModalContainer = document.getElementById("modalContent");
 var confirmationModal = document.getElementById("confirmationModal");
 var confirmationModalTitle = document.getElementById("confirmationModalTitle");
 var confirmationModalContent = document.getElementById("confirmationModalContent");
+let authorName;
+let authorPhoto;
 var confirmationAction;
 
 export function isSelectedCanvas() {
@@ -395,6 +397,11 @@ export function generateImage() {
         showLoading(false);
         console.log("loaded")
 
+        authorName = document.getElementById('authorName');
+        authorName = authorName.value;
+
+        authorPhoto = localStorage.getItem('authorPhoto');
+        
 
         iniciarBloqueadoMenuEdicion();
 
@@ -777,31 +784,39 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 });
 
                 if (author) {
+
+                    let authorPhotoC = new Image();
+                    authorPhotoC.src = 'https://images.pagina12.com.ar/styles/width960/public/2022-07/581040-mxlva0yl6tcxi6sjsuah9onxfj5.jpg?itok=r6tHonTt.png';
                     // Crear un círculo
-                    let photo = new fabric.Circle({
-                        left: 236,       // Posición en X del círculo
-                        top: 60,        // Posición en Y del círculo
-                        radius: 20,     // Radio del círculo (20 en este caso)
-                        selectable: false,
-                        evented: false,
-                        fill: new fabric.Pattern({
-                            source: img.getElement(),
-                            repeat: 'no-repeat'
-                        })
-                    });
+                    authorPhotoC.onload = function () {
+                        let photo = new fabric.Circle({
+                            left: 236,       // Posición en X del círculo
+                            top: 60,        // Posición en Y del círculo
+                            radius: 20,     // Radio del círculo (20 en este caso)
+                            selectable: false,
+                            evented: false,
+                            fill: new fabric.Pattern({
+                                source: authorPhotoC,
+                                repeat: 'no-repeat',
+                            })
+                            
+                        });
+                        let circle = new fabric.Circle({
+                            left: 226,       // Posición en X del círculo
+                            top: 50,        // Posición en Y del círculo
+                            radius: 30,     // Radio del círculo (20 en este caso)
+                            selectable: false,
+                            evented: false,
+                            fill: '#121212',
+                        });
+                        canvas.add(circle);
+                        canvas.add(photo);
+                    };
 
                     // Crear un círculo
 
-                    let circle = new fabric.Circle({
-                        left: 226,       // Posición en X del círculo
-                        top: 50,        // Posición en Y del círculo
-                        radius: 30,     // Radio del círculo (20 en este caso)
-                        selectable: false,
-                        evented: false,
-                        fill: '#121212',
-                    });
-                    canvas.add(circle);
-                    canvas.add(photo);
+                    
+                    
                 }
                 canvas.add(rect);
 
@@ -841,7 +856,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
             if (author) {
-                fabricTextIG = new fabric.Textbox('@xShadowx', {
+                
+                fabricTextIG = new fabric.Textbox('@'+authorName, {
                     left: 150,
                     top: 120,
                     width: 200,
@@ -1045,7 +1061,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             }
 
             if (author) {
-                fabricTextIG = new fabric.Textbox('@xShadowx', {
+                fabricTextIG = new fabric.Textbox('@'+authorName, {
                     left: 150,
                     top: 420,
                     width: 200,
@@ -1227,7 +1243,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
             if (author) {
-                fabricTextIG = new fabric.Textbox('@xShadowx', {
+                fabricTextIG = new fabric.Textbox('@'+authorName, {
                     left: 340,
                     top: 460,
                     width: 105,

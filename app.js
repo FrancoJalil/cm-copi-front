@@ -65,6 +65,42 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  document.getElementById('selectable-button-author').addEventListener('click', function () {
+
+  });
+
+  const inputFile = document.getElementById('input-file');
+  const imagePreview = document.getElementById('authorPhoto');
+
+  inputFile.addEventListener('input', function (event) {
+    const input = event.target;
+
+    if (input.files && input.files[0]) {
+      const reader = new FileReader();
+
+      reader.onload = function (e) {
+        imagePreview.src = e.target.result;
+        // llamar a api y mandarle la foto
+        // Enviar la imagen al servidor usando Axios
+        const photoData = e.target.result;
+
+        axios.post('http://localhost:8000/author-photo/', { photo: photoData })
+          .then(response => {
+            // Manejar la respuesta del servidor, que podría contener la URL actualizada de la foto
+            console.log('Respuesta del servidor:', response.data);
+            localStorage.setItem('authorPhoto', response.data.photo_url);
+          })
+          .catch(error => {
+            // Manejar los errores en caso de que ocurran durante la llamada a la API
+            console.error('Error al llamar a la API:', error);
+          });
+        
+      };
+
+      reader.readAsDataURL(input.files[0]);
+    }
+  });
+
   // Event listener para el choose style
   document.getElementById('chooseStyle').addEventListener('click', () => {
     showConfirmationModal('Elegir estilo', 'Ok?', function () {
@@ -73,6 +109,20 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
 
+  document.getElementById('authorName').addEventListener('input', (e) => {
+    localStorage.setItem('author', e.target.value)
+  });
+
+
+  // MANTENER VALORES DEL USUARIO SIEMPRE
+  if (localStorage.getItem('author')) {
+    document.getElementById('authorName').value = localStorage.getItem('author');
+  }
+
+  if (localStorage.getItem('authorPhoto')) {
+    document.getElementById('authorPhoto').src = localStorage.getItem('authorPhoto');
+  }
+  //
 
   document.getElementById('delete-canvas').addEventListener('click', () => {
 
