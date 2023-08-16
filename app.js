@@ -4,8 +4,14 @@ import { putSelectedStyle } from './modals/chooseStyle.js';
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
+  let author = true;
   let listCheckboxChecked = [];
   let deselectCanvas = false;
+  let authorImage;
+  let authorPhotoStorage = localStorage.getItem('authorPhoto');
+
+  const imagePreview = document.getElementById('authorPhoto');
+  const authorPhoto = document.getElementById('input-file');
 
   putSelectedStyle();
 
@@ -15,13 +21,20 @@ document.addEventListener('DOMContentLoaded', () => {
     event.preventDefault();
     const formatIput = firstForm.elements["formatSelect"];
     const promptInput = firstForm.elements["prompt-input"];
-    if (promptInput.value.trim() === "") {
+
+    console.log(author)
+    console.log(!!authorPhoto.src)
+    console.log(!authorPhoto.src)
+    console.log(author && !authorPhoto.src);
+    console.log(author && !!authorPhoto.src);
+    if (promptInput.value.trim() === "" || (author && !authorPhotoStorage)) {
       // Evitar que el formulario se envíe
+      console.log("NOELSE")
       event.preventDefault();
       promptInput.focus();
     } else {
       // si el campo está lleno
-
+      console.log("ELSE!")
       // deshabilita el boton 'Generate' para ahorrar bugs
       const generateButton = document.getElementById("generate-button");
       generateButton.classList.add("disabled-button");
@@ -29,6 +42,22 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+  document.getElementById('selectable-button-author').addEventListener('click', function () {
+    const button = document.getElementById('selectable-button-author');
+    console.log("oks")
+
+    if (button.classList.contains('selected')) {
+      button.classList.remove('selected');
+      author = false;
+    } else {
+      button.classList.add('selected');
+    }
+  });
+
+  document.getElementById('selectable-button-author').addEventListener('click', function () {
+
+  });
 
   // Event Listener para el botón "Modo Edición"
   document.getElementById('modo-edicion-button').addEventListener('click', modoEdicion);
@@ -54,23 +83,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event Listener para el input de color
   document.getElementById('colorPicker').addEventListener('input', changeTextColor);
 
-  document.getElementById('selectable-button-author').addEventListener('click', function () {
-    const button = document.getElementById('selectable-button-author');
-    console.log("oks")
-
-    if (button.classList.contains('selected')) {
-      button.classList.remove('selected');
-    } else {
-      button.classList.add('selected');
-    }
-  });
-
-  document.getElementById('selectable-button-author').addEventListener('click', function () {
-
-  });
+ 
 
   const inputFile = document.getElementById('input-file');
-  const imagePreview = document.getElementById('authorPhoto');
+  
 
   inputFile.addEventListener('input', function (event) {
     const input = event.target;
@@ -79,22 +95,35 @@ document.addEventListener('DOMContentLoaded', () => {
       const reader = new FileReader();
 
       reader.onload = function (e) {
-        imagePreview.src = e.target.result;
-        // llamar a api y mandarle la foto
-        // Enviar la imagen al servidor usando Axios
-        const photoData = e.target.result;
+        const image = new Image();
 
-        axios.post('http://localhost:8000/author-photo/', { photo: photoData })
-          .then(response => {
-            // Manejar la respuesta del servidor, que podría contener la URL actualizada de la foto
-            console.log('Respuesta del servidor:', response.data);
-            localStorage.setItem('authorPhoto', response.data.photo_url);
-          })
-          .catch(error => {
-            // Manejar los errores en caso de que ocurran durante la llamada a la API
-            console.error('Error al llamar a la API:', error);
-          });
-        
+        image.onload = function () {
+          if (image.width === 1024 && image.height === 1024) {
+            document.getElementById('imgMsg').style.display = 'none';
+            // La imagen tiene las dimensiones correctas, continuar con el proceso
+            imagePreview.src = e.target.result;
+
+            // Resto del código para enviar la imagen al servidor
+            const photoData = e.target.result;
+
+            axios.post('http://localhost:8000/author-photo/', { photo: photoData })
+              .then(response => {
+                // Manejar la respuesta del servidor
+                console.log('Respuesta del servidor:', response.data);
+                localStorage.setItem('authorPhoto', response.data.photo_url);
+                authorPhotoStorage = localStorage.getItem('authorPhoto');
+              })
+              .catch(error => {
+                // Manejar los errores en caso de que ocurran durante la llamada a la API
+                console.error('Error al llamar a la API:', error);
+              });
+          } else {
+            console.log('La imagen debe ser de 1024x1024');
+            document.getElementById('imgMsg').style.display = 'block';
+          }
+        };
+
+        image.src = e.target.result;
       };
 
       reader.readAsDataURL(input.files[0]);

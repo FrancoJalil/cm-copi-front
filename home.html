@@ -85,10 +85,12 @@
               <button class="format-button">4</button>
               <button type="button" class="format-button selected" id="selectable-button-author">Author</button>
               <button type="button" class="format-button" id="author-modal">
-                <input type="file" id="input-file" style="text-decoration: none;">
+                <input type="file" id="input-file" style="text-decoration: none;" accept="image/*">
                 <img src="https://lh3.googleusercontent.com/a/AAcHTtdz95hIQaukNLY-s5TKfnSHhndbOGptfK2FM1B0bcu1=s96-c" id="authorPhoto" alt="" style="width: 20px;">
                 <input type="text" id="authorName">
+                <p id="imgMsg" style="display: none;">La imagen debe ser de 1024x1024px</p>
               </button>
+              
             </div>
             <button type="button" class="format-button" id="chooseStyle">Choose style</button>
           </div>
