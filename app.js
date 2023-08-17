@@ -48,16 +48,32 @@ document.addEventListener('DOMContentLoaded', () => {
     if (button.classList.contains('selected')) {
       button.classList.remove('selected');
       author = false;
-      document.getElementById('author-modal').style.display = 'none';
+      document.getElementById('author-modal').style.display = 'inline-flex';
     } else {
-      document.getElementById('author-modal').style.display = 'inline';
+      document.getElementById('author-modal').style.display = 'none';
       button.classList.add('selected');
     }
+
+    
   });
 
-  document.getElementById('selectable-button-author').addEventListener('click', function () {
-
+  const openModalInfoBtn = document.getElementById("info-button");
+  const closeModalInfoBtn = document.getElementById("closeModalInfoBtn");
+  const modalInfo = document.getElementById("modalInfo");
+  
+  openModalInfoBtn.addEventListener("click", () => {
+    modalInfo.style.display = "block";
   });
+  
+  closeModalInfoBtn.addEventListener("click", () => {
+    modalInfo.style.display = "none";
+  });
+  
+  window.addEventListener("click", (event) => {
+      if (event.target === modalInfo) {
+        modalInfo.style.display = "none";
+      }
+    });
 
   // Event Listener para el botón "Modo Edición"
   document.getElementById('modo-edicion-button').addEventListener('click', modoEdicion);

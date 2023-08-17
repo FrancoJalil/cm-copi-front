@@ -84,12 +84,25 @@
               <button disabled class="format-button">Carrusel</button>
               <button class="format-button">4</button>
               <button type="button" class="format-button selected" id="selectable-button-author">Author</button>
-              <button type="button" class="format-button" id="author-modal" style="display: initial;">
-                <input type="file" id="input-file" style="text-decoration: none;" accept="image/*">
+              <div type="button" class="format-button button-input-image" id="author-modal" style="display: inline-flex;">
+                <div class="container-button">
+                <input type="file" id="input-file" accept="image/*" class="input-author-photo" hidden>
+                <label for="input-file" class="input-author-photo"></label>
                 <img src="https://lh3.googleusercontent.com/a/AAcHTtdz95hIQaukNLY-s5TKfnSHhndbOGptfK2FM1B0bcu1=s96-c" id="authorPhoto" alt="" style="width: 20px;">
-                <input type="text" id="authorName">
+                <p class="arroba">@</p> <input type="text" id="authorName">
+                <button type="button" class="info" id="info-button">i</button>
+                <div id="modalInfo" class="modal-info">
+                  <div class="modal-info-content">
+                    <span class="close-modal-info">&times;</span>
+                    <p>Este es el contenido del modal. Puedes poner aquí el texto que desees.</p>
+                    <button id="closeModalInfoBtn">Cerrar</button>
+                  </div>
+                </div>
+              </div>
                 <p id="imgMsg" style="display: none;">La imagen debe ser de 1024x1024px</p>
-              </button>
+              </div>
+              
+              
               
             </div>
             <button type="button" class="format-button" id="chooseStyle">Choose style</button>
