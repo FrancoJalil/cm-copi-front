@@ -608,7 +608,7 @@ export function generateImage() {
 
                         const selectedText = document.createElement('label');
                         selectedText.htmlFor = switchInput.id;
-                        selectedText.textContent = 'Publicar';
+                        selectedText.textContent = 'Guardar';
                         selectedText.classList.add('switch-label-text');
 
                         switchCounter++;
