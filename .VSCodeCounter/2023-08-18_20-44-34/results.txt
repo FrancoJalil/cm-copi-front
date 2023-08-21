@@ -1,0 +1,55 @@
+Date : 2023-08-18 20:44:34
+Directory : c:\Users\franco\saas\intellecta\cm-copi-front
+Total : 25 files,  4020 codes, 463 comments, 1235 blanks, all 5718 lines
+
+Languages
++-----------------+------------+------------+------------+------------+------------+
+| language        | files      | code       | comment    | blank      | total      |
++-----------------+------------+------------+------------+------------+------------+
+| JavaScript      |         11 |      1,773 |        415 |        727 |      2,915 |
+| CSS             |          7 |      1,221 |         48 |        249 |      1,518 |
+| Django Template |          7 |      1,026 |          0 |        259 |      1,285 |
++-----------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                   | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                      |         25 |      4,020 |        463 |      1,235 |      5,718 |
+| . (Files)                                                              |         22 |      3,851 |        448 |      1,173 |      5,472 |
+| modals                                                                 |          1 |        115 |          4 |         45 |        164 |
+| pricing                                                                |          1 |         52 |         11 |         17 |         80 |
+| utils                                                                  |          1 |          2 |          0 |          0 |          2 |
++------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------+-----------------+------------+------------+------------+------------+
+| filename                                                               | language        | code       | comment    | blank      | total      |
++------------------------------------------------------------------------+-----------------+------------+------------+------------+------------+
+| c:\Users\franco\saas\intellecta\cm-copi-front\app.js                   | JavaScript      |        213 |         35 |        100 |        348 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\axios.js                 | JavaScript      |         53 |         15 |         16 |         84 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\basic.css                | CSS             |         20 |          0 |          1 |         21 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\context.js               | JavaScript      |         16 |          7 |          8 |         31 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\helpers.js               | JavaScript      |      1,200 |        311 |        499 |      2,010 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\home.html                | Django Template |        182 |          0 |         82 |        264 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\info.html                | Django Template |        240 |          0 |         44 |        284 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\info.js                  | JavaScript      |          8 |          1 |          3 |         12 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\login.html               | Django Template |        288 |          0 |         64 |        352 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\modals\chooseStyle.js    | JavaScript      |        115 |          4 |         45 |        164 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\my-generations.html      | Django Template |         76 |          0 |         27 |        103 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\my-generations.js        | JavaScript      |         82 |         12 |         23 |        117 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\politica-privacidad.html | Django Template |         78 |          0 |          7 |         85 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\pricing.html             | Django Template |         68 |          0 |         13 |         81 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\pricing\pricing.js       | JavaScript      |         52 |         11 |         17 |         80 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\profile.html             | Django Template |         94 |          0 |         22 |        116 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\profile.js               | JavaScript      |         22 |          7 |         11 |         40 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\router.js                | JavaScript      |         10 |         12 |          5 |         27 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\styles-info-slider.css   | CSS             |        113 |          1 |          3 |        117 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\styles-info.css          | CSS             |        180 |          2 |         40 |        222 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\styles-login.css         | CSS             |         48 |          0 |         11 |         59 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\styles-my-gen.css        | CSS             |         92 |          0 |         19 |        111 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\styles-profile.css       | CSS             |         80 |          0 |         14 |         94 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\styles.css               | CSS             |        688 |         45 |        161 |        894 |
+| c:\Users\franco\saas\intellecta\cm-copi-front\utils\styles.js          | JavaScript      |          2 |          0 |          0 |          2 |
+| Total                                                                  |                 |      4,020 |        463 |      1,235 |      5,718 |
++------------------------------------------------------------------------+-----------------+------------+------------+------------+------------+

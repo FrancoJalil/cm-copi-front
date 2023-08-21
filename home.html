@@ -5,6 +5,11 @@
   <title>Generar Posts</title>
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" type="text/css" href="../styles.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Anton&family=League+Gothic&family=Montserrat:wght@500&family=Poppins:wght@300&family=Rock+Salt&display=swap" rel="stylesheet">
+
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
 </head>
@@ -81,8 +86,7 @@
 
           <div class="menu-style">
             <div class="menu-edit">
-              <button disabled class="format-button">Carrusel</button>
-              <button class="format-button">4</button>
+              
               <button type="button" class="format-button selected" id="selectable-button-author">Author</button>
               <div type="button" class="format-button button-input-image" id="author-modal" style="display: inline-flex;">
                 <div class="container-button">
@@ -165,6 +169,8 @@
         <option value="Verdana">Verdana</option>
         <option value="Helvetica">Helvetica</option>
         <option value="Courier New">Courier New</option>
+        <option value="League Gothic">League Gothic</option>
+        <option value="Poppins">Poppins Light</option>
       </select>
     </div>
 
@@ -175,7 +181,13 @@
   </div>
 
 
-  <div class="footer" id="footer"></div>
+  <div class="footer" id="footer" style="display: none;"></div>
+  <!-- Load fonts -->
+  <span style="visibility: hidden;">
+    <span style="font-family: 'League Gothic', sans-serif; font-size: 1px;">Mikai</span>
+    <span style="font-family: 'Poppins', sans-serif; font-size: 1px;">Mikai</span>
+  </span>
+  
 
   <!-- Botón para abrir el modal de confirmación 
   <button onclick="showConfirmationModal()">Abrir Modal de Confirmación</button>

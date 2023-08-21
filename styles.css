@@ -1,10 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC&family=Anton&family=League+Gothic&family=Montserrat:wght@500&family=Poppins:wght@300&family=Rock+Salt&display=swap');
 * {
     padding: 0;
     margin: 0;
     user-select: none;
 }
+
 
 #loadingSkeleton {
     display: flex;
@@ -136,7 +137,7 @@ canvas {
 }
 
 .text-field-mg {
-    color: #FFF;
+    color: rgba(255,255,255,0.4);
     background-color: rgb(18, 18, 18);
     height: 180px;
     width: 180px;
@@ -376,8 +377,6 @@ img {
 }
 
 .format-title {
-
-    padding: 0rem 1rem;
     width: fit-content;
     text-align: left;
     margin: 0.8rem 10rem;
@@ -413,7 +412,7 @@ img {
 .other-buttons {
     border: none;
     border-radius: .25rem;
-    background: rgba(149, 92, 242, 0.50);
+    background: rgba(149, 92, 242, 0.5);
     padding: 0.8rem 2rem;
     color: #FFF;
     font-family: Inter;
@@ -539,8 +538,7 @@ input {
 /* Firefox */
 * {
     scrollbar-width: thin;
-    scrollbar-color: #955280 #DFE9EB;
-
+    scrollbar-color: rgba(149, 92, 242, 0.50);
 
 }
 
@@ -552,22 +550,22 @@ input {
 }
 
 *::-webkit-scrollbar-track {
-    margin: 1rem;
-    background-color: rgba(0, 0, 0, 0);
+    
+    
 }
 
 *::-webkit-scrollbar-thumb {
     border-radius: 5px;
-    background-color: #955280;
+    background-color: rgba(149, 92, 242, 0.50);
 }
 
 *::-webkit-scrollbar-thumb:hover {
-    background-color: #774166;
+    background-color: rgba(149, 92, 242, 1);
 }
 
 *::-webkit-scrollbar-thumb:active {
 
-    background-color: #774166;
+    background-color: rgba(149, 92, 242, 1);
 }
 
 /* Estilos para la barra de desplazamiento horizontal */
@@ -632,7 +630,7 @@ label {
 
 
 #cancel-button-modal:hover {
-    background-color: #774166;
+    background-color: rgba(149, 92, 242, 1);
 }
 
 .modal-choose-style {
@@ -666,7 +664,7 @@ button {
     transition: 0.2s;
     margin-top: 10px;
     padding: 8px 16px;
-    background-color: #955280;
+    background-color: rgba(149, 92, 242, 0.50);
     color: white;
     border: none;
     border-radius: 4px;
@@ -675,7 +673,7 @@ button {
 
 button:hover {
     transition: 0.2s;
-    background-color: #7a3b60;
+    background-color: rgba(149, 92, 242, 1);
 }
 
 /* Estilos para el botón "Cancelar" */
@@ -821,7 +819,7 @@ button.cancel:hover {
 }
 
 #selectable-button-author.selected {
-    background-color: #955280;
+    background-color: rgba(149, 92, 242, 0.50);
 }
 
 
@@ -854,9 +852,9 @@ button.cancel:hover {
   
 
   .info {
-    border-radius: 8rem;
-    background-color: #955280;
-    padding: 5px 12px;
+    border-radius: 8rem 8rem 8rem 0rem;
+    background-color: rgba(149, 92, 242, 0.50);
+    padding: 2px 10px;
     margin-top: 0rem;
   }
 
@@ -892,3 +890,5 @@ button.cancel:hover {
     text-decoration: none;
     cursor: pointer;
   }
+
+ 

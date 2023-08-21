@@ -37,6 +37,7 @@ h1 {
     display: flex;
     flex-direction: row;
     overflow: auto;
+    align-items: center;
 }
 
 .images-container img {
@@ -62,13 +63,14 @@ img {
 }
 
 .imgContainer a {
+    transition: 0.2s;
     text-decoration: none;
     display: none;
     position: absolute;
     bottom: 10px; /* Ajusta la posición vertical del botón dentro de la imagen */
     right: 10px; /* Ajusta la posición horizontal del botón dentro de la imagen */
     padding: 10px 15px;
-    background-color: #007bff;
+    background-color: rgb(98, 59, 160);
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -78,6 +80,11 @@ img {
 
 .imgContainer:hover a {
     display: block;
+}
+
+.imgContainer a:hover {
+    transition: 0.2s;
+    background-color: rgba(149, 92, 242, 1);
 }
 
 .imgContainer:hover img {
@@ -100,4 +107,5 @@ textarea {
     min-height: 100px;
     min-width: 200px;
     margin-left: 1rem;
+    
 }

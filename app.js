@@ -48,10 +48,12 @@ document.addEventListener('DOMContentLoaded', () => {
     if (button.classList.contains('selected')) {
       button.classList.remove('selected');
       author = false;
-      document.getElementById('author-modal').style.display = 'inline-flex';
-    } else {
       document.getElementById('author-modal').style.display = 'none';
+    } else {
+      document.getElementById('author-modal').style.display = 'inline-flex';
+      author = true;
       button.classList.add('selected');
+
     }
 
     

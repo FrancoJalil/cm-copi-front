@@ -144,10 +144,11 @@ img {
     display: flex;
     flex-direction: column;
     background-color: #121212;
-    height: 50%;
-    width: 40%;
+    height: fit-content;
+    width: 60%;
     padding: 2rem 3rem;
     border-radius: 3.25rem;
+    justify-content: space-between;
 }
 
 .extra-container .bloque .content {
@@ -163,13 +164,11 @@ img {
 }
 
 .extra-container .bloque .content .container-right img {
-    width: 200%;
     opacity: 0.05;
 }
 
 .extra-container .bloque .content .container-left {
     display: flex;
-    width: 100%;
     flex-direction: column;
     align-items: start;
     height: 65%;
@@ -198,7 +197,6 @@ img {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    width: 60%;
     padding: 3rem 0rem;
 }
 
@@ -209,7 +207,7 @@ img {
 .extra-container .bloque .footer-pricing {
     display: flex;
     align-items: center;
-    padding: 1rem;
+
     justify-content: space-between;
     width: 100%;
 }

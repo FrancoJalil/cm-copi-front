@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
 body {
-    background-color: #010101;
+    background: radial-gradient(50% 50.00% at 50% 50.00%, #23005C 0%, #010101 100%);
     display: flex;
     align-items: center;
     display: flex;
