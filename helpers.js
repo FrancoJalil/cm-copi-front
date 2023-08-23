@@ -678,7 +678,7 @@ export function generateImage() {
                                 newCont.classList.add('cont-carrusel');
 
 
-                                for (let i = 0; i <= 3; i++) {
+                                for (let i = 0; i <= 4; i++) {
 
                                     let carrusel = "carrusel_" + (i + 1)
 
@@ -721,8 +721,20 @@ export function generateImage() {
                                     //}
                                     allCanvas.push(canvas)
                                     canvases.push(canvasData);
-                                    console.log(format)
-                                    configurarCanvas(canvas, imagesList[j], false, format, image_text_carru, author);
+                                    console.log(format);
+                                    console.log(i);
+
+
+                                    if (i < 4) {
+                                        configurarCanvas(canvas, imagesList[j], false, format, image_text_carru, author);
+                                    }
+                                    
+                                    // última imagen (firma)
+                                    else {
+                                        configurarCanvas(canvas, imagesList[j], false, format, {title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!'}, author);
+                                    }
+
+
                                 }
 
                             }
@@ -734,7 +746,9 @@ export function generateImage() {
 
 
                 });
+
             })
+
 
     }, 1000);
 
@@ -829,7 +843,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                         fill: '#121212',
                     });
 
-                   canvas.add(circle);
+                    canvas.add(circle);
                     //canvas.add(photo);
 
 
@@ -1357,7 +1371,6 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                 img.scaleToWidth(canvas.width);
 
-
                 img.filters.push(new fabric.Image.filters.Blur({
                     //blur: 0.2 // Valor del desenfoque (0 para sin desenfoque, aumenta para mayor desenfoque)
                 }, { crossOrigin: 'Anonymous' }));
@@ -1381,24 +1394,49 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 rect.sendToBack();
 
                 if (author) {
-                    // Crear un círculo
-                    let photo = new fabric.Circle({
-                        left: 450,       // Posición en X del círculo
-                        top: 450,        // Posición en Y del círculo
-                        radius: 18,     // Radio del círculo (20 en este caso)
-                        selectable: false,
-                        evented: false,
-                        fill: new fabric.Pattern({
-                            source: img.getElement(),
-                            repeat: 'no-repeat'
-                        })
+                    // Cargar la imagen desde URL
+                    fabric.Image.fromURL(authorPhoto, function (imgX) {
+                        imgX.scaleToWidth(1024);
+
+                        // Configurar la imagen
+                        //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                        //imgX.scale(0.5);
+                        imgX.scaleToWidth(55);
+                        imgX.set({
+                            left: 450,
+                            top: 450,
+                            selectable: false,
+                            evented: false,
+                        });
+
+                        // Crear un círculo de recorte
+                        var clipPath = new fabric.Circle({
+                            radius: 470,
+                            originX: 'center',
+                            originY: 'center',
+                            selectable: false,
+                            evented: false,
+                        });
+
+                        // Aplicar el círculo de recorte a la imagen
+                        imgX.clipPath = clipPath;
+
+                        // Agregar la imagen al lienzo
+                        canvas.add(imgX);
                     });
 
-                    canvas.add(photo);
-                }
-                canvas.add(circle);
+                    let circle = new fabric.Circle({
+                        left: 450,
+                        top: 450,
+                        radius: 28,
+                        selectable: false,
+                        evented: false,
+                        fill: '#121212',
+                    });
 
-                circle.sendToBack();
+                    canvas.add(circle);
+                    //canvas.add(photo);
+                }
 
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
@@ -1429,11 +1467,11 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 //plitByGrapheme: true
             });
 
-            
+
 
             allObjects.push(fabricTextD);
             allObjects.push(fabricTextPetit);
-            
+
             /*
             let numLines = fabricTextD.textLines.length;
             if (numLines >= 3) {
@@ -1475,7 +1513,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
             canvas.add(fabricTextD);
             canvas.add(fabricTextPetit);
-            
+
 
         } else {
             // Agregar la imagen de fondo sin filtro de desenfoque
@@ -1504,7 +1542,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
-            
+
             fabricTextD = new fabric.Textbox(image_text_carru.toUpperCase(), {
                 left: 20,
                 top: 50,
