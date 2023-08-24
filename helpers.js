@@ -658,7 +658,7 @@ export function generateImage() {
                         console.log(selectedStyle)
                         let format = selectedStyle.title;
                         console.log(format)
-                        configurarCanvas(canvasFirst, actualImg, true, format, front_image_text, author);
+                        configurarCanvas(canvasFirst, actualImg, true, format, front_image_text, author, null);
 
                         // CARRU
                         let canvasContainerDiv = canvasContainer.querySelector('.canvas-container');
@@ -726,12 +726,12 @@ export function generateImage() {
 
 
                                     if (i < 4) {
-                                        configurarCanvas(canvas, imagesList[j], false, format, image_text_carru, author);
+                                        configurarCanvas(canvas, imagesList[j], false, format, image_text_carru, author, 'carru');
                                     }
                                     
                                     // última imagen (firma)
                                     else {
-                                        configurarCanvas(canvas, imagesList[j], false, format, {title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!'}, author);
+                                        configurarCanvas(canvas, imagesList[j], false, format, {title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!'}, author, 'signature');
                                     }
 
 
@@ -759,7 +759,7 @@ export function generateImage() {
 
 }
 
-export function configurarCanvas(canvas, backgroundImageSrc, original, format, image_text_carru, author) {
+export function configurarCanvas(canvas, backgroundImageSrc, original, format, image_text_carru, author, photoType) {
     // Limpiar el canvas antes de configurarlo
     canvas.clear();
     let fabricTextD;
@@ -1362,7 +1362,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
     else if (format === 'test2') {
 
 
-        if (!original) {
+        if (photoType === 'carru') {
             let canvasRect;
 
             // Agregar la imagen de fondo con el filtro de desenfoque
@@ -1515,6 +1515,269 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             canvas.add(fabricTextPetit);
 
 
+        } else if (photoType === 'signature') {
+
+            fabric.Image.fromURL(backgroundImageSrc, function (img) {
+
+                img.scaleToWidth(canvas.width);
+
+                img.filters.push(new fabric.Image.filters.Blur({
+                    //blur: 0.2 // Valor del desenfoque (0 para sin desenfoque, aumenta para mayor desenfoque)
+                }, { crossOrigin: 'Anonymous' }));
+                img.applyFilters();
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+
+                let rect = new fabric.Rect({
+                    left: -1,   // Posición en X del rectángulo
+                    top: -1,    // Posición en Y del rectángulo
+                    width: 513, // Ancho del rectángulo
+                    height: 513,// Altura del rectángulo
+                    //rx: 20,
+                    //ry: 20,
+                    fill: '#252850',
+                    selectable: false,
+                    evented: false,
+                });
+
+                canvas.add(rect);
+                rect.sendToBack();
+
+                if (author) {
+                    // Cargar la imagen desde URL
+                    fabric.Image.fromURL(authorPhoto, function (imgX) {
+                        imgX.scaleToWidth(1024);
+
+                        // Configurar la imagen
+                        //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                        //imgX.scale(0.5);
+                        imgX.scaleToWidth(110);
+                        imgX.set({
+                            left: 206,
+                            top: 100,
+                            selectable: false,
+                            evented: false,
+                        });
+
+                        // Crear un círculo de recorte
+                        var clipPath = new fabric.Circle({
+                            radius: 470,
+                            originX: 'center',
+                            originY: 'center',
+                            selectable: false,
+                            evented: false,
+                        });
+
+                        // Aplicar el círculo de recorte a la imagen
+                        imgX.clipPath = clipPath;
+
+                        // Agregar la imagen al lienzo
+                        canvas.add(imgX);
+                    });
+
+                    let circle = new fabric.Circle({
+                        left: 200,
+                        top: 95,
+                        radius: 60,
+                        selectable: false,
+                        evented: false,
+                        fill: '#121212',
+                    });
+
+                    canvas.add(circle);
+                    //canvas.add(photo);
+                }
+
+                let iconSize = 40;
+                // ICONS
+                fabric.Image.fromURL('https://cdn-icons-png.flaticon.com/512/3756/3756555.png ', function (imgX) {
+                    // Configurar la imagen
+                    //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                    //imgX.scale(0.5);
+                    imgX.scaleToWidth(iconSize);
+                    imgX.set({
+                        left: 20,
+                        top: 450,
+                        selectable: false,
+                        evented: false
+                    });
+
+                    // Crear un círculo de recorte
+                    var clipPath = new fabric.Circle({
+                        radius: 470,
+                        originX: 'center',
+                        originY: 'center',
+                        selectable: false,
+                        evented: false,
+                    });
+
+                    // Aplicar el círculo de recorte a la imagen
+                    imgX.clipPath = clipPath;
+
+                    // Agregar la imagen al lienzo
+                    canvas.add(imgX);
+                });
+
+                fabric.Image.fromURL('   https://cdn-icons-png.flaticon.com/512/2462/2462844.png  ', function (imgX) {
+                    // Configurar la imagen
+                    //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                    //imgX.scale(0.5);
+                    imgX.scaleToWidth(iconSize);
+                    imgX.set({
+                        left: 80,
+                        top: 450,
+                        selectable: false,
+                        evented: false
+                    });
+
+                    // Crear un círculo de recorte
+                    var clipPath = new fabric.Circle({
+                        radius: 470,
+                        originX: 'center',
+                        originY: 'center',
+                        selectable: false,
+                        evented: false,
+                    });
+
+                    // Aplicar el círculo de recorte a la imagen
+                    imgX.clipPath = clipPath;
+
+                    // Agregar la imagen al lienzo
+                    canvas.add(imgX);
+                });
+
+                fabric.Image.fromURL('   https://cdn-icons-png.flaticon.com/512/2099/2099189.png  ', function (imgX) {
+                    // Configurar la imagen
+                    //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                    //imgX.scale(0.5);
+                    imgX.scaleToWidth(iconSize);
+                    imgX.set({
+                        left: 140,
+                        top: 450,
+                        selectable: false,
+                        evented: false
+                    });
+
+                    // Crear un círculo de recorte
+                    var clipPath = new fabric.Circle({
+                        radius: 470,
+                        originX: 'center',
+                        originY: 'center',
+                        selectable: false,
+                        evented: false,
+                    });
+
+                    // Aplicar el círculo de recorte a la imagen
+                    imgX.clipPath = clipPath;
+
+                    // Agregar la imagen al lienzo
+                    canvas.add(imgX);
+                });
+
+                fabric.Image.fromURL('   https://cdn-icons-png.flaticon.com/512/102/102279.png  ', function (imgX) {
+                    // Configurar la imagen
+                    //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                    //imgX.scale(0.5);
+                    imgX.scaleToWidth(iconSize);
+                    imgX.set({
+                        left: 452,
+                        top: 450,
+                        selectable: false,
+                        evented: false
+                    });
+
+                    // Crear un círculo de recorte
+                    var clipPath = new fabric.Circle({
+                        radius: 470,
+                        originX: 'center',
+                        originY: 'center',
+                        selectable: false,
+                        evented: false,
+                    });
+
+                    // Aplicar el círculo de recorte a la imagen
+                    imgX.clipPath = clipPath;
+
+                    // Agregar la imagen al lienzo
+                    canvas.add(imgX);
+                });
+
+            }, { crossOrigin: 'Anonymous' });
+            // Agregar el texto "holis"
+            fabricTextD = new fabric.Textbox(image_text_carru.title.toUpperCase(), {
+                left: 130,
+                top: 230,
+                height: 100,
+                width: 270,
+                fill: 'white',
+                fontSize: 55,
+                fontFamily: 'League Gothic',
+                textAlign: 'center',
+                textWrapping: 'auto',
+                selectable: false,
+                //plitByGrapheme: true
+            });
+
+            fabricTextPetit = new fabric.Textbox(image_text_carru.info.toLowerCase(), {
+                left: 130,
+                top: 360,
+                width: 270,
+                fill: 'white',
+                fontSize: 25,
+                fontFamily: 'Poppins',
+                textAlign: 'center',
+                textWrapping: 'auto',
+                selectable: false,
+                //plitByGrapheme: true
+            });
+
+
+
+            allObjects.push(fabricTextD);
+            allObjects.push(fabricTextPetit);
+
+            /*
+            let numLines = fabricTextD.textLines.length;
+            if (numLines >= 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 190;
+            }
+
+            else if (numLines == 1) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 250;
+            }
+
+            else if (numLines == 2) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 210;
+            }
+            */
+
+
+            if (author) {
+                fabricTextIG = new fabric.Textbox('@' + authorName, {
+                    left: 160,
+                    top: 50,
+                    width: 105,
+                    fill: 'white',
+                    fontSize: 40,
+                    fontWeight: 'lighter',
+                    fontFamily: 'Poppins',
+                    textAlign: 'right',
+                    textWrapping: 'auto',
+                    selectable: false,
+                    //plitByGrapheme: true
+                });
+
+                fabricTextIG.customProperty = 'IgUser'
+
+                allObjects.push(fabricTextIG);
+                canvas.add(fabricTextIG);
+            }
+
+            canvas.add(fabricTextD);
+            canvas.add(fabricTextPetit);
         } else {
             // Agregar la imagen de fondo sin filtro de desenfoque
             fabric.Image.fromURL(backgroundImageSrc, function (img) {
@@ -1585,6 +1848,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             canvas.add(fabricTextD);
             canvas.renderAll();
         }
+
+
     }
 
 
