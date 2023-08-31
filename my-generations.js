@@ -62,12 +62,17 @@ document.addEventListener('DOMContentLoaded', () => {
           const imgContainer = document.createElement('div');
           imgContainer.classList.add('imgContainer');
           const downloadButton = document.createElement('a');
-          downloadButton.textContent = 'DOWNL'
+          const imageElement = document.createElement('img');
+          imageElement.style.width = '10px';
+          imageElement.src = 'https://img.icons8.com/material-rounded/24/FFFFFF/download--v1.png'; // Reemplaza con la ruta de tu imagen
+
+          // Agregar la imagen al botón de descarga
+          downloadButton.appendChild(imageElement);
 
           var downloadUrl = image.image_url.replace("/upload/", "/upload/fl_attachment/");
           downloadButton.href = downloadUrl;
-          downloadButton.download = 'image'+index;
-          
+          downloadButton.download = 'image' + index;
+
           const img = document.createElement('img');
           img.src = image.image_url;
           imgContainer.appendChild(img);
@@ -78,7 +83,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Add a download all button for the carrusel
         const downloadAllButton = document.createElement('button');
-        downloadAllButton.textContent = 'Download All';
+        downloadAllButton.innerHTML = '<div style="display: flex; align-items: center; justify-content: space-between;"><img style="width: 20px;" src="https://img.icons8.com/material-rounded/24/FFFFFF/download--v1.png"> <p style="margin-left: 0.2rem">Download All</p></div>';
         downloadAllButton.addEventListener('click', () => {
           const zip = new JSZip();
           const textFile = new Blob([descCaru.value], { type: 'text/plain' });
@@ -107,9 +112,9 @@ document.addEventListener('DOMContentLoaded', () => {
     })
 
 
-        // Incrementamos el contador para el siguiente carrusel
-        //carrusel.id++;
-      
+    // Incrementamos el contador para el siguiente carrusel
+    //carrusel.id++;
+
     .catch(error => {
       console.error('Error fetching saved images:', error);
     });

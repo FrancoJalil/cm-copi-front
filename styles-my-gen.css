@@ -109,3 +109,17 @@ textarea {
     margin-left: 1rem;
     
 }
+
+.imgContainer:hover a {
+    width: 15px;
+    height: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.imgContainer:hover a img {
+    width: 25px !important;
+    height: 25px !important;
+    padding: 0;
+}

@@ -358,21 +358,22 @@ function reloadGenerate() {
 }
 
 // global variable, asi no se acumulan
-const headingElement = document.createElement('h1');
+const headingElement = document.createElement('div');
+headingElement.classList.add('loader')
 function showLoading(show) {
 
     if (show) {
 
-        headingElement.style.display = 'block';
+        headingElement.style.visibility = 'visible';
         let generateContainer = document.getElementById('loadingSkeleton');
 
         // Set the text content of the h1 element
-        headingElement.innerHTML = 'Hello, I am a dynamically generated h1!';
+        
 
         // Add the h1 element as a child to the generatedContainer
         generateContainer.appendChild(headingElement);
     } else {
-        headingElement.style.display = 'none';
+        headingElement.style.visibility = 'hidden';
     }
 }
 
