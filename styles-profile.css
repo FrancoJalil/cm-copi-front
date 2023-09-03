@@ -69,8 +69,14 @@ h1 {
 .status .starter {
     background: linear-gradient(81.02deg, rgb(250, 85, 96) -23.47%, rgb(177, 75, 244) 45.52%, rgb(77, 145, 255) 114.8%);
     margin-left: 0.4rem;
+    margin-right: 0.4rem;
     padding: 0.4rem 1.7rem;
     border-radius: 3.25rem;
+}
+
+.renovacion {
+    font-style: italic;
+    opacity: 0.7;
 }
 
 .img-profile-container {

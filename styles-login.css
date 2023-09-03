@@ -44,10 +44,11 @@ h2 .login-title {
 
 .login-form input {
     height: 2rem;
-    border-radius: 3.25rem;
+    border-radius: 0.3rem;
     border: none;
     padding: 0.4rem;
     font-family: Inter, sans-serif;
+    width: 90%;
 }
 
 .login-form button {
@@ -56,3 +57,8 @@ h2 .login-title {
     width: 50%;
 }
 
+
+.hr {
+    border-top: 0.1rem solid rgba(255, 255, 255, 0.2);
+    margin-top: 0.8rem;
+}

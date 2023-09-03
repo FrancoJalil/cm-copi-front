@@ -10,6 +10,11 @@
 
 h1 {
     margin-left: 1rem;
+    width: fit-content;
+    text-align: left;
+    font-weight: 600;
+    font-family: Inter;
+    color: rgba(255, 255, 255, 1);
 }
 
 .container-calendar {
@@ -123,3 +128,4 @@ textarea {
     height: 25px !important;
     padding: 0;
 }
+
