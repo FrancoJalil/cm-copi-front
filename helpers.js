@@ -449,7 +449,7 @@ export function generateImage() {
                     // Si el estado de la respuesta es 200, continúa con el programa
                     console.log("ok!")
                 } else if (response.statusText === 'Unauthorized') {
-                    logoutUser();
+                    //logoutUser();
                     console.log("Unauthorized")
                 }
                 else {
@@ -796,10 +796,10 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                 // Agregar el rectángulo negro
                 let rect = new fabric.Rect({
-                    left: (512 - 360) / 2,   // Posición en X del rectángulo
-                    top: (512 - 360) / 2,    // Posición en Y del rectángulo
-                    width: 360, // Ancho del rectángulo
-                    height: 360,// Altura del rectángulo
+                    left: (1024 - 720) / 2,   // Posición en X del rectángulo
+                    top: (1024 - 720) / 2,    // Posición en Y del rectángulo
+                    width: 720, // Ancho del rectángulo
+                    height: 720,// Altura del rectángulo
                     //rx: 20,
                     //ry: 20,
                     fill: '#121212',
@@ -811,15 +811,14 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                     // Cargar la imagen desde URL
                     fabric.Image.fromURL(authorPhoto, function (imgX) {
-                        imgX.scaleToWidth(1024);
 
                         // Configurar la imagen
                         //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
                         //imgX.scale(0.5);
-                        imgX.scaleToWidth(55);
+                        imgX.scaleToWidth(110);
                         imgX.set({
-                            left: 229,
-                            top: 53,
+                            left: 458,
+                            top: 106,
                             selectable: false,
                             evented: false,
                         });
@@ -838,12 +837,12 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                         // Agregar la imagen al lienzo
                         canvas.add(imgX);
-                    });
+                    }, { crossOrigin: 'Anonymous' });
 
                     let circle = new fabric.Circle({
-                        left: 226,
-                        top: 50,
-                        radius: 30,
+                        left: 452,
+                        top: 100,
+                        radius: 60,
                         selectable: false,
                         evented: false,
                         fill: '#121212',
@@ -862,11 +861,11 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
             fabricTextD = new fabric.Textbox(image_text_carru, {
-                left: 90,
-                top: 230,
-                width: 330,
+                left: 180,
+                top: 460,
+                width: 660,
                 fill: 'white',
-                fontSize: 40,
+                fontSize: 80,
                 textAlign: 'center',
                 textWrapping: 'auto',
                 selectable: false,
@@ -878,28 +877,28 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             let numLines = fabricTextD.textLines.length;
             if (numLines >= 3) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.top = 190;
+                fabricTextD.top = 380;
             }
 
             else if (numLines == 1) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.top = 250;
+                fabricTextD.top = 500;
             }
 
             else if (numLines == 2) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.top = 210;
+                fabricTextD.top = 420;
             }
 
 
             if (author) {
 
                 fabricTextIG = new fabric.Textbox('@' + authorName, {
-                    left: 150,
-                    top: 120,
-                    width: 200,
+                    left: 300,
+                    top: 240,
+                    width: 400,
                     fill: 'white',
-                    fontSize: 20,
+                    fontSize: 40,
                     fontWeight: 'lighter',
                     textAlign: 'center',
                     textWrapping: 'auto',
@@ -930,8 +929,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 let rect = new fabric.Rect({
                     left: -1,   // Posición en X del rectángulo
                     top: -1,    // Posición en Y del rectángulo
-                    width: 513, // Ancho del rectángulo
-                    height: 513,// Altura del rectángulo
+                    width: 1026, // Ancho del rectángulo
+                    height: 1026,// Altura del rectángulo
                     //rx: 20,
                     //ry: 20,
                     fill: '#252850',
@@ -945,15 +944,14 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 if (author) {
                     // Cargar la imagen desde URL
                     fabric.Image.fromURL(authorPhoto, function (imgX) {
-                        imgX.scaleToWidth(1024);
 
                         // Configurar la imagen
                         //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
                         //imgX.scale(0.5);
-                        imgX.scaleToWidth(110);
+                        imgX.scaleToWidth(220);
                         imgX.set({
-                            left: 196,
-                            top: 100,
+                            left: 392,
+                            top: 200,
                             selectable: false,
                             evented: false,
                         });
@@ -972,12 +970,12 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                         // Agregar la imagen al lienzo
                         canvas.add(imgX);
-                    });
+                    }, { crossOrigin: 'Anonymous' });
 
                     let circle = new fabric.Circle({
-                        left: 190,
-                        top: 95,
-                        radius: 60,
+                        left: 380,
+                        top: 190,
+                        radius: 120,
                         selectable: false,
                         evented: false,
                         fill: '#121212',
@@ -987,7 +985,9 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     //canvas.add(photo);
                 }
 
-                let iconSize = 40;
+                let iconSize = 80;
+                let iconTop = 900;
+                let iconLeft = 40;
                 // ICONS
                 fabric.Image.fromURL('https://cdn-icons-png.flaticon.com/512/3756/3756555.png ', function (imgX) {
                     // Configurar la imagen
@@ -995,15 +995,15 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     //imgX.scale(0.5);
                     imgX.scaleToWidth(iconSize);
                     imgX.set({
-                        left: 20,
-                        top: 450,
+                        left: iconLeft,
+                        top: iconTop,
                         selectable: false,
                         evented: false
                     });
 
                     // Crear un círculo de recorte
                     var clipPath = new fabric.Circle({
-                        radius: 470,
+                        radius: 940,
                         originX: 'center',
                         originY: 'center',
                         selectable: false,
@@ -1015,7 +1015,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                     // Agregar la imagen al lienzo
                     canvas.add(imgX);
-                });
+                }, { crossOrigin: 'Anonymous' });
 
                 fabric.Image.fromURL('   https://cdn-icons-png.flaticon.com/512/2462/2462844.png  ', function (imgX) {
                     // Configurar la imagen
@@ -1023,15 +1023,15 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     //imgX.scale(0.5);
                     imgX.scaleToWidth(iconSize);
                     imgX.set({
-                        left: 80,
-                        top: 450,
+                        left: iconLeft + 120,
+                        top: iconTop,
                         selectable: false,
                         evented: false
                     });
 
                     // Crear un círculo de recorte
                     var clipPath = new fabric.Circle({
-                        radius: 470,
+                        radius: 940,
                         originX: 'center',
                         originY: 'center',
                         selectable: false,
@@ -1043,7 +1043,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                     // Agregar la imagen al lienzo
                     canvas.add(imgX);
-                });
+                }, { crossOrigin: 'Anonymous' });
 
                 fabric.Image.fromURL('   https://cdn-icons-png.flaticon.com/512/2099/2099189.png  ', function (imgX) {
                     // Configurar la imagen
@@ -1051,15 +1051,15 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     //imgX.scale(0.5);
                     imgX.scaleToWidth(iconSize);
                     imgX.set({
-                        left: 140,
-                        top: 450,
+                        left: iconLeft + 240,
+                        top: iconTop,
                         selectable: false,
                         evented: false
                     });
 
                     // Crear un círculo de recorte
                     var clipPath = new fabric.Circle({
-                        radius: 470,
+                        radius: 940,
                         originX: 'center',
                         originY: 'center',
                         selectable: false,
@@ -1071,7 +1071,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                     // Agregar la imagen al lienzo
                     canvas.add(imgX);
-                });
+                }, { crossOrigin: 'Anonymous' });
 
                 fabric.Image.fromURL('   https://cdn-icons-png.flaticon.com/512/102/102279.png  ', function (imgX) {
                     // Configurar la imagen
@@ -1079,15 +1079,15 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     //imgX.scale(0.5);
                     imgX.scaleToWidth(iconSize);
                     imgX.set({
-                        left: 452,
-                        top: 450,
+                        left: iconLeft + 865,
+                        top: iconTop,
                         selectable: false,
                         evented: false
                     });
 
                     // Crear un círculo de recorte
                     var clipPath = new fabric.Circle({
-                        radius: 470,
+                        radius: 940,
                         originX: 'center',
                         originY: 'center',
                         selectable: false,
@@ -1099,17 +1099,17 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                     // Agregar la imagen al lienzo
                     canvas.add(imgX);
-                });
+                }, { crossOrigin: 'Anonymous' });
 
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
             fabricTextD = new fabric.Textbox(image_text_carru.title.toUpperCase(), {
-                left: 120,
-                top: 230,
-                height: 100,
-                width: 270,
+                left: 240,
+                top: 460,
+                height: 400,
+                width: 540,
                 fill: 'white',
-                fontSize: 55,
+                fontSize: 110,
                 fontFamily: 'League Gothic',
                 textAlign: 'center',
                 textWrapping: 'auto',
@@ -1119,11 +1119,11 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             });
 
             fabricTextPetit = new fabric.Textbox(image_text_carru.info.toLowerCase(), {
-                left: 120,
-                top: 360,
-                width: 270,
+                left: 240,
+                top: 720,
+                width: 540,
                 fill: 'white',
-                fontSize: 25,
+                fontSize: 50,
                 fontFamily: 'Poppins',
                 textAlign: 'center',
                 textWrapping: 'auto',
@@ -1157,11 +1157,11 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
             if (author) {
                 fabricTextIG = new fabric.Textbox('@' + authorName, {
-                    left: 155,
-                    top: 50,
-                    width: 105,
+                    left: 340,
+                    top: 100,
+                    width: 210,
                     fill: 'white',
-                    fontSize: 40,
+                    fontSize: 80,
                     fontWeight: 'lighter',
                     fontFamily: 'Poppins',
                     textAlign: 'right',
@@ -1201,9 +1201,9 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
                 // Agregar el rectángulo negro
                 let rect = new fabric.Rect({
-                    top: 512 - 180,
-                    width: 512, // Ancho del rectángulo
-                    height: 180, // Altura del rectángulo
+                    top: 1024 - 360,
+                    width: 1024, // Ancho del rectángulo
+                    height: 360, // Altura del rectángulo
                     fill: gradient, // Color de relleno del rectángulo (negro)
                     selectable: false,
                     evented: false,
@@ -1214,40 +1214,42 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
             fabricTextD = new fabric.Textbox(image_text_carru, {
-                left: 19,
-                top: 370,
-                width: 470,
+                left: 108,
+                top: 850,
+                width: 800,
                 fill: 'white',
-                fontSize: 60,
+                fontSize: 80,
                 textAlign: 'center',
                 textWrapping: 'auto',
                 selectable: false,
             });
             allObjects.push(fabricTextD)
 
+
             let numLines = fabricTextD.textLines.length;
             if (numLines == 3) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.fontSize = 40;
-                fabricTextD.top = 400;
+                fabricTextD.fontSize = 70;
+                fabricTextD.top = 800;
 
             }
 
             else if (numLines == 2) {
-                fabricTextD.fontSize = 40;
-                fabricTextD.top = 400;
+
+                fabricTextD.top = 780;
             }
 
             else if (numLines == 1) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.top = 400;
+                fabricTextD.top = 830;
             }
 
             else if (numLines > 3) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.fontSize = 40;
-                fabricTextD.top = 340;
+                fabricTextD.fontSize = 60;
+                fabricTextD.top = 800;
             }
+
 
             canvas.add(fabricTextD);
 

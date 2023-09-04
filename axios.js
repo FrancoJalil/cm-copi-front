@@ -5,10 +5,10 @@ let refreshToken = localStorage.getItem('refresh');
 
 
 async function logoutUser() {
-  localStorage.removeItem('access')
-  localStorage.removeItem('refresh')
+  //localStorage.removeItem('access')
+  //localStorage.removeItem('refresh')
   // Redireccionar a otra página
-  window.location.href = "/login";
+  //window.location.href = "/login";
 
 }
 
@@ -27,7 +27,7 @@ async function refreshAccessToken() {
   
       if (!response.ok) {
         console.log("No se pudo refrescar el token")
-        logoutUser();
+        //logoutUser();
         
       }
   
@@ -44,7 +44,7 @@ async function refreshAccessToken() {
       return data.access;
     } catch (error) {
       console.log("Error refresh...", error);
-      logoutUser();
+      //logoutUser();
     }
   }
 
@@ -66,7 +66,7 @@ axios.interceptors.response.use(
         }
 
         console.log("Error access...", error);
-        logoutUser();
+        //logoutUser();
     }
 );
 
