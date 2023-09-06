@@ -7,7 +7,6 @@ document.addEventListener('DOMContentLoaded', () => {
   let author = true;
   let listCheckboxChecked = [];
   let deselectCanvas = false;
-  let authorImage;
   let authorPhotoStorage = localStorage.getItem('authorPhoto');
 
   const imagePreview = document.getElementById('authorPhoto');
@@ -56,27 +55,33 @@ document.addEventListener('DOMContentLoaded', () => {
 
     }
 
-    
+
   });
 
   const openModalInfoBtn = document.getElementById("info-button");
   const closeModalInfoBtn = document.getElementById("closeModalInfoBtn");
   const modalInfo = document.getElementById("modalInfo");
-  
+
   openModalInfoBtn.addEventListener("click", () => {
     modalInfo.style.display = "block";
   });
-  
+
   closeModalInfoBtn.addEventListener("click", () => {
     modalInfo.style.display = "none";
   });
-  
-  window.addEventListener("click", (event) => {
-      if (event.target === modalInfo) {
-        modalInfo.style.display = "none";
-      }
-    });
 
+  window.addEventListener("click", (event) => {
+    if (event.target === modalInfo) {
+      modalInfo.style.display = "none";
+    }
+  });
+
+  // if not modalstyletype...
+  let styleType = localStorage.getItem('modal-style-type');
+  if (!styleType) {
+    localStorage.setItem('modal-style-type', 'Carrusel');
+  }
+  //
   // Event Listener para el botón "Modo Edición"
   document.getElementById('modo-edicion-button').addEventListener('click', modoEdicion);
 
@@ -101,10 +106,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Event Listener para el input de color
   document.getElementById('colorPicker').addEventListener('input', changeTextColor);
 
- 
+
 
   const inputFile = document.getElementById('input-file');
-  
+
 
   inputFile.addEventListener('input', function (event) {
     const input = event.target;

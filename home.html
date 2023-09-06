@@ -5,12 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Generar Posts</title>
-  <link rel="icon" type="image/x-icon" href="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1693523760/logo_xereu3.png">
+  <link rel="icon" type="image/x-icon"
+    href="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1693523760/logo_xereu3.png">
   <link rel="stylesheet" type="text/css" href="styles.css">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Anton&family=League+Gothic&family=Montserrat:wght@500&family=Poppins:wght@300&family=Rock+Salt&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Amatic+SC&family=Anton&family=League+Gothic&family=Montserrat:wght@500&family=Poppins:wght@300&family=Rock+Salt&display=swap"
+    rel="stylesheet">
 
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
@@ -21,7 +24,8 @@
   <div class="menu-border">
     <div class="logo-container">
       <div class="logo">
-        <img src="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1693523760/logo_xereu3.png" alt="" style="width: 40px; opacity: 0.9">
+        <img src="https://res.cloudinary.com/dlqpkf6fd/image/upload/v1693523760/logo_xereu3.png" alt=""
+          style="width: 40px; opacity: 0.9">
       </div>
     </div>
     <ul class="menu">
@@ -36,13 +40,13 @@
       </li>
 
       <li>
-        
+
         <div class="tokens">
           <a href="/profile">
-              <p>Tokens: <span id="tokens">0</span></p>
-              <img id="photo" src="" alt="" style="width: 30px; border-radius: 3.25rem;">
-            </a>
-          </div>
+            <p>Tokens: <span id="tokens">0</span></p>
+            <img id="photo" src="" alt="" style="width: 30px; border-radius: 3.25rem;">
+          </a>
+        </div>
       </li>
     </ul>
 
@@ -63,35 +67,38 @@
             <h4 id="titleStyleGenerate"></h4>
             <div class="images-container">
               <div id="allImagesGenerate" class="all-images">
-                <textarea id="descPostTA" class="text-field-mg" readonly="true" name="" id="" cols="30" rows="10"></textarea>
+                <textarea id="descPostTA" class="text-field-mg" readonly="true" name="" id="" cols="30"
+                  rows="10"></textarea>
               </div>
             </div>
           </div>
 
           <div class="menu-style">
             <div class="menu-edit">
-              
+
               <button type="button" class="format-button selected" id="selectable-button-author">Author</button>
-              <div type="button" class="format-button button-input-image" id="author-modal" style="display: inline-flex;">
+              <div type="button" class="format-button button-input-image" id="author-modal"
+                style="display: inline-flex;">
                 <div class="container-button">
-                <input type="file" id="input-file" accept="image/*" class="input-author-photo" hidden>
-                <label for="input-file" class="input-author-photo"></label>
-                <img src="https://lh3.googleusercontent.com/a/AAcHTtdz95hIQaukNLY-s5TKfnSHhndbOGptfK2FM1B0bcu1=s96-c" id="authorPhoto" alt="" style="width: 20px;">
-                <p class="arroba">@</p> <input type="text" id="authorName" placeholder="username">
-                <button type="button" class="info" id="info-button">i</button>
-                <div id="modalInfo" class="modal-info">
-                  <div class="modal-info-content">
-                    
-                    <p>Debes subir una foto 1024x1024px y escribir tu usuario para que se muestre en los posts.</p>
-                    <button id="closeModalInfoBtn">Ok</button>
+                  <input type="file" id="input-file" accept="image/*" class="input-author-photo" hidden>
+                  <label for="input-file" class="input-author-photo"></label>
+                  <img src="https://lh3.googleusercontent.com/a/AAcHTtdz95hIQaukNLY-s5TKfnSHhndbOGptfK2FM1B0bcu1=s96-c"
+                    id="authorPhoto" alt="" style="width: 20px;">
+                  <p class="arroba">@</p> <input type="text" id="authorName" placeholder="username">
+                  <button type="button" class="info" id="info-button">i</button>
+                  <div id="modalInfo" class="modal-info">
+                    <div class="modal-info-content">
+
+                      <p>Debes subir una foto 1024x1024px y escribir tu usuario para que se muestre en los posts.</p>
+                      <button id="closeModalInfoBtn">Ok</button>
+                    </div>
                   </div>
                 </div>
-              </div>
                 <p id="imgMsg" style="display: none;">La imagen debe ser de 1024x1024px</p>
               </div>
-              
-              
-              
+
+
+
             </div>
             <button type="button" class="format-button" id="chooseStyle">Change style</button>
           </div>
@@ -137,7 +144,8 @@
     </div>
 
     <div id="container-editable">
-      <div id="select-all-canvas-cont"><label class="select-all-canvas" id="select-all-canvas"><input id="checkbox-input" type="checkbox">Select
+      <div id="select-all-canvas-cont"><label class="select-all-canvas" id="select-all-canvas"><input
+            id="checkbox-input" type="checkbox">Select
           all canvas</label></div>
 
       <input type="text" id="textInput" placeholder="Ingrese el texto"></input>
@@ -171,7 +179,7 @@
     <span style="font-family: 'League Gothic', sans-serif; font-size: 1px;">Mikai</span>
     <span style="font-family: 'Poppins', sans-serif; font-size: 1px;">Mikai</span>
   </span>
-  
+
 
   <!-- Botón para abrir el modal de confirmación 
   <button onclick="showConfirmationModal()">Abrir Modal de Confirmación</button>
@@ -179,15 +187,24 @@
 
   <!-- Contenedor del modal de confirmación -->
   <div id="confirmationModal" class="modal">
-    
+
     <div class="modal-content" id="modalContent">
+      <div class="header-modal">
+        <select style="order: 0;" name="" id="selectPost">
+          <option value="Carrusel">CARRUSEL</option>
+          <option value="Solo">SOLO</option>
+        </select>
+        <button class="generate-button" id="cancel-button-modal">Cancelar</button>
+      </div>
       <h2 id="confirmationModalTitle"></h2>
       <p id="confirmationModalContent"></p>
       <button class="generate-button" id="confirm-button-modal">Confirmar</button>
-      <button class="generate-button" id="cancel-button-modal">Cancelar</button>
+
+
     </div>
 
     <div class="modal-content edition" id="modalContentEdition">
+
       <h2 id="confirmationModalTitleEdition"></h2>
       <p id="confirmationModalContentEdition"></p>
       <button class="generate-button" id="confirm-button-modal-edition">Confirmar</button>
@@ -201,7 +218,7 @@
   </div>
 
   <script src="axios.js"></script>
-<script type="module" src="./context.js"></script>
+  <script type="module" src="./context.js"></script>
 
   <script type="module" src="./app.js"></script>
 

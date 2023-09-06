@@ -3,10 +3,14 @@ import { BLACK_MARK, TRANSPARENT_MARK } from "../utils/styles.js";
 
 let creado = false;
 
+let CARRUSEL = 'Carrusel';
+let SOLO = 'Solo';
+
 export let stylesJSON = {
     styles: [
         {
             title: BLACK_MARK,
+            type: CARRUSEL,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
@@ -18,6 +22,7 @@ export let stylesJSON = {
         },
         {
             title: TRANSPARENT_MARK,
+            type: CARRUSEL,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
 
@@ -28,6 +33,14 @@ export let stylesJSON = {
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337699/media/carousel-images/Ccarrusel_4-P1_wm8zwr.png'
             ]
         },
+        {
+            title: 'ejk2',
+            type: SOLO,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            images: [
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png'
+            ]
+        }
     ]
 }
 
@@ -35,9 +48,8 @@ export let stylesJSON = {
 export function putSelectedStyle() {
     let selectedStyle = localStorage.getItem('selectedStyle');
     if (!selectedStyle) {
-
         // set default style
-        selectedStyle = stylesJSON.styles[0]
+        selectedStyle = stylesJSON.styles[0];
         localStorage.setItem('selectedStyle', JSON.stringify(selectedStyle));
 
     } else {
@@ -83,15 +95,18 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
 
     if (!creado) {
 
-
         document.getElementById('confirm-button-modal').style.display = 'none';
         document.getElementById('cancel-button-modal').textContent = 'X';
         document.getElementById('cancel-button-modal').style.position = 'absolute';
 
         confirmationModalContainer.classList.remove('modal-content');
         confirmationModalContainer.classList.add(style);
+        const selectPost = document.getElementById("selectPost");
 
         for (let i = 0; i < stylesJSON.styles.length; i++) {
+
+
+            //if (stylesJSON.styles[i].type === selectPost.value) {
 
             let imagesList = stylesJSON.styles[i].images;
 
@@ -103,7 +118,9 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
             formatContainer.classList.add('formats-container-modal');
             container.appendChild(formatContainer);
 
-
+            //
+            formatContainer.classList.add(stylesJSON.styles[i].type);
+            //
             let styleContainer = document.createElement('div');
             styleContainer.setAttribute('id', 'styleContainer' + stylesJSON.styles[i].title);
             styleContainer.classList.add('style-container');
@@ -129,7 +146,7 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
             allImages.setAttribute('id', 'allImages' + stylesJSON.styles[i].title);
             allImages.classList.add('all-images');
             images_button_container.appendChild(allImages);
-            
+
             const descCaru = document.createElement('textarea');
             descCaru.classList.add('text-field-mg');
             descCaru.textContent = stylesJSON.styles[i].post_description;
@@ -150,7 +167,7 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
                 img.src = imagesList[i];
                 allImages.appendChild(img);
             }
-
+            //}
 
 
         }
@@ -158,6 +175,71 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
 
     }
 
+    const selectPost = document.getElementById("selectPost");
 
+    selectPost.value = localStorage.getItem('modal-style-type');
+
+    // Agrega un event listener para el evento "change"
+    const changeEvent = new Event('change', { bubbles: true });
+    
+    selectPost.addEventListener("change", function () {
+        const selectedValue = selectPost.value;
+        console.log(selectedValue);
+
+        if (selectedValue === 'Solo') {
+            localStorage.setItem('modal-style-type', 'Solo');
+            console.log("Dentro de solo");
+            // esconder los type Carrusel
+            // Obtén una referencia al contenedor 'formatContainer' por su ID o de alguna otra manera
+            const selectButtonblackMark = document.getElementById('modalContent');
+
+            if (selectButtonblackMark) {
+                // Encuentra todos los elementos con la clase 'Carrusel' dentro del contenedor
+                const carruselElements = selectButtonblackMark.getElementsByClassName('Carrusel');
+                const soloElements = selectButtonblackMark.getElementsByClassName('Solo');
+
+                console.log(carruselElements);
+
+                // Itera sobre los elementos y establece su estilo 'display' en 'none'
+                for (let i = 0; i < carruselElements.length; i++) {
+                    carruselElements[i].style.display = 'none';
+                }
+
+                for (let i = 0; i < soloElements.length; i++) {
+                    soloElements[i].style.display = 'block';
+                }
+
+            }
+
+
+
+        } else if (selectedValue === 'Carrusel') {
+            localStorage.setItem('modal-style-type', 'Carrusel');
+            console.log("Dentro de carrusel");
+            // esconder los type Carrusel
+            // Obtén una referencia al contenedor 'formatContainer' por su ID o de alguna otra manera
+            const selectButtonblackMark = document.getElementById('modalContent');
+
+            if (selectButtonblackMark) {
+
+                // Encuentra todos los elementos con la clase 'Carrusel' dentro del contenedor
+                const carruselElements = selectButtonblackMark.getElementsByClassName('Carrusel');
+                const soloElements = selectButtonblackMark.getElementsByClassName('Solo');
+
+                console.log(soloElements);
+                // Itera sobre los elementos y establece su estilo 'display' en 'none'
+                for (let i = 0; i < carruselElements.length; i++) {
+                    carruselElements[i].style.display = 'block';
+                }
+
+                for (let i = 0; i < soloElements.length; i++) {
+                    soloElements[i].style.display = 'none';
+                }
+
+            }
+        }
+    });
+
+    selectPost.dispatchEvent(changeEvent);
 }
 
