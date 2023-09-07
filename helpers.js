@@ -539,7 +539,7 @@ export function generateImage() {
                         //canvases[index] = canvas;
                         console.log(data.gpt_response)
                         let actualImg = imgElement.src;
-                        imagesList.push(actualImg);
+                        imagesList.push(actualImg)
 
                         let idea_actual = "idea" + (index + 1);
                         let front_image_text = data.gpt_response[idea_actual].image_text;
@@ -671,6 +671,8 @@ export function generateImage() {
                         let canvasContainerDiv = canvasContainer.querySelector('.canvas-container');
                         // Establecer divs al carrusel
 
+                        // Condicional que permite que no haya mas de 4 / 5 imagen por carrusel // ANTI BUG
+                        if (canvasContainer.children.length == 4) {
                         console.log(selectedStyle.type);
                         if (selectedStyle.type !== 'Solo') {
 
@@ -744,7 +746,7 @@ export function generateImage() {
                             }
 
                         }
-
+                    }
                     };
 
 
