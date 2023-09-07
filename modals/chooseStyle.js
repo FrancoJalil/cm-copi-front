@@ -1,5 +1,5 @@
 import { closeConfirmationModal } from '../helpers.js'
-import { BLACK_MARK, TRANSPARENT_MARK } from "../utils/styles.js";
+import { BLACK_MARK, TRANSPARENT_MARK, SOLO_POST } from "../utils/styles.js";
 
 let creado = false;
 
@@ -34,7 +34,7 @@ export let stylesJSON = {
             ]
         },
         {
-            title: 'ejk2',
+            title: SOLO_POST,
             type: SOLO,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [

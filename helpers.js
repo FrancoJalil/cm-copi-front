@@ -539,7 +539,7 @@ export function generateImage() {
                         //canvases[index] = canvas;
                         console.log(data.gpt_response)
                         let actualImg = imgElement.src;
-                        imagesList.push(actualImg)
+                        imagesList.push(actualImg);
 
                         let idea_actual = "idea" + (index + 1);
                         let front_image_text = data.gpt_response[idea_actual].image_text;
@@ -663,16 +663,16 @@ export function generateImage() {
                         
                         console.log(selectedStyle)
                         format = selectedStyle.title;
-                        console.log(format)
+                        console.log(format);
+
                         configurarCanvas(canvasFirst, actualImg, true, format, front_image_text, author, null);
 
                         // CARRU
                         let canvasContainerDiv = canvasContainer.querySelector('.canvas-container');
                         // Establecer divs al carrusel
 
-
-                        if (canvasContainer.children.length == 4) {
-
+                        console.log(selectedStyle.type);
+                        if (selectedStyle.type !== 'Solo') {
 
 
                             for (let j = 0; j <= 3; j++) {
@@ -739,8 +739,6 @@ export function generateImage() {
                                     else {
                                         configurarCanvas(canvas, imagesList[j], false, format, { title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!' }, author, 'signature');
                                     }
-
-
                                 }
 
                             }
@@ -770,6 +768,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
     canvas.clear();
     let fabricTextD;
     let fabricTextPetit;
+    let fabricTextAuthor;
     let rect;
 
 
@@ -2680,6 +2679,183 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
     }
+
+    else if (format === 'soloPost') {
+            // Agregar la imagen de fondo sin filtro de desenfoque
+            fabric.Image.fromURL(backgroundImageSrc, function (img) {
+
+
+                img.scaleToWidth(canvas.width);
+
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+                // Agregar el rectángulo negro
+                let rect = new fabric.Rect({
+                    left: -1,   // Posición en X del rectángulo
+                    top: 550,    // Posición en Y del rectángulo
+                    width: 1024, // Ancho del rectángulo
+                    height: 600,// Altura del rectángulo
+                    //rx: 20,
+                    //ry: 20,
+                    fill: 'white',
+                    selectable: false,
+                    evented: false,
+                });
+
+                canvas.add(rect);
+                rect.sendToBack();
+
+            }, { crossOrigin: 'Anonymous' });
+            // Agregar el texto "holis"
+
+            fabricTextD = new fabric.Textbox(image_text_carru+'"', {
+                left: 170,
+                top: 610,
+                width: 640,
+                fill: '#121212',
+                fontSize: 50,
+                fontFamily: 'Lora',
+                fontStyle: 'bold',
+                textAlign: 'center',
+                textWrapping: 'auto',
+                lineHeight: 0.95,
+                selectable: false,
+            });
+
+            allObjects.push(fabricTextD);
+
+            fabricTextAuthor = new fabric.Textbox('- Aurelio', {
+                left: 170,
+                top: 840,
+                width: 640,
+                fill: '#121212',
+                fontSize: 40,
+                fontFamily: 'Lora',
+                fontStyle: 'bold',
+                textAlign: 'center',
+                textWrapping: 'auto',
+                lineHeight: 0.95,
+                selectable: false,
+            });
+
+            //https://cdn-icons-png.flaticon.com/512/7350/7350737.png
+
+            allObjects.push(fabricTextAuthor);
+
+            canvas.add(fabricTextD);
+            canvas.add(fabricTextAuthor);
+            canvas.renderAll();
+
+            fabric.Image.fromURL('https://cdn-icons-png.flaticon.com/512/7350/7350737.png ', function (imgX) {
+                    // Configurar la imagen
+                    //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                    //imgX.scale(0.5);
+                    imgX.scaleToWidth(70);
+                    imgX.set({
+                        left: 130,
+                        top: 560,
+                        selectable: false,
+                        evented: false
+                    });
+
+                    // Crear un círculo de recorte
+                    var clipPath = new fabric.Circle({
+                        radius: 470,
+                        originX: 'center',
+                        originY: 'center',
+                        selectable: false,
+                        evented: false,
+                    });
+
+                    // Aplicar el círculo de recorte a la imagen
+                    imgX.clipPath = clipPath;
+
+                    // Agregar la imagen al lienzo
+                    canvas.add(imgX);
+                }, { crossOrigin: 'Anonymous' });
+        
+
+                if (author) {
+                    // Cargar la imagen desde URL
+                    fabric.Image.fromURL(authorPhoto, function (imgX) {
+
+                        // Configurar la imagen
+                        //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                        //imgX.scale(0.5);
+                        imgX.scaleToWidth(110);
+                        imgX.set({
+                            left: 440,
+                            top: 895,
+                            selectable: false,
+                            evented: false,
+                        });
+
+                        // Crear un círculo de recorte
+                        var clipPath = new fabric.Circle({
+                            radius: 470,
+                            originX: 'center',
+                            originY: 'center',
+                            selectable: false,
+                            evented: false,
+                        });
+
+                        // Aplicar el círculo de recorte a la imagen
+                        imgX.clipPath = clipPath;
+
+                        // Agregar la imagen al lienzo
+                        canvas.add(imgX);
+                    }, { crossOrigin: 'Anonymous' });
+
+                    let circle = new fabric.Circle({
+                        left: 441,
+                        top: 897,
+                        radius: 54,
+                        selectable: false,
+                        evented: false,
+                        fill: '#121212',
+                    });
+
+                    canvas.add(circle);
+                    //canvas.add(photo);
+                }
+
+    }
+
+    fabricTextAuthor?.on('selected', function (options) {
+
+
+        if (selectedCanvas !== options.target.canvas) {
+            //console.log(selectedCanvas)
+            //console.log(options.target.canvas)
+        }
+
+        if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
+            if (selectedCanvas !== options.target.canvas) {
+                selectedCanvas.discardActiveObject();
+
+                selectedCanvas.wrapperEl.classList.remove('canvas-selected');
+                selectedCanvas.renderAll();
+            }
+        }
+
+
+
+
+        if (selectedObject) {
+            if (selectedCanvas !== options.target.canvas) {
+                selectedCanvas.discardActiveObject();
+
+                selectedCanvas.wrapperEl.classList.remove('canvas-selected');
+                selectedCanvas.renderAll();
+                //selectedObject = null; // Reiniciar la variable selectedObject
+            }
+
+        }
+
+        selectedObject = options.target;
+        selectedCanvas = canvas;
+        //selectedCanvas.renderAll()
+    });
 
 
     fabricTextD.on('selected', function (options) {
