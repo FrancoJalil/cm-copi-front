@@ -1,5 +1,6 @@
 import { chooseStyle, stylesJSON } from "./modals/chooseStyle.js";
-import { BLACK_MARK, TRANSPARENT_MARK } from "./utils/styles.js";
+import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1 } from "../utils/styles.js";
+import { refreshUserTokens  } from "./utils/refreshUserTokens.js";
 // helpers.js
 
 // Global variables
@@ -254,7 +255,7 @@ export function toggleClickedStyle(element, value, option) {
             const objects = currentCanvas.getObjects();
 
             objects.forEach(object => {
-                if (object instanceof fabric.Textbox && object.customProperty !== 'IgUser') {
+                if (object instanceof fabric.Textbox) {
 
                     if (option === "color") {
                         object.set('fill', value);
@@ -422,6 +423,7 @@ export function generateImage() {
         // Obtener el format
         let selectedStyle = JSON.parse(localStorage.getItem('selectedStyle'));
         let format = selectedStyle.title;
+        let type = selectedStyle.type;
 
         // poner el menu abajo
         let menuCanvas = document.getElementById('menu-canvas');
@@ -431,10 +433,16 @@ export function generateImage() {
 
         let author = document.getElementById('selectable-button-author').classList.contains('selected');
 
+
+        const cantidadPost = parseInt(document.getElementById("slider-value").textContent);
+        console.log("POSTS", cantidadPost);
+
         axios.post('http://localhost:8000/image-generation/generate', {
             subject: JSON.stringify({
                 subject: valuePromptInput,
-                format: format
+                format: format,
+                type: type,
+                cantidad_post: cantidadPost
             })
         }, {
             headers: {
@@ -447,7 +455,8 @@ export function generateImage() {
                 if (response.status === 200) {
 
                     // Si el estado de la respuesta es 200, continúa con el programa
-                    console.log("ok!")
+                    console.log("ok!");
+                    refreshUserTokens();
                 } else if (response.statusText === 'Unauthorized') {
                     //logoutUser();
                     console.log("Unauthorized")
@@ -771,6 +780,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
     let fabricTextD;
     let fabricTextPetit;
     let fabricTextAuthor;
+    let clipPath;
     let rect;
 
 
@@ -2682,7 +2692,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
     }
 
-    else if (format === 'soloPost') {
+    else if (format === AUTHOR_PHRASE_1) {
             // Agregar la imagen de fondo sin filtro de desenfoque
             fabric.Image.fromURL(backgroundImageSrc, function (img) {
 
@@ -2726,7 +2736,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
             allObjects.push(fabricTextD);
 
-            fabricTextAuthor = new fabric.Textbox('- Aurelio', {
+            // Prompt, con Capitalize
+            fabricTextAuthor = new fabric.Textbox("- "+valuePromptInput.charAt(0).toUpperCase() + valuePromptInput.slice(1), {
                 left: 170,
                 top: 840,
                 width: 640,
@@ -2757,7 +2768,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                         left: 130,
                         top: 560,
                         selectable: false,
-                        evented: false
+
                     });
 
                     // Crear un círculo de recorte
@@ -2765,12 +2776,14 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                         radius: 470,
                         originX: 'center',
                         originY: 'center',
-                        selectable: false,
-                        evented: false,
+                        selectable: true,
+
                     });
 
                     // Aplicar el círculo de recorte a la imagen
                     imgX.clipPath = clipPath;
+
+                    allObjects.push(imgX);
 
                     // Agregar la imagen al lienzo
                     canvas.add(imgX);
@@ -2789,7 +2802,6 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                             left: 440,
                             top: 895,
                             selectable: false,
-                            evented: false,
                         });
 
                         // Crear un círculo de recorte
@@ -2797,12 +2809,13 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                             radius: 470,
                             originX: 'center',
                             originY: 'center',
-                            selectable: false,
-                            evented: false,
+                            selectable: true,
                         });
 
                         // Aplicar el círculo de recorte a la imagen
                         imgX.clipPath = clipPath;
+
+                        allObjects.push(imgX);
 
                         // Agregar la imagen al lienzo
                         canvas.add(imgX);
@@ -2813,15 +2826,108 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                         top: 897,
                         radius: 54,
                         selectable: false,
-                        evented: false,
                         fill: '#121212',
                     });
 
+                    allObjects.push(circle);
+
                     canvas.add(circle);
                     //canvas.add(photo);
+
+                    // @
+                    fabricTextIG = new fabric.Textbox('@' + authorName, {
+                        left: 600,
+                        top: 980,
+                        width: 400,
+                        fill: '#121212',
+                        fontSize: 25,
+                        fontStyle: 'italic',
+                        fontWeight: 'lighter',
+                        textAlign: 'right',
+                        textWrapping: 'auto',
+                        selectable: false,
+                        //plitByGrapheme: true
+                    });
+    
+                    //fabricTextIG.customProperty = 'IgUser'
+    
+                    allObjects.push(fabricTextIG);
+                    canvas.add(fabricTextIG);
                 }
 
     }
+
+    clipPath?.on('selected', function (options) {
+
+
+        if (selectedCanvas !== options.target.canvas) {
+            //console.log(selectedCanvas)
+            //console.log(options.target.canvas)
+        }
+
+        if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
+            if (selectedCanvas !== options.target.canvas) {
+                selectedCanvas.discardActiveObject();
+
+                selectedCanvas.wrapperEl.classList.remove('canvas-selected');
+                selectedCanvas.renderAll();
+            }
+        }
+
+
+
+
+        if (selectedObject) {
+            if (selectedCanvas !== options.target.canvas) {
+                selectedCanvas.discardActiveObject();
+
+                selectedCanvas.wrapperEl.classList.remove('canvas-selected');
+                selectedCanvas.renderAll();
+                //selectedObject = null; // Reiniciar la variable selectedObject
+            }
+
+        }
+
+        selectedObject = options.target;
+        selectedCanvas = canvas;
+        //selectedCanvas.renderAll()
+    });
+
+    fabricTextIG?.on('selected', function (options) {
+
+
+        if (selectedCanvas !== options.target.canvas) {
+            //console.log(selectedCanvas)
+            //console.log(options.target.canvas)
+        }
+
+        if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
+            if (selectedCanvas !== options.target.canvas) {
+                selectedCanvas.discardActiveObject();
+
+                selectedCanvas.wrapperEl.classList.remove('canvas-selected');
+                selectedCanvas.renderAll();
+            }
+        }
+
+
+
+
+        if (selectedObject) {
+            if (selectedCanvas !== options.target.canvas) {
+                selectedCanvas.discardActiveObject();
+
+                selectedCanvas.wrapperEl.classList.remove('canvas-selected');
+                selectedCanvas.renderAll();
+                //selectedObject = null; // Reiniciar la variable selectedObject
+            }
+
+        }
+
+        selectedObject = options.target;
+        selectedCanvas = canvas;
+        //selectedCanvas.renderAll()
+    });
 
     fabricTextAuthor?.on('selected', function (options) {
 
@@ -3038,7 +3144,7 @@ export function selectAllCanvas(value, option) {
 
 
     allObjects.forEach((object) => {
-        if (object instanceof fabric.Textbox && object.customProperty !== 'IgUser') {
+        if (object instanceof fabric.Textbox) {
             if (option === "color") {
                 object.set('fill', value);
             } else if (option === "font") {

@@ -1,3 +1,5 @@
+import { refreshUserTokens  } from "./utils/refreshUserTokens.js";
+
 export function decodeJWTAndGetUsername(jwtToken) {
   // In a real application, use the jsonwebtoken library to decode the JWT
   // Replace this with the actual JWT decoding logic for your application
@@ -7,8 +9,6 @@ export function decodeJWTAndGetUsername(jwtToken) {
   console.log(jwt_decoded)
   return jwt_decoded;
 }
-
-
 
 
 
@@ -27,14 +27,14 @@ document.addEventListener('DOMContentLoaded', () => {
   const photoElementP = document.getElementById('profilePhoto');
   const emailElement = document.getElementById('email');
   const statusElement = document.getElementById('status');
-  const tokensElement = document.getElementById('tokens');
 
   statusElement.textContent = decodedToken.status;
   emailElement.textContent = decodedToken.email;
-  tokensElement.textContent = decodedToken.tokens;
   // Establecer el atributo "src" de la imagen con la URL del campo "picture"
   photoElementP.src = decodedToken.picture;
   photoElement.src = decodedToken.picture;
-  tokensElement.textContent = decodedToken.tokens;
+  
+
+  refreshUserTokens();
 
 });

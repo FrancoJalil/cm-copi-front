@@ -1,6 +1,8 @@
 // app.js
 import { isSelectedCanvas, confirmAction, closeConfirmationModal, showConfirmationModalEdition, generateImage, deselectableAllCanvas, reactivarCanvas, toggleClickedStyle, saveImage, showConfirmationModal, deleteCanvas, modoEdicion, addPaddingIfNeeded, toggleBorder, toggleBold, addText, changeTextColor, changeTextFont, deleteText, selectAllCanvas } from './helpers.js';
 import { putSelectedStyle } from './modals/chooseStyle.js';
+import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1 } from "../utils/styles.js";
+import { updateSliderValue } from "./utils/slicingCounter.js"
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,6 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let listCheckboxChecked = [];
   let deselectCanvas = false;
   let authorPhotoStorage = localStorage.getItem('authorPhoto');
+
 
   const imagePreview = document.getElementById('authorPhoto');
   const authorPhoto = document.getElementById('input-file');
@@ -57,6 +60,31 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
   });
+
+
+
+  const decrementButton = document.getElementById("decrement");
+  const incrementButton = document.getElementById("increment");
+  const slider = document.getElementById("slider");
+  const sliderValue = document.getElementById("slider-value");
+  const tokensValue = document.getElementById("numTokens");
+
+  // Función para decrementar el valor del control deslizante
+  decrementButton.addEventListener("click", function () {
+    slider.stepDown();
+    updateSliderValue();
+  });
+
+  // Función para incrementar el valor del control deslizante
+  incrementButton.addEventListener("click", function () {
+    slider.stepUp();
+    updateSliderValue();
+  });
+
+  // Actualizar el valor del control deslizante cuando se mueve
+  slider.addEventListener("input", updateSliderValue);
+
+
 
   const openModalInfoBtn = document.getElementById("info-button");
   const closeModalInfoBtn = document.getElementById("closeModalInfoBtn");

@@ -1,5 +1,6 @@
 import { closeConfirmationModal } from '../helpers.js'
-import { BLACK_MARK, TRANSPARENT_MARK, SOLO_POST } from "../utils/styles.js";
+import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1 } from "../utils/styles.js";
+import { updateSliderValue } from "../utils/slicingCounter.js"
 
 let creado = false;
 
@@ -34,11 +35,11 @@ export let stylesJSON = {
             ]
         },
         {
-            title: SOLO_POST,
+            title: AUTHOR_PHRASE_1,
             type: SOLO,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694132734/media/carousel-images/Ccarrusel_2-P0_z23mfp.png'
             ]
         }
     ]
@@ -46,6 +47,7 @@ export let stylesJSON = {
 
 // style selected
 export function putSelectedStyle() {
+    
     let selectedStyle = localStorage.getItem('selectedStyle');
     if (!selectedStyle) {
         // set default style
@@ -94,7 +96,7 @@ export function chooseStyleOnClick(styleJSON) {
 export function chooseStyle(confirmationModalContainer, style, confirmationModalTitle, confirmationModalContent) {
 
     if (!creado) {
-
+        
         document.getElementById('confirm-button-modal').style.display = 'none';
         document.getElementById('cancel-button-modal').textContent = 'X';
         document.getElementById('cancel-button-modal').style.position = 'absolute';
@@ -159,6 +161,9 @@ export function chooseStyle(confirmationModalContainer, style, confirmationModal
             selectButton.textContent = 'Select'
             selectButton.addEventListener('click', function () {
                 chooseStyleOnClick(stylesJSON.styles[i]);
+
+                // Y setear el input slicing en 1 : X
+                updateSliderValue();
             });
             images_button_container.appendChild(selectButton);
 

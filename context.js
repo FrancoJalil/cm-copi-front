@@ -1,3 +1,5 @@
+import { refreshUserTokens  } from "./utils/refreshUserTokens.js";
+
 function decodeJWTAndGetUsername(jwtToken) {
   // In a real application, use the jsonwebtoken library to decode the JWT
   // Replace this with the actual JWT decoding logic for your application
@@ -19,13 +21,15 @@ document.addEventListener('DOMContentLoaded', () => {
   console.log(accessToken)
   // Decodificar el token utilizando jwt-decode
   const decodedToken = decodeJWTAndGetUsername(accessToken);
-  const tokensElement = document.getElementById('tokens');
   //document.getElementById('photo') decodedToken.picture
 
   // Obtener el elemento de imagen por su id
   const photoElement = document.getElementById('photo');
-  tokensElement.textContent = decodedToken.tokens;
+
   // Establecer el atributo "src" de la imagen con la URL del campo "picture"
   photoElement.src = decodedToken.picture;
-  tokensElement.textContent = decodedToken.tokens;
+  
+
+  refreshUserTokens();
+
 });
