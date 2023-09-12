@@ -1,5 +1,5 @@
 import { chooseStyle, stylesJSON } from "./modals/chooseStyle.js";
-import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1 } from "../utils/styles.js";
+import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1, SABIAS_QUE } from "../utils/styles.js";
 import { refreshUserTokens  } from "./utils/refreshUserTokens.js";
 // helpers.js
 
@@ -780,6 +780,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
     let fabricTextD;
     let fabricTextPetit;
     let fabricTextAuthor;
+    let fabricTextSabiasQue;
     let clipPath;
     let rect;
 
@@ -2279,8 +2280,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             // Agregar el texto "holis"
             fabricTextD = new fabric.Textbox(image_text_carru.title.toUpperCase(), {
                 left: 440,
-                top: 200,
-                height: 200,
+                top: 100,
+                height: 230,
                 width: 540,
                 fill: 'white',
                 fontSize: 110,
@@ -2292,9 +2293,15 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 //plitByGrapheme: true
             });
 
+            let numLines = fabricTextD.textLines.length;
+            if (numLines >= 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 80;
+            }
+
             fabricTextPetit = new fabric.Textbox(image_text_carru.info.toLowerCase(), {
                 left: 440,
-                top: 500,
+                top: 330,
                 width: 540,
                 fill: 'white',
                 fontSize: 50,
@@ -2304,6 +2311,12 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                 selectable: false,
                 //plitByGrapheme: true
             });
+
+            let numLinesPetit = fabricTextPetit.textLines.length;
+            if (numLinesPetit >= 10) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextPetit.fontSize = 45;
+            }
 
 
 
@@ -2855,7 +2868,142 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
                     canvas.add(fabricTextIG);
                 }
 
+    
+            } else if (format === SABIAS_QUE) {
+            // Agregar la imagen de fondo sin filtro de desenfoque
+            fabric.Image.fromURL(backgroundImageSrc, function (img) {
+
+
+                img.scaleToWidth(canvas.width);
+
+                canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+
+                // Agregar el rectángulo negro
+                let rect = new fabric.Rect({
+                    left: -1,   // Posición en X del rectángulo
+                    top: 550,    // Posición en Y del rectángulo
+                    width: 1024, // Ancho del rectángulo
+                    height: 600,// Altura del rectángulo
+                    //rx: 20,
+                    //ry: 20,
+                    fill: 'white',
+                    selectable: false,
+                    evented: false,
+                });
+
+                canvas.add(rect);
+                rect.sendToBack();
+
+            }, { crossOrigin: 'Anonymous' });
+            // Agregar el texto "holis"
+
+            fabricTextSabiasQue = new fabric.Textbox('¿Sabías que...?', {
+                left: 170,
+                top: 80,
+                width: 640,
+                fill: 'white',
+                fontSize: 80,
+                fontFamily: 'Lora',
+                fontStyle: 'bold',
+                textAlign: 'center',
+                textWrapping: 'auto',
+                lineHeight: 0.95,
+                selectable: false,
+            });
+
+            allObjects.push(fabricTextSabiasQue);
+
+            fabricTextD = new fabric.Textbox(image_text_carru, {
+                left: 170,
+                top: 610,
+                width: 640,
+                fill: '#121212',
+                fontSize: 45,
+                fontFamily: 'Lora',
+                fontStyle: 'bold',
+                textAlign: 'center',
+                textWrapping: 'auto',
+                lineHeight: 0.95,
+                selectable: false,
+            });
+
+            allObjects.push(fabricTextD);
+
+            //https://cdn-icons-png.flaticon.com/512/7350/7350737.png
+
+            allObjects.push(fabricTextAuthor);
+
+            canvas.add(fabricTextD);
+            canvas.add(fabricTextSabiasQue);
+            canvas.renderAll();
+
+                if (author) {
+                    // Cargar la imagen desde URL
+                    fabric.Image.fromURL(authorPhoto, function (imgX) {
+
+                        // Configurar la imagen
+                        //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                        //imgX.scale(0.5);
+                        imgX.scaleToWidth(110);
+                        imgX.set({
+                            left: 440,
+                            top: 895,
+                            selectable: false,
+                        });
+
+                        // Crear un círculo de recorte
+                        var clipPath = new fabric.Circle({
+                            radius: 470,
+                            originX: 'center',
+                            originY: 'center',
+                            selectable: true,
+                        });
+
+                        // Aplicar el círculo de recorte a la imagen
+                        imgX.clipPath = clipPath;
+
+                        allObjects.push(imgX);
+
+                        // Agregar la imagen al lienzo
+                        canvas.add(imgX);
+                    }, { crossOrigin: 'Anonymous' });
+
+                    let circle = new fabric.Circle({
+                        left: 441,
+                        top: 897,
+                        radius: 54,
+                        selectable: false,
+                        fill: '#121212',
+                    });
+
+                    allObjects.push(circle);
+
+                    canvas.add(circle);
+                    //canvas.add(photo);
+
+                    // @
+                    fabricTextIG = new fabric.Textbox('@' + authorName, {
+                        left: 600,
+                        top: 980,
+                        width: 400,
+                        fill: '#121212',
+                        fontSize: 25,
+                        fontStyle: 'italic',
+                        fontWeight: 'lighter',
+                        textAlign: 'right',
+                        textWrapping: 'auto',
+                        selectable: false,
+                        //plitByGrapheme: true
+                    });
+    
+                    //fabricTextIG.customProperty = 'IgUser'
+    
+                    allObjects.push(fabricTextIG);
+                    canvas.add(fabricTextIG);
+                }
+
     }
+
 
     clipPath?.on('selected', function (options) {
 

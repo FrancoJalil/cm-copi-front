@@ -10,8 +10,10 @@ export function updateSliderValue() {
     let selectedStyle = JSON.parse(localStorage.getItem('selectedStyle'));
 
     if (selectedStyle.type === 'Solo') {
+        console.log("aqu1i")
         tokensValue.textContent = parseInt(slider.value) * 1;
     } else {
+        console.log("aqui")
         tokensValue.textContent = parseInt(slider.value) * 3;
     }
 

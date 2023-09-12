@@ -1,5 +1,5 @@
 import { closeConfirmationModal } from '../helpers.js'
-import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1 } from "../utils/styles.js";
+import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1, IMAGE_CONTENT, SABIAS_QUE } from "../utils/styles.js";
 import { updateSliderValue } from "../utils/slicingCounter.js"
 
 let creado = false;
@@ -35,7 +35,28 @@ export let stylesJSON = {
             ]
         },
         {
+            title: IMAGE_CONTENT,
+            type: CARRUSEL,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            images: [
+
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487851/media/carousel-images/Ccarrusel_3-P0_jeqdhq.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487853/media/carousel-images/Ccarrusel_3-P1_v620ym.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487855/media/carousel-images/Ccarrusel_3-P2_s6wdko.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487857/media/carousel-images/Ccarrusel_3-P3_yb6a0j.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487858/media/carousel-images/Ccarrusel_3-P4_aikc18.png'
+            ]
+        },
+        {
             title: AUTHOR_PHRASE_1,
+            type: SOLO,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            images: [
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694132734/media/carousel-images/Ccarrusel_2-P0_z23mfp.png'
+            ]
+        },
+        {
+            title: SABIAS_QUE,
             type: SOLO,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [

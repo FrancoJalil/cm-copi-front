@@ -69,6 +69,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const sliderValue = document.getElementById("slider-value");
   const tokensValue = document.getElementById("numTokens");
 
+  updateSliderValue();
+
   // Función para decrementar el valor del control deslizante
   decrementButton.addEventListener("click", function () {
     slider.stepDown();
