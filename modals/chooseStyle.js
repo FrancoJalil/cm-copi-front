@@ -1,5 +1,5 @@
 import { closeConfirmationModal } from '../helpers.js'
-import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1, IMAGE_CONTENT, SABIAS_QUE } from "../utils/styles.js";
+import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1, IMAGE_CONTENT, SABIAS_QUE, AUTHOR_PHRASE_2 } from "../utils/styles.js";
 import { updateSliderValue } from "../utils/slicingCounter.js"
 
 let creado = false;
@@ -56,11 +56,19 @@ export let stylesJSON = {
             ]
         },
         {
+            title: AUTHOR_PHRASE_2,
+            type: SOLO,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            images: [
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694572979/media/carousel-images/Ccarrusel_1-P0_j1vnlu.png'
+            ]
+        },
+        {
             title: SABIAS_QUE,
             type: SOLO,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694132734/media/carousel-images/Ccarrusel_2-P0_z23mfp.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694563923/media/carousel-images/Ccarrusel_1-P0_wkdmvd.png'
             ]
         }
     ]
