@@ -1,5 +1,5 @@
 import { closeConfirmationModal } from '../helpers.js'
-import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1, IMAGE_CONTENT, SABIAS_QUE, AUTHOR_PHRASE_2 } from "../utils/styles.js";
+import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1, INFORMARTIVO, SABIAS_QUE, AUTHOR_PHRASE_2, TIPS, DATO_CURIOSO } from "../utils/styles.js";
 import { updateSliderValue } from "../utils/slicingCounter.js"
 
 let creado = false;
@@ -22,6 +22,18 @@ export let stylesJSON = {
             ]
         },
         {
+            title: TIPS,
+            type: CARRUSEL,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            images: [
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P0_hrynep.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P1_qro7xm.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P2_dpdnuq.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P3_fgel8h.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P4_qqnkqc.png',
+            ]
+        },
+        {
             title: TRANSPARENT_MARK,
             type: CARRUSEL,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
@@ -35,7 +47,7 @@ export let stylesJSON = {
             ]
         },
         {
-            title: IMAGE_CONTENT,
+            title: INFORMARTIVO,
             type: CARRUSEL,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
@@ -49,6 +61,14 @@ export let stylesJSON = {
         },
         {
             title: AUTHOR_PHRASE_1,
+            type: SOLO,
+            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            images: [
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694132734/media/carousel-images/Ccarrusel_2-P0_z23mfp.png'
+            ]
+        },
+        {
+            title: DATO_CURIOSO,
             type: SOLO,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
