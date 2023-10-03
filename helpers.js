@@ -2856,7 +2856,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             let numLinesPetit = fabricTextPetit.textLines.length;
             if (numLinesPetit >= 10) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextPetit.fontSize = 42;
+                fabricTextPetit.fontSize = 38;
             }
 
 
@@ -3680,20 +3680,24 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
         if (author) {
             // Cargar la imagen desde URL
             fabric.Image.fromURL(authorPhoto, function (imgX) {
-
+                
+                
                 // Configurar la imagen
                 //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
                 //imgX.scale(0.5);
-                imgX.scaleToWidth(110);
+                
                 imgX.set({
                     left: 440,
                     top: 895,
                     selectable: false,
                 });
+                
+                var imageSize = imgX.getScaledWidth();
+                imgX.scaleToWidth(110);
 
                 // Crear un círculo de recorte
                 var clipPath = new fabric.Circle({
-                    radius: 470,
+                    radius: imageSize/2,
                     originX: 'center',
                     originY: 'center',
                     selectable: true,
@@ -3771,7 +3775,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
         }, { crossOrigin: 'Anonymous' });
         // Agregar el texto "holis"
 
-        fabricTextD = new fabric.Textbox(image_text_carru + '"', {
+        fabricTextD = new fabric.Textbox(image_text_carru, {
             left: 115,
             top: 610,
             width: 800,
@@ -3784,6 +3788,17 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             lineHeight: 1,
             selectable: false,
         });
+
+        let numLines = fabricTextD.textLines.length;
+            if (numLines <= 4) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 38;
+            }
+
+            else if (numLines <= 5) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 36;
+            }
 
         allObjects.push(fabricTextD);
 

@@ -19,7 +19,8 @@ export let stylesJSON = {
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975268/media/carousel-images/Ccarrusel_2-P3_afztie.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975267/media/carousel-images/Ccarrusel_2-P2_b2syiw.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975265/media/carousel-images/Ccarrusel_2-P1_zqy6va.png',
-            ]
+            ],
+            promptI: 'Type a prompt... Ej: Internet de las cosas'
         },
         {
             title: TIPS,
@@ -31,7 +32,8 @@ export let stylesJSON = {
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P2_dpdnuq.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P3_fgel8h.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P4_qqnkqc.png',
-            ]
+            ],
+            promptI: '4 Tips... Ej: << Programación web >>'
         },
         {
             title: TRANSPARENT_MARK,
@@ -44,7 +46,8 @@ export let stylesJSON = {
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337702/media/carousel-images/Ccarrusel_4-P3_ea8pdd.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337700/media/carousel-images/Ccarrusel_4-P2_rocw0b.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337699/media/carousel-images/Ccarrusel_4-P1_wm8zwr.png'
-            ]
+            ],
+            promptI: 'Type a prompt... Ej: << Segunda guerra mundial >>'
         },
         {
             title: INFORMARTIVO,
@@ -57,7 +60,8 @@ export let stylesJSON = {
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487855/media/carousel-images/Ccarrusel_3-P2_s6wdko.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487857/media/carousel-images/Ccarrusel_3-P3_yb6a0j.png',
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487858/media/carousel-images/Ccarrusel_3-P4_aikc18.png'
-            ]
+            ],
+            promptI: 'Type a prompt... Ej: << Segunda guerra mundial >>'
         },
         {
             title: AUTHOR_PHRASE_1,
@@ -65,15 +69,17 @@ export let stylesJSON = {
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694132734/media/carousel-images/Ccarrusel_2-P0_z23mfp.png'
-            ]
+            ],
+            promptI: 'Type a prompt... Ej: << Marco Aurelio >>'
         },
         {
             title: DATO_CURIOSO,
             type: SOLO,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694132734/media/carousel-images/Ccarrusel_2-P0_z23mfp.png'
-            ]
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_4-P0_emwejf.png'
+            ],
+            promptI: 'Dato curioso de ... Ej: << Tigres bengala >>'
         },
         {
             title: AUTHOR_PHRASE_2,
@@ -81,7 +87,8 @@ export let stylesJSON = {
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694572979/media/carousel-images/Ccarrusel_1-P0_j1vnlu.png'
-            ]
+            ],
+            promptI: 'Frases de ... Ej: << Marco Aurelio >>'
         },
         {
             title: SABIAS_QUE,
@@ -89,7 +96,8 @@ export let stylesJSON = {
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694563923/media/carousel-images/Ccarrusel_1-P0_wkdmvd.png'
-            ]
+            ],
+            promptI: '¿Sabias que...? Ej: << Osos panda >>'
         }
     ]
 }
@@ -102,6 +110,7 @@ export function putSelectedStyle() {
         // set default style
         selectedStyle = stylesJSON.styles[0];
         localStorage.setItem('selectedStyle', JSON.stringify(selectedStyle));
+        document.getElementById('prompt-input').placeholder = selectedStyle.promptI;
 
     } else {
         selectedStyle = JSON.parse(selectedStyle);
@@ -129,7 +138,8 @@ export function putSelectedStyle() {
     }
 
     // close modal
-
+    console.log(selectedStyle);
+    document.getElementById('prompt-input').placeholder = selectedStyle.promptI;
     closeConfirmationModal();
 
 

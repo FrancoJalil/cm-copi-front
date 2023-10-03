@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const authorPhoto = document.getElementById('input-file');
 
   putSelectedStyle();
+  
 
   const firstForm = document.getElementById("firstInputUser");
 
@@ -151,7 +152,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const image = new Image();
 
         image.onload = function () {
-          if (image.width === 1024 && image.height === 1024) {
+          //if (image.width === 1024 && image.height === 1024) {
+          if (image.width === image.height) {
             document.getElementById('imgMsg').style.display = 'none';
             // La imagen tiene las dimensiones correctas, continuar con el proceso
             imagePreview.src = e.target.result;
