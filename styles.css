@@ -1022,6 +1022,16 @@ input[type="range"] {
     #firstInputUser {
         justify-content: space-between;
     }
+
+    .format-title {
+        margin-bottom: 0.6rem;
+    }
+
+    .all-images img {
+        width: 150px;
+    }
+
+
 }
 
 
