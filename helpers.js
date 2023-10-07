@@ -553,7 +553,7 @@ export function generateImage() {
                         let actualImg = imgElement.src;
                         imagesList.push(actualImg)
 
-                        let idea_actual = "idea" + (index + 1);
+                        let idea_actual = "idea" + (contador);
                         let front_image_text = data.gpt_response[idea_actual].image_text;
 
                         let image_description = data.gpt_response[idea_actual].image_description;
@@ -690,7 +690,7 @@ export function generateImage() {
 
 
                                 for (let j = 0; j <= 3; j++) {
-                                    var idea = "idea" + (j + 1)
+                                    let idea = "idea" + (j + 1)
                                     let carrusel_actual = "carrusel_" + (j + 1)
 
                                     //console.log(data.gpt_response[idea])
@@ -703,8 +703,12 @@ export function generateImage() {
                                         let carrusel = "carrusel_" + (i + 1)
 
                                         let image_position = i + 1
+                                        let image_text_carru;
 
-                                        let image_text_carru = data.gpt_response[idea][carrusel]
+                                        if (i < 4) {
+                                            image_text_carru = data.gpt_response[idea][carrusel]
+                                        }
+                                        
 
                                         let canv = canvasContainer.children[j];
                                         newCont.classList.add('cont-carrusel');
@@ -3199,7 +3203,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             }, { crossOrigin: 'Anonymous' });
             // Agregar el texto "holis"
 
-            fabricTextD = new fabric.Textbox("4 " + image_text_carru.toUpperCase(), {
+            fabricTextD = new fabric.Textbox(image_text_carru.toUpperCase(), {
                 left: 40,
                 top: 100,
                 width: 640,
@@ -3310,7 +3314,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             top: 610,
             width: 640,
             fill: '#121212',
-            fontSize: 50,
+            fontSize: 48,
             fontFamily: 'Lora',
             fontStyle: 'bold',
             textAlign: 'center',
@@ -3318,6 +3322,17 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             lineHeight: 0.95,
             selectable: false,
         });
+
+        let numLines = fabricTextD.textLines.length;
+            if (numLines >= 5) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 46;
+            }
+
+            if (numLines <= 3) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.top = 630;
+            }
 
         allObjects.push(fabricTextD);
 
@@ -3327,7 +3342,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             top: 840,
             width: 640,
             fill: '#121212',
-            fontSize: 40,
+            fontSize: 38,
             fontFamily: 'Lora',
             fontStyle: 'bold',
             textAlign: 'center',
@@ -3484,13 +3499,16 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             selectable: false,
         });
 
+        let numLines = fabricTextD.textLines.length;
+            
+
         allObjects.push(fabricTextD);
         
 
 
         // Prompt, con Capitalize
         fabricTextAuthor = new fabric.Textbox("- " + valuePromptInput.toUpperCase(), {
-            left: 670,
+            left: 655,
             top: 700,
             width: 330,
             fill: 'white',
@@ -3501,6 +3519,11 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             lineHeight: 0.95,
             selectable: false,
         });
+
+        if (numLines >= 8) {
+            // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+            fabricTextAuthor.top = 830;
+        }
 
         //https://cdn-icons-png.flaticon.com/512/7350/7350737.png
 
@@ -3777,7 +3800,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
         fabricTextD = new fabric.Textbox(image_text_carru, {
             left: 115,
-            top: 610,
+            top: 600,
             width: 800,
             fill: '#121212',
             fontSize: 32,
@@ -3798,6 +3821,12 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             else if (numLines <= 5) {
                 // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
                 fabricTextD.fontSize = 36;
+            }
+
+            else if (numLines >= 5) {
+                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+                fabricTextD.fontSize = 36;
+                fabricTextD.top = 600;
             }
 
         allObjects.push(fabricTextD);
