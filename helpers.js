@@ -493,9 +493,9 @@ export function generateImage() {
                         let canvasElement = document.createElement('canvas');
                         let containerCE = document.createElement('div');
                         containerCE.classList.add('big-container');
-                        containerCE.setAttribute('id', 'big-container_' + contador);
+                        containerCE.setAttribute('id', 'big-container_' + index);
 
-                        console.log("INDEX2", contador)
+                        console.log("INDEX2", index)
                         canvasElement.id = 'canvas-' + index;
 
 
@@ -504,13 +504,13 @@ export function generateImage() {
                         let selectThisCarru = document.createElement('input');
                         selectThisCarru.type = 'checkbox';
                         selectThisCarru.classList.add('select-this-carru');
-                        selectThisCarru.setAttribute('id', 'miParrafo' + contador);
+                        selectThisCarru.setAttribute('id', 'miParrafo' + index);
 
                         // Crea el elemento label
                         let labelElement = document.createElement('label');
 
                         // Establece la propiedad 'for' del label para que coincida con el atributo 'id' del input
-                        labelElement.setAttribute('for', 'miParrafo' + contador);
+                        labelElement.setAttribute('for', 'miParrafo' + index);
 
                         // Agrega el texto que deseas mostrar en el label
                         labelElement.innerText = 'Select this carrousel';
@@ -557,7 +557,7 @@ export function generateImage() {
                         let actualImg = imgElement.src;
                         imagesList.push(actualImg);
 
-                        let idea_actual = "idea" + (contador);
+                        let idea_actual = "idea" + (index+1);
                         contadorIndex++;
                         console.log("PEPE PIO")
                         console.log("IDEA", idea_actual)
