@@ -68,7 +68,7 @@ export let stylesJSON = {
             type: SOLO,
             post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694132734/media/carousel-images/Ccarrusel_2-P0_z23mfp.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696694532/media/carousel-images/Ccarrusel_1-P0_yh5qjb.png'
             ],
             promptI: 'Type a prompt... Ej: << Marco Aurelio >>'
         },
