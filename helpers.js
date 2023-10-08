@@ -469,7 +469,8 @@ export function generateImage() {
                     //console.log("err")
                 }
                 const data = response.data;
-                //console.log(data)
+                
+                console.log("BIGDATA", data);
 
                 // SABER CUANTOS CARRUS SON Y AGREGARLO A "PUBLICAR (4)"
                 numberOfCarrus = Object.keys(data.gpt_response).length;
@@ -487,19 +488,21 @@ export function generateImage() {
                     let imgElement = document.createElement('img');
                     imgElement.src = image.image
 
-                    
+                    console.log("IM", imgElement);
 
                     imgElement.onload = function () {
                         let contadorIndex = 0;
+                        
+                        console.log("IM2", data.image_generated[contadorReal].image);
 
                         let canvasContainer = document.getElementById('canvasContainer');
                         let canvasElement = document.createElement('canvas');
                         let containerCE = document.createElement('div');
                         containerCE.classList.add('big-container');
-                        containerCE.setAttribute('id', 'big-container_' + contadorReal);
+                        containerCE.setAttribute('id', 'big-container_' + (contadorReal));
 
                         //console.log("INDEX2", index)
-                        canvasElement.id = 'canvas-' + index;
+                        canvasElement.id = 'canvas-' + contadorReal;
 
 
                         containerCE.appendChild(canvasElement);
@@ -507,13 +510,13 @@ export function generateImage() {
                         let selectThisCarru = document.createElement('input');
                         selectThisCarru.type = 'checkbox';
                         selectThisCarru.classList.add('select-this-carru');
-                        selectThisCarru.setAttribute('id', 'miParrafo' + index);
+                        selectThisCarru.setAttribute('id', 'miParrafo' + contadorReal);
 
                         // Crea el elemento label
                         let labelElement = document.createElement('label');
 
                         // Establece la propiedad 'for' del label para que coincida con el atributo 'id' del input
-                        labelElement.setAttribute('for', 'miParrafo' + index);
+                        labelElement.setAttribute('for', 'miParrafo' + contadorReal);
 
                         // Agrega el texto que deseas mostrar en el label
                         labelElement.innerText = 'Select this carrousel';
@@ -549,7 +552,7 @@ export function generateImage() {
                         let canvasWidth = imgElement.width;
                         let canvasHeight = imgElement.height;
 
-                        let canvasFirst = new fabric.Canvas('canvas-' + index, {
+                        let canvasFirst = new fabric.Canvas('canvas-' + contadorReal, {
                             width: canvasWidth,
                             height: canvasHeight
                         });
@@ -557,8 +560,7 @@ export function generateImage() {
 
                         //canvases[index] = canvas;
                         //console.log(data.gpt_response)
-                        let actualImg = imgElement.src;
-                        imagesList.push(actualImg);
+                        imagesList.push(imgElement.src);
 
                         //console.log("INDEX_", index);
                         //console.log("CONTADOR_", contador);
@@ -590,7 +592,7 @@ export function generateImage() {
                                 event.target.value = event.target.value.slice(0, maxLength);
                             }
                             image_description = event.target.value;
-                            imagesDataFront[index].image_description = image_description;
+                            imagesDataFront[contadorReal].image_description = image_description;
                             //console.log(imagesDataFront);
                         });
 
@@ -636,7 +638,7 @@ export function generateImage() {
                         switchInput.type = 'checkbox';
                         switchInput.name = 'checkbox-publish';
                         switchInput.classList.add('checkbox-publish');
-                        switchInput.id = 'checkbox-publish' + switchCounter;
+                        switchInput.id = 'checkbox-publish' + contadorReal;
                         switchInput.checked = true; // Por defecto, activado
 
                         const selectedText = document.createElement('label');
@@ -689,7 +691,8 @@ export function generateImage() {
                         format = selectedStyle.title;
                         //console.log(format);
 
-                        configurarCanvas(canvasFirst, actualImg, true, format, front_image_text, author, null);
+                        console.log("1", imgElement.src)
+                        configurarCanvas(canvasFirst, imgElement.src, true, format, front_image_text, author, null);
 
                         // CARRU
                         let canvasContainerDiv = canvasContainer.querySelector('.canvas-container');
@@ -717,12 +720,6 @@ export function generateImage() {
                                     let image_text_carru = data.gpt_response[idea_actual][carrusel]
 
                                     let canv = canvasContainer.children[contadorReal];
-
-                                    console.log("XX");
-                                    console.log("IDEA_ACTUAL", idea_actual);
-                                    console.log("CanvContChild", canvasContainer.children)
-                                    console.log("CANV", canv);
-                                    console.log("XX");
 
                                     newCont.classList.add('cont-carrusel');
 
@@ -761,15 +758,15 @@ export function generateImage() {
                                     //console.log(format);
                                     //console.log(i);
 
-                                    console.log("IMAGELIST", imagesList);
+                                    console.log("2", imgElement.src)
 
                                     if (i < 4) {
-                                        configurarCanvas(canvas, actualImg, false, format, image_text_carru, author, 'carru');
+                                        configurarCanvas(canvas, imgElement.src, false, format, image_text_carru, author, 'carru');
                                     }
 
                                     // última imagen (firma)
                                     else {
-                                        configurarCanvas(canvas, imagesList[index], false, format, { title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!' }, author, 'signature');
+                                        configurarCanvas(canvas, imgElement.src, false, format, { title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!' }, author, 'signature');
                                     }
                                 }
 
