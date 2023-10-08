@@ -115,7 +115,7 @@ export function deleteCanvas() {
         if (canvasInsideBigContainer.length === 0) {
             // Si no tiene canvas adentro, eliminar el contenedor 'big-container'
             bigContainerX.parentNode.removeChild(bigContainerX);
-            console.log("El contenedor 'big-container' ha sido eliminado.");
+            //console.log("El contenedor 'big-container' ha sido eliminado.");
 
             // actualizar publicar(x)
             numberOfCarrus--;
@@ -128,7 +128,7 @@ export function deleteCanvas() {
     }
 
     canvases = canvases.filter((canvasObj) => canvasObj.canvas !== selectedCanvas);
-    console.log(canvases)
+    //console.log(canvases)
 
     deleteObjectFromAllObjects(selectedCanvas);
     // Establecer selectedCanvas en null para eliminar la referencia al elemento canvas
@@ -154,7 +154,7 @@ function handlePublish(switchInput) {
     let saveImageButton = document.getElementById('save-image-button');
 
     if (switchInput.checked) {
-        console.log('Switch seleccionado');
+        //console.log('Switch seleccionado');
         // aquí acceder a los canvas correspondientes para re-agregarlos a todos lados (si es que ya no lo estaban)
         containerDiv.style.opacity = '1';
         let index = carruselUnpublished.indexOf(carruselNumber);
@@ -167,7 +167,7 @@ function handlePublish(switchInput) {
         }
 
     } else {
-        console.log('Switch deseleccionado');
+        //console.log('Switch deseleccionado');
         containerDiv.style.opacity = '0.4';
         carruselUnpublished.push(carruselNumber);
         updateAdditionalText(numberOfCarrus - carruselUnpublished.length);
@@ -177,7 +177,7 @@ function handlePublish(switchInput) {
     }
 
     saveImageButton.classList.toggle("disabled-button", carruselUnpublished.length === numberOfCarrus);
-    console.log(carruselUnpublished)
+    console.log(carruselUnpublished);
 }
 
 
@@ -271,13 +271,13 @@ export function toggleClickedStyle(element, value, option) {
                         object.set('strokeWidth', strokeWidth !== 1 ? 1 : 1.3);
                         object.set('stroke', strokeWidth === 1 ? 'black' : '');
                     } else if (option === "deleteText") {
-                        console.log("borrando texto")
+                        //console.log("borrando texto")
 
                         currentCanvas.remove(object);
 
 
                     } else {
-                        console.log("done");
+                        //console.log("done");
                     }
 
 
@@ -311,7 +311,7 @@ export function activarCanvas() {
     deselectCanvas = false;
     allObjects.forEach((object) => {
 
-        console.log(object)
+        //console.log(object)
         object.set('selectable', true);
     });
 }
@@ -385,7 +385,7 @@ function showLoading(show) {
 
 export function generateImage() {
 
-    console.log("loading...")
+    //console.log("loading...")
     showLoading(true);
 
     // hacer cositas cuando esté cargando...
@@ -403,7 +403,7 @@ export function generateImage() {
     setTimeout(() => {
         // SACAR LOADING SKELETON
         showLoading(false);
-        console.log("loaded")
+        //console.log("loaded")
 
         authorName = document.getElementById('authorName');
         authorName = authorName.value;
@@ -438,7 +438,7 @@ export function generateImage() {
 
 
         const cantidadPost = parseInt(document.getElementById("slider-value").textContent);
-        console.log("POSTS", cantidadPost);
+        //console.log("POSTS", cantidadPost);
 
         axios.post('http://localhost:8000/image-generation/generate', {
             subject: JSON.stringify({
@@ -458,18 +458,18 @@ export function generateImage() {
                 if (response.status === 200) {
 
                     // Si el estado de la respuesta es 200, continúa con el programa
-                    console.log("ok!");
+                    //console.log("ok!");
                     refreshUserTokens();
                 } else if (response.statusText === 'Unauthorized') {
                     //logoutUser();
-                    console.log("Unauthorized")
+                    //console.log("Unauthorized")
                 }
                 else {
                     // Si el estado no es 200, muestra un mensaje de error o realiza alguna acción adecuada
-                    console.log("err")
+                    //console.log("err")
                 }
                 const data = response.data;
-                console.log(data)
+                //console.log(data)
 
                 // SABER CUANTOS CARRUS SON Y AGREGARLO A "PUBLICAR (4)"
                 numberOfCarrus = Object.keys(data.gpt_response).length;
@@ -479,12 +479,15 @@ export function generateImage() {
                 let imageContainer = document.getElementById('imageContainer');
                 imageContainer.innerHTML = '';
 
-                console.log(data.image_generated)
+                //console.log(data.image_generated)
 
+                let contadorReal = 0;
                 data.image_generated.forEach((image, index) => {
-                    console.log("INDEX", index)
+                    //console.log("INDEX", index)
                     let imgElement = document.createElement('img');
                     imgElement.src = image.image
+
+                    
 
                     imgElement.onload = function () {
                         let contadorIndex = 0;
@@ -493,9 +496,9 @@ export function generateImage() {
                         let canvasElement = document.createElement('canvas');
                         let containerCE = document.createElement('div');
                         containerCE.classList.add('big-container');
-                        containerCE.setAttribute('id', 'big-container_' + index);
+                        containerCE.setAttribute('id', 'big-container_' + contadorReal);
 
-                        console.log("INDEX2", index)
+                        //console.log("INDEX2", index)
                         canvasElement.id = 'canvas-' + index;
 
 
@@ -553,18 +556,20 @@ export function generateImage() {
 
 
                         //canvases[index] = canvas;
-                        console.log(data.gpt_response)
+                        //console.log(data.gpt_response)
                         let actualImg = imgElement.src;
                         imagesList.push(actualImg);
 
-                        let idea_actual = "idea" + (index+1);
+                        //console.log("INDEX_", index);
+                        //console.log("CONTADOR_", contador);
+                        let idea_actual = "idea" + (contadorReal+1);// index + 1 (SOLO)
                         contadorIndex++;
-                        console.log("PEPE PIO")
-                        console.log("IDEA", idea_actual)
-                        console.log("DATITA", data.gpt_response[idea_actual])
+                        //console.log("PEPE PIO")
+                        //console.log("IDEA", idea_actual)
+                        //console.log("DATITA", data.gpt_response[idea_actual])
                         let front_image_text = data.gpt_response[idea_actual].image_text;
                         let image_description = data.gpt_response[idea_actual].image_description;
-                        console.log("FRONTI", front_image_text)
+                        //console.log("FRONTI", front_image_text)
                         imagesDataFront.push({ image_description: image_description });
 
 
@@ -586,7 +591,7 @@ export function generateImage() {
                             }
                             image_description = event.target.value;
                             imagesDataFront[index].image_description = image_description;
-                            console.log(imagesDataFront);
+                            //console.log(imagesDataFront);
                         });
 
                         let canvasDiv = document.createElement('div');
@@ -662,7 +667,7 @@ export function generateImage() {
                         if (!canvasData || canvasData.canvas !== canvasFirst) {
 
                             canvasData = {
-                                num_carrusel: "carrusel_" + contador,
+                                num_carrusel: "carrusel_" + contadorReal,
                                 image_position: 0,
                                 canvas: canvasFirst,
                                 publish: true
@@ -676,13 +681,13 @@ export function generateImage() {
                             allCanvas.push(canvasFirst)
                             canvases.push(canvasData);
                             canvasDataWithCanvasFirst.push(canvasData)
-                            contador = contador + 1;
+                            
                         }
 
 
-                        console.log(selectedStyle)
+                        //console.log(selectedStyle)
                         format = selectedStyle.title;
-                        console.log(format);
+                        //console.log(format);
 
                         configurarCanvas(canvasFirst, actualImg, true, format, front_image_text, author, null);
 
@@ -691,82 +696,88 @@ export function generateImage() {
                         // Establecer divs al carrusel
 
                         // Condicional que permite que no haya mas de 4 / 5 imagen por carrusel // ANTI BUG
-                        if (canvasContainer.children.length == 4) {
-                            console.log(selectedStyle.type);
+                        if (true) { // JEJE
+                            
                             if (selectedStyle.type !== 'Solo') {
 
+                                //var idea = "idea" + (j + 1)
+                                let carrusel_actual = "carrusel_" + (contadorReal);
 
-                                for (let j = 0; j <= 3; j++) {
-                                    var idea = "idea" + (j + 1)
-                                    let carrusel_actual = "carrusel_" + (j + 1)
+                                ////console.log(data.gpt_response[idea])
+                                let newCont = document.createElement('div');
+                                newCont.classList.add('cont-carrusel');
 
-                                    //console.log(data.gpt_response[idea])
-                                    let newCont = document.createElement('div');
+
+                                for (let i = 0; i <= 4; i++) {
+
+                                    let carrusel = "carrusel_" + (i + 1);
+
+                                    let image_position = i + 1;
+
+                                    let image_text_carru = data.gpt_response[idea_actual][carrusel]
+
+                                    let canv = canvasContainer.children[contadorReal];
+
+                                    console.log("XX");
+                                    console.log("IDEA_ACTUAL", idea_actual);
+                                    console.log("CanvContChild", canvasContainer.children)
+                                    console.log("CANV", canv);
+                                    console.log("XX");
+
                                     newCont.classList.add('cont-carrusel');
 
+                                    // reemplazar este div por un canvas 250x250 fondo negro
+                                    let canvasElement = document.createElement('canvas');
+                                    canvasElement.width = 250;
+                                    canvasElement.height = 250;
+                                    canvasElement.classList.add('img-carrusel');
 
-                                    for (let i = 0; i <= 4; i++) {
+                                    canv.appendChild(newCont);
+                                    newCont.appendChild(canvasElement);
 
-                                        let carrusel = "carrusel_" + (i + 1)
+                                    // Configurar el nuevo canvas con fondo negro y texto "holis"
+                                    let canvas = new fabric.Canvas(canvasElement, {
+                                        width: canvasWidth,
+                                        height: canvasHeight
+                                    });
+                                    //canvases.push(canvas);
 
-                                        let image_position = i + 1
+                                    // Crear un nuevo objeto canvasData para cada canvas
+                                    //canvasData.carrusel.carrus.push(canvas)
 
-                                        let image_text_carru = data.gpt_response[idea][carrusel]
-
-                                        let canv = canvasContainer.children[j];
-                                        newCont.classList.add('cont-carrusel');
-
-                                        // reemplazar este div por un canvas 250x250 fondo negro
-                                        let canvasElement = document.createElement('canvas');
-                                        canvasElement.width = 250;
-                                        canvasElement.height = 250;
-                                        canvasElement.classList.add('img-carrusel');
-
-                                        canv.appendChild(newCont);
-                                        canv.appendChild(canvasElement);
-
-                                        // Configurar el nuevo canvas con fondo negro y texto "holis"
-                                        let canvas = new fabric.Canvas(canvasElement, {
-                                            width: canvasWidth,
-                                            height: canvasHeight
-                                        });
-                                        //canvases.push(canvas);
-
-                                        // Crear un nuevo objeto canvasData para cada canvas
-                                        //canvasData.carrusel.carrus.push(canvas)
-
-                                        canvasData = {
-                                            num_carrusel: carrusel_actual,
-                                            image_position: image_position,
-                                            canvas: canvas,
-                                            publish: true
-                                        };
+                                    canvasData = {
+                                        num_carrusel: carrusel_actual,
+                                        image_position: image_position,
+                                        canvas: canvas,
+                                        publish: true
+                                    };
 
 
-                                        //if (i == 0) {
-                                        // canvasData.canvas = canvasFirst;
-                                        //}
-                                        allCanvas.push(canvas)
-                                        canvases.push(canvasData);
-                                        console.log(format);
-                                        console.log(i);
+                                    //if (i == 0) {
+                                    // canvasData.canvas = canvasFirst;
+                                    //}
+                                    allCanvas.push(canvas)
+                                    canvases.push(canvasData);
+                                    //console.log(format);
+                                    //console.log(i);
 
+                                    console.log("IMAGELIST", imagesList);
 
-                                        if (i < 4) {
-                                            configurarCanvas(canvas, imagesList[j], false, format, image_text_carru, author, 'carru');
-                                        }
-
-                                        // última imagen (firma)
-                                        else {
-                                            configurarCanvas(canvas, imagesList[j], false, format, { title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!' }, author, 'signature');
-                                        }
+                                    if (i < 4) {
+                                        configurarCanvas(canvas, actualImg, false, format, image_text_carru, author, 'carru');
                                     }
 
+                                    // última imagen (firma)
+                                    else {
+                                        configurarCanvas(canvas, imagesList[index], false, format, { title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!' }, author, 'signature');
+                                    }
                                 }
 
+
+
                             }
-                        }
-                        };
+                        }contadorReal++;
+                    };
 
 
 
@@ -2712,35 +2723,35 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             canvas.renderAll();
 
             fabric.Image.fromURL('     https://cdn-icons-png.flaticon.com/512/523/523029.png  ', function (imgX) {
-                    // Configurar la imagen
-                    //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
-                    //imgX.scale(0.5);
-                    imgX.scaleToWidth(160);
-                    imgX.set({
-                        left: 800,
-                        top: 430,
-                        selectable: false,
-                       
-                    });
+                // Configurar la imagen
+                //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                //imgX.scale(0.5);
+                imgX.scaleToWidth(160);
+                imgX.set({
+                    left: 800,
+                    top: 430,
+                    selectable: false,
 
-                    // Crear un círculo de recorte
-                    var clipPath = new fabric.Circle({
-                        radius: 470,
-                        originX: 'center',
-                        originY: 'center',
-                        selectable: false,
-                        
-                    });
+                });
 
-                    // Aplicar el círculo de recorte a la imagen
-                    imgX.rotate(-90);
-                    imgX.clipPath = clipPath;
+                // Crear un círculo de recorte
+                var clipPath = new fabric.Circle({
+                    radius: 470,
+                    originX: 'center',
+                    originY: 'center',
+                    selectable: false,
 
-                    allObjects.push(imgX)
+                });
 
-                    // Agregar la imagen al lienzo
-                    canvas.add(imgX);
-                }, { crossOrigin: 'Anonymous' });
+                // Aplicar el círculo de recorte a la imagen
+                imgX.rotate(-90);
+                imgX.clipPath = clipPath;
+
+                allObjects.push(imgX)
+
+                // Agregar la imagen al lienzo
+                canvas.add(imgX);
+            }, { crossOrigin: 'Anonymous' });
         }
 
 
@@ -3250,35 +3261,35 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
             canvas.renderAll();
 
             fabric.Image.fromURL('     https://cdn-icons-png.flaticon.com/512/523/523029.png  ', function (imgX) {
-                    // Configurar la imagen
-                    //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
-                    //imgX.scale(0.5);
-                    imgX.scaleToWidth(160);
-                    imgX.set({
-                        left: 800,
-                        top: 430,
-                        selectable: false,
-                       
-                    });
+                // Configurar la imagen
+                //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
+                //imgX.scale(0.5);
+                imgX.scaleToWidth(160);
+                imgX.set({
+                    left: 800,
+                    top: 430,
+                    selectable: false,
 
-                    // Crear un círculo de recorte
-                    var clipPath = new fabric.Circle({
-                        radius: 470,
-                        originX: 'center',
-                        originY: 'center',
-                        selectable: false,
-                        
-                    });
+                });
 
-                    // Aplicar el círculo de recorte a la imagen
-                    imgX.rotate(-90);
-                    imgX.clipPath = clipPath;
+                // Crear un círculo de recorte
+                var clipPath = new fabric.Circle({
+                    radius: 470,
+                    originX: 'center',
+                    originY: 'center',
+                    selectable: false,
 
-                    allObjects.push(imgX)
+                });
 
-                    // Agregar la imagen al lienzo
-                    canvas.add(imgX);
-                }, { crossOrigin: 'Anonymous' });
+                // Aplicar el círculo de recorte a la imagen
+                imgX.rotate(-90);
+                imgX.clipPath = clipPath;
+
+                allObjects.push(imgX)
+
+                // Agregar la imagen al lienzo
+                canvas.add(imgX);
+            }, { crossOrigin: 'Anonymous' });
         }
 
 
@@ -3492,7 +3503,7 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
         });
 
         allObjects.push(fabricTextD);
-        
+
 
 
         // Prompt, con Capitalize
@@ -3687,24 +3698,24 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
         if (author) {
             // Cargar la imagen desde URL
             fabric.Image.fromURL(authorPhoto, function (imgX) {
-                
-                
+
+
                 // Configurar la imagen
                 //imgX.scaleToWidth(80); // Ajustar el ancho de la imagen
                 //imgX.scale(0.5);
-                
+
                 imgX.set({
                     left: 440,
                     top: 895,
                     selectable: false,
                 });
-                
+
                 var imageSize = imgX.getScaledWidth();
                 imgX.scaleToWidth(110);
 
                 // Crear un círculo de recorte
                 var clipPath = new fabric.Circle({
-                    radius: imageSize/2,
+                    radius: imageSize / 2,
                     originX: 'center',
                     originY: 'center',
                     selectable: true,
@@ -3797,15 +3808,15 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
         });
 
         let numLines = fabricTextD.textLines.length;
-            if (numLines <= 4) {
-                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.fontSize = 38;
-            }
+        if (numLines <= 4) {
+            // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+            fabricTextD.fontSize = 38;
+        }
 
-            else if (numLines <= 5) {
-                // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
-                fabricTextD.fontSize = 36;
-            }
+        else if (numLines <= 5) {
+            // Reducir el tamaño del cuadro de texto para que quepa adecuadamente
+            fabricTextD.fontSize = 36;
+        }
 
         allObjects.push(fabricTextD);
 
@@ -3891,8 +3902,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
         if (selectedCanvas !== options.target.canvas) {
-            //console.log(selectedCanvas)
-            //console.log(options.target.canvas)
+            ////console.log(selectedCanvas)
+            ////console.log(options.target.canvas)
         }
 
         if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
@@ -3927,8 +3938,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
         if (selectedCanvas !== options.target.canvas) {
-            //console.log(selectedCanvas)
-            //console.log(options.target.canvas)
+            ////console.log(selectedCanvas)
+            ////console.log(options.target.canvas)
         }
 
         if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
@@ -3963,8 +3974,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
         if (selectedCanvas !== options.target.canvas) {
-            //console.log(selectedCanvas)
-            //console.log(options.target.canvas)
+            ////console.log(selectedCanvas)
+            ////console.log(options.target.canvas)
         }
 
         if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
@@ -4000,8 +4011,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
         if (selectedCanvas !== options.target.canvas) {
-            //console.log(selectedCanvas)
-            //console.log(options.target.canvas)
+            ////console.log(selectedCanvas)
+            ////console.log(options.target.canvas)
         }
 
         if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
@@ -4036,8 +4047,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
 
         if (selectedCanvas !== options.target.canvas) {
-            //console.log(selectedCanvas)
-            //console.log(options.target.canvas)
+            ////console.log(selectedCanvas)
+            ////console.log(options.target.canvas)
         }
 
         if (selectedCanvas && selectedCanvas.wrapperEl.classList.contains('canvas-selected')) {
@@ -4099,8 +4110,8 @@ export function configurarCanvas(canvas, backgroundImageSrc, original, format, i
 
         // BORRAR SELECCIÓN UNA VEZ QUE SE DESELECCIONA UN TEXT
         fabricTextD?.on('deselected', function () {
-            //console.log("des")
-            //console.log("aquí1")
+            ////console.log("des")
+            ////console.log("aquí1")
             //fabricTextD = null;
             //selectedObject = null;
         });
@@ -4190,7 +4201,7 @@ export function selectAllCanvas(value, option) {
                 object.set('visible', false)
             }
             else {
-                console.log("done");
+                //console.log("done");
             }
 
             //object.canvas.renderAll(); // Renderizar el canvas después de aplicar los cambios
@@ -4267,10 +4278,10 @@ export function changeTextFont() {
 }
 
 export function changeTextColor() {
-    console.log(selectedObject)
+    //console.log(selectedObject)
     if (selectedCanvas && selectedObject) {
-        
-        
+
+
 
         let colorPicker = document.getElementById('colorPicker');
         let selectedColor = colorPicker.value;
@@ -4399,7 +4410,7 @@ export function saveImage() {
             // Aquí puedes realizar alguna acción en caso de que la respuesta sea exitosa
             window.location.href = "/my-generations";
             /*
-            console.log('Imágenes modificadas guardadas correctamente.');
+            //console.log('Imágenes modificadas guardadas correctamente.');
             let containerGenerated = document.getElementById("generated-container");
             containerGenerated.innerHTML = '<h1>Imagenes programadas correctamente</h1>';
             */
@@ -4416,7 +4427,7 @@ export function modoEdicion() {
 
 
 
-    console.log(getDatetetimeInput());
+    //console.log(getDatetetimeInput());
 
     var canvasContainerOp = document.getElementById('canvasContainer');
 
