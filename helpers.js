@@ -479,19 +479,23 @@ export function generateImage() {
                 let imageContainer = document.getElementById('imageContainer');
                 imageContainer.innerHTML = '';
 
-                data.image_generated.forEach((image, index) => {
+                console.log(data.image_generated)
 
+                data.image_generated.forEach((image, index) => {
+                    console.log("INDEX", index)
                     let imgElement = document.createElement('img');
                     imgElement.src = image.image
 
                     imgElement.onload = function () {
+                        let contadorIndex = 0;
+
                         let canvasContainer = document.getElementById('canvasContainer');
                         let canvasElement = document.createElement('canvas');
                         let containerCE = document.createElement('div');
                         containerCE.classList.add('big-container');
                         containerCE.setAttribute('id', 'big-container_' + contador);
 
-
+                        console.log("INDEX2", contador)
                         canvasElement.id = 'canvas-' + index;
 
 
@@ -551,13 +555,16 @@ export function generateImage() {
                         //canvases[index] = canvas;
                         console.log(data.gpt_response)
                         let actualImg = imgElement.src;
-                        imagesList.push(actualImg)
+                        imagesList.push(actualImg);
 
-                        let idea_actual = "idea" + (index + 1);
+                        let idea_actual = "idea" + (contador);
+                        contadorIndex++;
+                        console.log("PEPE PIO")
+                        console.log("IDEA", idea_actual)
+                        console.log("DATITA", data.gpt_response[idea_actual])
                         let front_image_text = data.gpt_response[idea_actual].image_text;
-
                         let image_description = data.gpt_response[idea_actual].image_description;
-
+                        console.log("FRONTI", front_image_text)
                         imagesDataFront.push({ image_description: image_description });
 
 
@@ -759,7 +766,7 @@ export function generateImage() {
 
                             }
                         }
-                    };
+                        };
 
 
 
