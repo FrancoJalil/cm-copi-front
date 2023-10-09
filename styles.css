@@ -320,13 +320,18 @@ img {
 }
 
 .prompt-input-container {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     margin-top: 0.8rem;
     text-align: center;
 }
 
 .prompt-input {
-    width: 60%;
-    max-width: 80rem;
+    margin: 0;
+    margin-bottom: 0.3rem;
+    width: 100%;
     height: 2.5rem;
     border-radius: .25rem;
     /*border: 1.5px solid rgba(255, 255, 255, 0.30);*/
@@ -346,7 +351,7 @@ img {
 }
 
 .format-container {
-    width: 100%;
+    width: 50%;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -396,7 +401,7 @@ img {
 
     background-color: rgb(15 17 18);
     /*border: 1px solid rgba(255, 255, 255, 0.30);*/
-    border-radius: 1rem;
+    border-radius: 0rem;
     margin: 0 10rem;
 }
 
@@ -747,11 +752,11 @@ button.cancel:hover {
 
 /* format menu */
 .formats-container {
+    width: 100%;
     display: flex;
     flex-direction: column !important;
-    width: fit-content;
-    max-width: 80%;
-    min-width: 60%;
+    /*max-width: 80%;
+    min-width: 60%;*/
 }
 
 .images-container {
@@ -797,7 +802,9 @@ button.cancel:hover {
     border-radius: 1rem;
 }
 
-
+#firstInputUser .style-container {
+    display: none;
+}
 
 .style-container {
     padding-top: 1rem;
@@ -818,7 +825,6 @@ button.cancel:hover {
     justify-content: space-between;
     text-align: left;
     padding: 1rem;
-    padding-top: 0.5rem;
     
 }
 
@@ -829,6 +835,37 @@ button.cancel:hover {
     align-items: center;
     justify-content: space-between;
 }
+
+.change-style-container {
+    border-radius: 0.3rem;
+    display: flex;
+    align-items: center;
+    margin: 0;
+    padding-top: 0;
+    padding-right: 14px;
+    background-color: #353535;
+}
+
+.change-style-container .format-button {
+
+    border-radius: 0.3rem 0 0 0.3rem;
+    margin: 0;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.change-style-container .choosed-style {
+    margin-left: 14px;
+}
+
+.menu-style .format-button {
+    margin: 0;
+}
+
+
 
 .button-input-image:hover {
     background-color: black;
@@ -844,6 +881,11 @@ button.cancel:hover {
 .container-button {
     padding: 0.1rem 1rem;
     display: inline-flex;
+    align-items: center;
+}
+
+.menu-edit {
+    display: flex;
     align-items: center;
 }
 
@@ -930,6 +972,7 @@ input[type="range"] {
 
 
 .info {
+    display: none;
     border-radius: 8rem 8rem 8rem 0rem;
     background-color: rgba(149, 92, 242, 0.50);
     padding: 2px 10px;

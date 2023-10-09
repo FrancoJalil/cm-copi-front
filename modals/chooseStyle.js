@@ -104,13 +104,15 @@ export let stylesJSON = {
 
 // style selected
 export function putSelectedStyle() {
-    
+
+
     let selectedStyle = localStorage.getItem('selectedStyle');
     if (!selectedStyle) {
         // set default style
         selectedStyle = stylesJSON.styles[0];
         localStorage.setItem('selectedStyle', JSON.stringify(selectedStyle));
         document.getElementById('prompt-input').placeholder = selectedStyle.promptI;
+        document.getElementById("chosedStyle").innerHTML = selectedStyle.title;
 
     } else {
         selectedStyle = JSON.parse(selectedStyle);
@@ -123,6 +125,7 @@ export function putSelectedStyle() {
     descPostTA.textContent = selectedStyle.post_description;
 
     selectedTitleContainer.textContent = selectedStyle.title;
+    
 
     // Limpiar el contenedor antes de agregar las nuevas imágenes
     while (allImagesContainer.firstChild) {
@@ -139,6 +142,7 @@ export function putSelectedStyle() {
 
     // close modal
     console.log(selectedStyle);
+    
     document.getElementById('prompt-input').placeholder = selectedStyle.promptI;
     closeConfirmationModal();
 
@@ -149,6 +153,7 @@ export function putSelectedStyle() {
 export function chooseStyleOnClick(styleJSON) {
 
     localStorage.setItem('selectedStyle', JSON.stringify(styleJSON));
+    document.getElementById("chosedStyle").innerHTML = styleJSON.title;
     putSelectedStyle();
 }
 

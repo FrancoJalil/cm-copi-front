@@ -40,7 +40,7 @@
       <li>
         <a href="/my-generations">My Generations</a>
       </li>
-      
+
 
       <li>
 
@@ -62,8 +62,15 @@
     <form id="firstInputUser">
 
       <div class="format-container">
-        
+
+        <h3 style="font-size: 5rem;">🦥</h3>
+
         <h2 class="format-title">AI Post Generation</h2>
+
+        <div class="prompt-input-container">
+          <input type="text" autocomplete="off" autofocus name="prompt-input" class="prompt-input" id="prompt-input"
+            placeholder="Type a prompt... // Ej: Segunda guerra mundial">
+        </div>
 
         <div class="formats-container">
           <div class="style-container">
@@ -77,7 +84,7 @@
           </div>
 
           <div class="menu-style">
-            
+
             <div class="menu-edit">
 
               <button type="button" class="format-button selected" id="selectable-button-author">Author</button>
@@ -104,8 +111,14 @@
 
 
             </div>
-            
-            <button type="button" class="format-button" id="chooseStyle">Change style</button>
+
+            <div class="change-style-container">
+              <button type="button" class="format-button" id="chooseStyle">
+                Change style
+              </button>
+              <span class="choosed-style" id="chosedStyle"> (4 Tips) </span>
+            </div>
+
           </div>
 
           <div class="slider-container">
@@ -114,7 +127,7 @@
             <button type="button" id="increment">+</button>
             <span id="slider-value">1</span>&nbspPosts
             <span class="token-cost">= <span id="numTokens">1</span> Tokens</span>
-        </div>
+          </div>
 
         </div>
 
@@ -126,10 +139,7 @@
           <h2 class="prompt-title">Prompt</h2>
         </div>
 
-        <div class="prompt-input-container">
-          <input type="text" autocomplete="off" autofocus name="prompt-input" class="prompt-input" id="prompt-input"
-            placeholder="Type a prompt... // Ej: Segunda guerra mundial">
-        </div>
+
 
         <button type="submit" class="generate-button" id="generate-button">Generate</button>
     </form>

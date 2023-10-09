@@ -186,6 +186,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Event listener para el choose style
+
   document.getElementById('chooseStyle').addEventListener('click', () => {
     showConfirmationModal('Elegir estilo', 'Ok?', function () {
 
