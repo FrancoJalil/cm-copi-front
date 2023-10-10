@@ -12,61 +12,61 @@ export let stylesJSON = {
         {
             title: BLACK_MARK,
             type: CARRUSEL,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Las películas de Pixar van más allá de la diversión y la animación. Cada una de ellas nos enseña valiosas lecciones de vida. ¿Recuerdas la famosa frase de Finding Nemo: Sigue nadando? Esta película nos enseña la importancia de la perseverancia y la superación. En Up, aprendemos sobre el valor de los sueños y la importancia de disfrutar cada momento. Descubre las lecciones de vida en las películas de Pixar y déjate inspirar. #Pixar #LeccionesDeVida #Inspiración #Animación",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975253/media/carousel-images/Ccarrusel_2-P0_beyn0m.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975270/media/carousel-images/Ccarrusel_2-P4_zkz1ht.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975268/media/carousel-images/Ccarrusel_2-P3_afztie.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975267/media/carousel-images/Ccarrusel_2-P2_b2syiw.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1690975265/media/carousel-images/Ccarrusel_2-P1_zqy6va.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696953932/media/carousel-images/Ccarrusel_0-P0_ivburi.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696953933/media/carousel-images/Ccarrusel_0-P1_jder2q.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696953936/media/carousel-images/Ccarrusel_0-P2_opjare.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696953937/media/carousel-images/Ccarrusel_0-P3_si7zts.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696953939/media/carousel-images/Ccarrusel_0-P4_zqyame.png',
             ],
-            promptI: 'Type a prompt... Ej: Internet de las cosas'
+            promptI: 'Type a prompt... Ej: Peliculas de pixar'
         },
         {
             title: TIPS,
             type: CARRUSEL,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Descubre estos alimentos que te ayudan a acelerar el metabolismo. #metabolismo #alimentos #nutrición #bajardepeso",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P0_hrynep.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P1_qro7xm.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P2_dpdnuq.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P3_fgel8h.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_1-P4_qqnkqc.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954283/media/carousel-images/Ccarrusel_3-P0_wadirq.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954285/media/carousel-images/Ccarrusel_3-P1_ejkrmy.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954287/media/carousel-images/Ccarrusel_3-P2_m2mqlu.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954289/media/carousel-images/Ccarrusel_3-P3_c2uzun.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954291/media/carousel-images/Ccarrusel_3-P4_lkl9ft.png',
             ],
-            promptI: '4 Tips... Ej: << Programación web >>'
+            promptI: '4 Tips... Ej: << Bajar de peso >>'
         },
         {
             title: TRANSPARENT_MARK,
             type: CARRUSEL,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Explora el fascinante mundo de las armas y armaduras medievales. Desde espadas y lanzas hasta armaduras de placas y escudos, las herramientas de combate de la época medieval eran variadas y sofisticadas. Descubre cómo se fabricaban y utilizaban estas armas, así como su importancia en la guerra y en la vida cotidiana. #historiamedieval #armasmedievales #armadurasmedievales #combate",
             images: [
 
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337682/media/carousel-images/Ccarrusel_4-P0_eqzjaf.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337703/media/carousel-images/Ccarrusel_4-P4_zjyecn.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337702/media/carousel-images/Ccarrusel_4-P3_ea8pdd.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337700/media/carousel-images/Ccarrusel_4-P2_rocw0b.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1691337699/media/carousel-images/Ccarrusel_4-P1_wm8zwr.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954651/media/carousel-images/Ccarrusel_2-P0_i4gch1.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954654/media/carousel-images/Ccarrusel_2-P1_nyivfm.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954657/media/carousel-images/Ccarrusel_2-P2_diu5sp.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954661/media/carousel-images/Ccarrusel_2-P3_mubtqv.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696954665/media/carousel-images/Ccarrusel_2-P4_r8pnco.png'
             ],
             promptI: 'Type a prompt... Ej: << Segunda guerra mundial >>'
         },
         {
             title: INFORMARTIVO,
             type: CARRUSEL,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Descubre los mitos y leyendas de la antigua Roma. #mitologiaromana #diosesromanos #leyendas #culturaantigua",
             images: [
 
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487851/media/carousel-images/Ccarrusel_3-P0_jeqdhq.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487853/media/carousel-images/Ccarrusel_3-P1_v620ym.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487855/media/carousel-images/Ccarrusel_3-P2_s6wdko.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487857/media/carousel-images/Ccarrusel_3-P3_yb6a0j.png',
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694487858/media/carousel-images/Ccarrusel_3-P4_aikc18.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696955458/media/carousel-images/Ccarrusel_2-P0_u8kit9.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696955461/media/carousel-images/Ccarrusel_2-P1_jbkxol.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696955464/media/carousel-images/Ccarrusel_2-P2_dbazmm.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696955467/media/carousel-images/Ccarrusel_2-P3_wdxijs.png',
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696955470/media/carousel-images/Ccarrusel_2-P4_qc1c82.png'
             ],
-            promptI: 'Type a prompt... Ej: << Segunda guerra mundial >>'
+            promptI: 'Type a prompt... Ej: << Dioses Romanos >>'
         },
         {
             title: AUTHOR_PHRASE_1,
             type: SOLO,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Enseñanza de Marco Aurelio sobre la búsqueda de la felicidad. #MarcoAurelio #FilosofíaDeVida",
             images: [
                 'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696694532/media/carousel-images/Ccarrusel_1-P0_yh5qjb.png'
             ],
@@ -75,29 +75,29 @@ export let stylesJSON = {
         {
             title: DATO_CURIOSO,
             type: SOLO,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Descubre cómo los osos panda utilizan su pulgar oponible para sobrevivir en su hábitat y cómo esta adaptación los distingue de otros animales. #OsoPanda #PulgarOponible #Adaptación",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1/media/carousel-images/Ccarrusel_4-P0_emwejf.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696956346/media/carousel-images/Ccarrusel_3-P0_uivy77.png'
             ],
-            promptI: 'Dato curioso de ... Ej: << Tigres bengala >>'
+            promptI: 'Dato curioso de ... Ej: << Osos Panda >>'
         },
         {
             title: AUTHOR_PHRASE_2,
             type: SOLO,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Frases de Albert Einstein: Reflexiones sobre el pensamiento. #AlbertEinstein #Mente",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694572979/media/carousel-images/Ccarrusel_1-P0_j1vnlu.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696956698/media/carousel-images/Ccarrusel_0-P0_xgbrlo.png'
             ],
-            promptI: 'Frases de ... Ej: << Marco Aurelio >>'
+            promptI: 'Frases de ... Ej: << Albert Einstein >>'
         },
         {
             title: SABIAS_QUE,
             type: SOLO,
-            post_description: "ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ejemplo ",
+            post_description: "Explora la exuberante biodiversidad de los bosques tropicales, pulmones verdes del planeta. #BosquesTropicales #Biodiversidad #Naturaleza",
             images: [
-                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1694563923/media/carousel-images/Ccarrusel_1-P0_wkdmvd.png'
+                'https://res.cloudinary.com/dlqpkf6fd/image/upload/v1696957201/media/carousel-images/Ccarrusel_0-P0_sh2s2x.png'
             ],
-            promptI: '¿Sabias que...? Ej: << Osos panda >>'
+            promptI: '¿Sabias que...? Ej: << Naturaleza >>'
         }
     ]
 }
@@ -107,6 +107,7 @@ export function putSelectedStyle() {
 
 
     let selectedStyle = localStorage.getItem('selectedStyle');
+    
     if (!selectedStyle) {
         // set default style
         selectedStyle = stylesJSON.styles[0];
@@ -116,6 +117,7 @@ export function putSelectedStyle() {
 
     } else {
         selectedStyle = JSON.parse(selectedStyle);
+        document.getElementById("chosedStyle").innerHTML = selectedStyle.title;
     }
 
     let styleImagesList = selectedStyle.images;

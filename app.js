@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const authorPhoto = document.getElementById('input-file');
 
   putSelectedStyle();
-  
+
 
   const firstForm = document.getElementById("firstInputUser");
 
