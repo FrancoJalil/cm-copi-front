@@ -363,21 +363,26 @@ function reloadGenerate() {
 }
 
 // global variable, asi no se acumulan
-const headingElement = document.createElement('div');
-headingElement.classList.add('loader')
+
 function showLoading(show) {
     let generateContainer = document.getElementById('loadingSkeleton');
+    let contLoader = document.getElementById('contLoader');
+    let loadText = document.getElementById('loadText');
     if (show) {
         
-        
+        loadText.innerHTML = "Hi"
+        contLoader.style.height = "100%";
+        generateContainer.style.height = "70%";
         generateContainer.style.display = 'flex';
         // Set the text content of the h1 element
         // Add the h1 element as a child to the generatedContainer
-        generateContainer.appendChild(headingElement);
+
         
         
     } else {
 
+        
+        contLoader.style.height = 0;
         generateContainer.style.height = 0;
         generateContainer.style.display = 'none';
         // poner el menu abajo
@@ -402,11 +407,11 @@ export function generateImage() {
     containerInputMenu.style.display = 'none';
 
     // LOADING SKELETON
-    /*
+    
     window.onbeforeunload = function() {
         return "Seguro que quieres salir? Los cambios no se guardarán";
     };
-    */
+    
     setTimeout(() => {
         
         ////console.log("loaded")
@@ -466,11 +471,14 @@ export function generateImage() {
                     ////console.log("ok!");
                     refreshUserTokens();
                 } else if (response.statusText === 'Unauthorized') {
+                    console.log("no2")
                     //logoutUser();
                     ////console.log("Unauthorized")
                 }
                 else {
+                    console.log("no")
                     // Si el estado no es 200, muestra un mensaje de error o realiza alguna acción adecuada
+                    window.location.href = "/home?err=01";
                     ////console.log("err")
                 }
 
@@ -531,6 +539,9 @@ export function generateImage() {
 
                         // Agrega el texto que deseas mostrar en el label
                         labelElement.innerText = 'Select this carrousel';
+
+                        
+
 
                         let descriptionTitle = document.createElement('P');
                         descriptionTitle.textContent = 'Description'
@@ -625,6 +636,7 @@ export function generateImage() {
                         containerDesc.appendChild(textField);
 
                         containerDesc.appendChild(descriptionTitle);
+                        
 
                         // date time
                         let containerDatetime = document.createElement('div');
@@ -722,7 +734,7 @@ export function generateImage() {
                                 newCont.classList.add('cont-carrusel');
 
 
-                                for (let i = 0; i <= 4; i++) {
+                                for (let i = 0; i <= 3; i++) {
 
                                     let carrusel = "carrusel_" + (i + 1);
 
@@ -777,7 +789,7 @@ export function generateImage() {
 
                                     // última imagen (firma)
                                     else {
-                                        configurarCanvas(canvas, current_image, false, format, { title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!' }, author, 'signature');
+                                        //configurarCanvas(canvas, current_image, false, format, { title: 'Esperamos haya sido de ayuda!', info: 'Gracias por seguirnos!' }, author, 'signature');
                                     }
                                 }
 
@@ -792,6 +804,12 @@ export function generateImage() {
                 });
 
             })
+            .catch(error => {
+                window.onbeforeunload = null;
+                console.error('Error en la solicitud: ' + error.message);
+                // Realiza alguna acción adecuada en caso de error, como redirigir o mostrar un mensaje de error
+                window.location.href = "/home?err=01";
+              });
 
 
     }, 1000);
@@ -4364,6 +4382,17 @@ export function addPaddingIfNeeded(imageData) {
 }
 
 export function saveImage() {
+    showLoading(true);
+    activarContador();
+    let containerInputMenu = document.getElementById("generated-container");
+    containerInputMenu.style.display = 'none';
+    ////console.log("loading...")
+    
+
+    // hacer cositas cuando esté cargando...
+
+    // desaparecer anterior container
+    
 
     // deshabilitar botón por posibles bugs
     let saveImageButton = document.getElementById("save-image-button");
@@ -4414,6 +4443,9 @@ export function saveImage() {
             }
         })
         .then(response => {
+            window.onbeforeunload = null;
+            showLoading(false);
+            detenerContador();
             const data = response.data;
             // Aquí puedes realizar alguna acción en caso de que la respuesta sea exitosa
             window.location.href = "/my-generations";

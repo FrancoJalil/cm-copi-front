@@ -63,6 +63,8 @@
 
       <div class="format-container">
 
+        <div id="message-container"></div>
+
         <h3 style="font-size: 5rem; color:white">🦥</h3>
 
         <h2 class="format-title">AI Post Generation</h2>
@@ -123,7 +125,7 @@
 
           <div class="slider-container">
             <button type="button" id="decrement">-</button>
-            <input type="range" id="slider" min="1" max="7" value="4">
+            <input disabled type="range" id="slider" min="1" max="7" value="4">
             <button type="button" id="increment">+</button>
             <span id="slider-value">1</span>&nbspPosts
             <span class="token-cost">= <span id="numTokens">1</span> Tokens</span>
@@ -147,12 +149,18 @@
   </div>
 
 
+
   </div>
 
+  <div class="contLoader" id="contLoader">
+
   <div id="loadingSkeleton" class="loading-skeleton">
+    <div id="headingElement" class="loader"></div>
     <p id="contador" style="margin-top: 1rem;">0.00</p>
-    <p style="color: rgb(185, 185, 185)">(120s aprox)</p>
+    <p style="color: rgb(185, 185, 185)" id="loadText">(120s aprox)</p>
   </div>
+
+</div>
 
   <div id="generated-container">
 

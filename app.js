@@ -3,9 +3,13 @@ import { isSelectedCanvas, confirmAction, closeConfirmationModal, showConfirmati
 import { putSelectedStyle } from './modals/chooseStyle.js';
 import { BLACK_MARK, TRANSPARENT_MARK, AUTHOR_PHRASE_1 } from "../utils/styles.js";
 import { updateSliderValue } from "./utils/slicingCounter.js"
+import { mostrarAlert } from "./utils/alert.js"
 
 // Initialize the app
 document.addEventListener('DOMContentLoaded', () => {
+
+  
+
   let author = true;
   let listCheckboxChecked = [];
   let deselectCanvas = false;
@@ -16,6 +20,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const authorPhoto = document.getElementById('input-file');
 
   putSelectedStyle();
+
+  
 
 
   const firstForm = document.getElementById("firstInputUser");
@@ -70,22 +76,24 @@ document.addEventListener('DOMContentLoaded', () => {
   const sliderValue = document.getElementById("slider-value");
   const tokensValue = document.getElementById("numTokens");
 
+
+  // ESTA DESACTIVADO, SACAR COMENTARIOS PARA ACTIVARLO
   updateSliderValue();
 
   // Función para decrementar el valor del control deslizante
   decrementButton.addEventListener("click", function () {
-    slider.stepDown();
-    updateSliderValue();
+    //slider.stepDown();
+    //updateSliderValue();
   });
 
   // Función para incrementar el valor del control deslizante
   incrementButton.addEventListener("click", function () {
-    slider.stepUp();
-    updateSliderValue();
+    //slider.stepUp();
+    //updateSliderValue();
   });
 
   // Actualizar el valor del control deslizante cuando se mueve
-  slider.addEventListener("input", updateSliderValue);
+  //slider.addEventListener("input", updateSliderValue);
 
 
 
@@ -381,5 +389,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+
+
+  setTimeout(mostrarAlert, 500);
 
 });

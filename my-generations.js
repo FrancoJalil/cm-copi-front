@@ -63,6 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
           imgContainer.classList.add('imgContainer');
           const downloadButton = document.createElement('a');
           const imageElement = document.createElement('img');
+          imageElement.loading = "lazy";
           imageElement.style.width = '10px';
           imageElement.src = 'https://img.icons8.com/material-rounded/24/FFFFFF/download--v1.png'; // Reemplaza con la ruta de tu imagen
 
